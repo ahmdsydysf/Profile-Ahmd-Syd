@@ -11,273 +11,666 @@
 <meta property="og:url" content="https://ahmed-sayed-profile.pages.dev/">
 <meta property="og:image" content="https://ahmed-sayed-profile.pages.dev/img/diesel-reports-desktop.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0B1F50">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230B1F50'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='30' fill='%23fff' text-anchor='middle'%3EAS%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#F3F6FC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231F4FD8'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='28' fill='%23fff' text-anchor='middle'%3EAS%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<script>
+/* before the first paint: the saved theme and language, and the "js" class the reveal animation waits on */
+(function () {
+  var h = document.documentElement;
+  try {
+    var t = localStorage.getItem('pf-theme'); if (t === 'dark' || t === 'light') h.setAttribute('data-theme', t);
+    if (localStorage.getItem('pf-lang') === 'ar') { h.setAttribute('dir', 'rtl'); h.setAttribute('lang', 'ar'); }
+  } catch (e) {}
+  h.classList.add('js');
+})();
+</script>
 <style>
-/* Layout: one calm column (max 1040px). Phone screenshots sit in device frames on a wrapping grid; the eight
-   systems appear as a strip of their own product colours; decisions read as problem → decision → why. */
+/* The look of Orion HR: a softly lit page, a floating glass bar with the sections as pills, a gradient banner with
+   drifting lights, figures as framed tiles that count up, chips with counts, pill tabs — and a rail at the start
+   with WhatsApp, email and light / dark. Colours are "R G B" triplets so a tint is rgb(var(--x) / .12). */
 :root{
-  --bg:#F3F5FA; --card:#FFFFFF; --fg:#0B1F50; --muted:#56618A; --line:#D7DDEC;
-  --accent:#1F4FD8; --accent-ink:#FFFFFF; --accent-soft:#E4EAFB; --brown:#7A4A1E; --brown-soft:#F3EBE2;
-  --ok:#1E8A5A; --warn:#B8690A;
+  --bg:238 242 250; --surface:255 255 255; --surface2:240 243 250; --line:219 225 239; --ink:14 26 51; --muted:88 101 131;
+  --primary:31 79 216; --pri-ink:31 79 216; --btn:31 79 216; --violet:124 77 204; --violet-ink:107 59 191;
+  --c2:13 148 136; --c2-ink:13 118 110; --ok:32 160 78; --ok-ink:21 109 52; --amber:248 169 27; --amber-ink:142 94 0;
+  --orange:241 124 0; --orange-ink:160 80 0; --danger:197 29 40; --danger-ink:169 19 31; --wa:37 211 102; --wa-ink:18 125 66;
+  --brown-ink:122 74 30; --side:11 31 80;
+  --glass:.78; --glass-hi:rgba(255,255,255,.55);
+  --page-bg:radial-gradient(1100px 520px at 12% -12%,rgba(31,79,216,.14),transparent 62%),
+            radial-gradient(900px 480px at 100% -5%,rgba(124,77,204,.12),transparent 58%),
+            linear-gradient(180deg,#F3F6FC 0%,#EAEFF8 100%);
+  --hero-bg:linear-gradient(135deg,#0B1F50 0%,#1F4FD8 120%);
+  --shadow-float:0 8px 30px -12px rgb(0 0 0 / .25);
+  --shadow-card:0 1px 2px rgb(0 0 0 / .04),0 18px 40px -30px rgb(11 31 80 / .45);
   --display:'Cairo',system-ui,sans-serif; --body:'Tajawal','Segoe UI',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
-  --radius:16px; --shadow:0 1px 2px rgba(11,31,80,.06),0 10px 30px -18px rgba(11,31,80,.25);
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0A1128; --card:#121B3A; --fg:#E9EDF8; --muted:#A5B0D0; --line:#263257;
-  --accent:#7A97FF; --accent-ink:#0A1128; --accent-soft:#1A2750; --brown:#D9AB7A; --brown-soft:#2B2118;
-  --ok:#5CCB93; --warn:#F0B35A; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.7); color-scheme:dark}}
+  --bg:9 16 38; --surface:21 32 66; --surface2:28 41 82; --line:52 68 112; --ink:234 240 253; --muted:156 170 204;
+  --primary:96 130 250; --pri-ink:165 185 255; --btn:70 105 235; --violet:167 139 250; --violet-ink:196 181 253;
+  --c2:20 163 150; --c2-ink:94 234 212; --ok:71 200 110; --ok-ink:153 235 170; --amber:253 191 46; --amber-ink:251 213 141;
+  --orange:253 147 37; --orange-ink:255 199 155; --danger:230 67 67; --danger-ink:255 186 179; --wa:37 211 102; --wa-ink:120 230 160;
+  --brown-ink:236 178 130; --side:6 12 30;
+  --glass:.56; --glass-hi:rgba(255,255,255,.045);
+  --page-bg:radial-gradient(1200px 620px at 8% -14%,rgba(96,130,250,.26),transparent 60%),
+            radial-gradient(1000px 560px at 100% 0%,rgba(167,139,250,.16),transparent 58%),
+            radial-gradient(900px 600px at 50% 110%,rgba(56,189,248,.08),transparent 60%),
+            linear-gradient(180deg,#0C1735 0%,#081027 100%);
+  --hero-bg:linear-gradient(135deg,#0B1638 0%,#233F9E 130%);
+  --shadow-float:0 8px 30px -12px rgb(0 0 0 / .6);
+  --shadow-card:0 1px 2px rgb(0 0 0 / .3),0 18px 40px -30px rgb(0 0 0 / .8);
+  color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0A1128; --card:#121B3A; --fg:#E9EDF8; --muted:#A5B0D0; --line:#263257;
-  --accent:#7A97FF; --accent-ink:#0A1128; --accent-soft:#1A2750; --brown:#D9AB7A; --brown-soft:#2B2118;
-  --ok:#5CCB93; --warn:#F0B35A; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.7); color-scheme:dark}
+  --bg:9 16 38; --surface:21 32 66; --surface2:28 41 82; --line:52 68 112; --ink:234 240 253; --muted:156 170 204;
+  --primary:96 130 250; --pri-ink:165 185 255; --btn:70 105 235; --violet:167 139 250; --violet-ink:196 181 253;
+  --c2:20 163 150; --c2-ink:94 234 212; --ok:71 200 110; --ok-ink:153 235 170; --amber:253 191 46; --amber-ink:251 213 141;
+  --orange:253 147 37; --orange-ink:255 199 155; --danger:230 67 67; --danger-ink:255 186 179; --wa:37 211 102; --wa-ink:120 230 160;
+  --brown-ink:236 178 130; --side:6 12 30;
+  --glass:.56; --glass-hi:rgba(255,255,255,.045);
+  --page-bg:radial-gradient(1200px 620px at 8% -14%,rgba(96,130,250,.26),transparent 60%),
+            radial-gradient(1000px 560px at 100% 0%,rgba(167,139,250,.16),transparent 58%),
+            radial-gradient(900px 600px at 50% 110%,rgba(56,189,248,.08),transparent 60%),
+            linear-gradient(180deg,#0C1735 0%,#081027 100%);
+  --hero-bg:linear-gradient(135deg,#0B1638 0%,#233F9E 130%);
+  --shadow-float:0 8px 30px -12px rgb(0 0 0 / .6);
+  --shadow-card:0 1px 2px rgb(0 0 0 / .3),0 18px 40px -30px rgb(0 0 0 / .8);
+  color-scheme:dark}
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 var(--body);
-  padding-block:0 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100dvh;background:rgb(var(--bg));color:rgb(var(--ink));font:16px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+/* the lit page, fixed behind everything (a pseudo-element: background-attachment:fixed fails on phones) */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--page-bg)}
 img{max-width:100%}
-.wrap{max-width:1040px;margin-inline:auto}
+a{color:rgb(var(--pri-ink))}
 h1,h2,h3{font-family:var(--display);line-height:1.2;text-wrap:balance;margin:0}
-h1{font-size:clamp(34px,6vw,56px);font-weight:900;letter-spacing:-.01em}
-h2{font-size:clamp(24px,3.6vw,32px);font-weight:800}
-h3{font-size:18px;font-weight:700}
-p{margin:0;max-width:68ch}
-a{color:var(--accent)}
-.eyebrow{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-[dir=rtl] .eyebrow{letter-spacing:.04em}
-.muted{color:var(--muted)}
+h3{font-size:18px;font-weight:800}
+p{margin:0;max-width:70ch}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid rgb(var(--primary));outline-offset:2px}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic.f{fill:currentColor;stroke:none}
+[dir=rtl] .flip{transform:scaleX(-1)}
 .num{font-variant-numeric:tabular-nums;font-family:var(--mono)}
-section{padding-block:44px;border-top:1px solid var(--line)}
-section.hero{border-top:0}
-.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.muted{color:rgb(var(--muted))}
+.eyebrow{display:block;font:800 11.5px var(--display);letter-spacing:.14em;text-transform:uppercase;color:rgb(var(--pri-ink));margin-bottom:2px}
+[dir=rtl] .eyebrow{letter-spacing:.02em}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
 
-/* top bar */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 86%,transparent);
-  backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px;border-bottom:1px solid var(--line)}
-.brand{font-family:var(--display);font-weight:800;font-size:15px;display:flex;align-items:center;gap:10px}
-.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
-.nav{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
-.nav a{font:600 13px var(--display);color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:999px}
-.nav a:hover{color:var(--fg);background:var(--accent-soft)}
-@media (max-width:720px){.nav a.hide-sm{display:none}}
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 16px;font:600 14px var(--display);
-  border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer;text-decoration:none;transition:transform .12s ease}
-.btn:hover{transform:translateY(-1px)}
-.btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.btn.sm{padding:7px 12px;font-size:13px}
+/* an icon in a tinted square (the tiles, the section heads, the cards) */
+.si{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;flex:none;transition:transform .3s}
+.t-primary{background:rgb(var(--primary) / .12);color:rgb(var(--pri-ink))}
+.t-violet{background:rgb(var(--violet) / .15);color:rgb(var(--violet-ink))}
+.t-c2{background:rgb(var(--c2) / .13);color:rgb(var(--c2-ink))}
+.t-orange{background:rgb(var(--orange) / .14);color:rgb(var(--orange-ink))}
+.t-amber{background:rgb(var(--amber) / .16);color:rgb(var(--amber-ink))}
+.t-ok{background:rgb(var(--ok) / .14);color:rgb(var(--ok-ink))}
+.t-danger{background:rgb(var(--danger) / .12);color:rgb(var(--danger-ink))}
+.t-wa{background:rgb(var(--wa) / .16);color:rgb(var(--wa-ink))}
+.t-c{background:color-mix(in srgb,var(--c) 15%,transparent);color:var(--c)}
 
-/* hero */
-.hero{display:grid;gap:22px;padding-block:48px 36px}
-.hero .lede{font-size:clamp(18px,2.4vw,22px);line-height:1.6;max-width:40ch;font-weight:500}
-.cta{display:flex;flex-wrap:wrap;gap:10px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:8px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;min-width:0}
-.stat b{display:block;font:800 28px/1.1 var(--display);color:var(--accent);font-variant-numeric:tabular-nums}
-.stat span{font-size:13px;color:var(--muted)}
+/* ---------- the top bar: brand · the sections as pills · the clock · the language ---------- */
+.top{position:sticky;top:0;z-index:30;padding:10px 12px 0}
+.bar{max-width:1440px;margin-inline:auto;height:56px;display:flex;align-items:center;gap:10px;padding-inline:8px;border-radius:999px;
+  border:1px solid rgb(var(--line) / .7);background:rgb(var(--surface) / var(--glass));
+  -webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:var(--shadow-float)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;min-width:0;flex:none}
+.mark{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--hero-bg);color:#fff;
+  font:900 14px/1 var(--display);letter-spacing:.02em;box-shadow:0 8px 18px -10px rgb(var(--primary) / .9)}
+.bt{display:flex;flex-direction:column;line-height:1.2;border-inline-start:1px solid rgb(var(--line));padding-inline-start:10px;min-width:0}
+.bt b{font:900 15.5px var(--display);white-space:nowrap}
+.bt small{font-size:11.5px;color:rgb(var(--muted));white-space:nowrap}
+.pills{display:none}
+.pills .track{display:flex;gap:4px;padding:4px;border-radius:999px;background:rgb(var(--ink) / .04);min-width:0;overflow-x:auto;scrollbar-width:none}
+.pill{display:inline-flex;align-items:center;gap:8px;height:40px;padding-inline:13px;border-radius:999px;flex:none;
+  font:700 13.5px var(--display);color:rgb(var(--ink) / .7);text-decoration:none;white-space:nowrap;transition:background .2s,color .2s,box-shadow .2s}
+.pill .ic{width:18px;height:18px}
+.pill:hover{color:rgb(var(--ink));background:rgb(var(--surface) / .85)}
+.pill[aria-current="true"]{background:rgb(var(--btn));color:#fff;box-shadow:0 0 24px -4px rgb(var(--primary) / .45)}
+.pill .lb{display:none}
+.pill[aria-current="true"] .lb{display:inline}
+.end{margin-inline-start:auto;display:flex;align-items:center;gap:8px;flex:none}
+.live{display:none;align-items:center;gap:8px;height:40px;padding-inline:14px;border-radius:999px;border:1px solid rgb(var(--line) / .8);
+  background:rgb(var(--surface) / .7);font:700 13px var(--display);white-space:nowrap}
+.live .dot{width:8px;height:8px;border-radius:50%;background:rgb(var(--ok));box-shadow:0 0 0 3px rgb(var(--ok) / .2)}
+.live .num{font-family:var(--display);font-weight:800}
+.lang{display:inline-flex;align-items:center;gap:8px;height:40px;padding-inline:14px;border-radius:999px;border:1px solid rgb(var(--line) / .8);
+  background:rgb(var(--surface) / .7);font:700 13.5px var(--display);cursor:pointer;transition:border-color .2s}
+.lang:hover{border-color:rgb(var(--primary) / .5)}
+.lang .ic{width:18px;height:18px;color:rgb(var(--pri-ink))}
+@media (min-width:1024px){
+  .top{padding:16px 16px 0}
+  .bar{height:64px;padding-inline:12px 10px;gap:12px}
+  .pills{display:flex;flex:1;justify-content:center;min-width:0}
+}
+@media (min-width:1280px){.pill .lb{display:inline}}
+@media (min-width:1200px){.live{display:inline-flex}}
+@media (max-width:400px){.bt small{display:none}}
 
-.strip{display:flex;flex-wrap:wrap;gap:8px}
-.chip{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;font:600 13px var(--display);background:var(--card);border:1px solid var(--line)}
+/* ---------- the rail at the start: WhatsApp, email, light / dark (a computer) ---------- */
+.rail{display:none}
+@media (min-width:1024px){
+  .rail{display:flex;position:fixed;inset-inline-start:16px;top:50%;transform:translateY(-50%);z-index:20;flex-direction:column;align-items:center;
+    gap:6px;padding:6px;border-radius:30px;border:1px solid rgb(var(--line) / .7);background:rgb(var(--surface) / var(--glass));
+    -webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:var(--shadow-float)}
+}
+.rb{position:relative;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:0;background:transparent;cursor:pointer;
+  color:rgb(var(--ink) / .72);transition:background .2s,color .2s,transform .2s;text-decoration:none}
+.rb .ic{width:21px;height:21px}
+.rb:hover{background:rgb(var(--ink) / .06);color:rgb(var(--ink))}
+.rb.wa{background:rgb(var(--wa) / .15);color:rgb(var(--wa-ink))}
+.rb.wa:hover,.rb.wa[aria-expanded="true"]{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff}
+.rb.ml{background:rgb(var(--primary) / .1);color:rgb(var(--pri-ink))}
+.rb.ml:hover,.rb.ml[aria-expanded="true"]{background:rgb(var(--btn));color:#fff}
+.rb .tip{position:absolute;inset-inline-start:calc(100% + 12px);top:50%;transform:translateY(-50%);white-space:nowrap;border-radius:999px;
+  background:rgb(var(--ink));color:rgb(var(--bg));padding:4px 12px;font:700 12px/1.6 var(--display);opacity:0;pointer-events:none;transition:opacity .15s}
+.rb:hover .tip,.rb:focus-visible .tip{opacity:1}
+.rb[aria-expanded="true"] .tip{opacity:0}
+.rsep{width:24px;height:1px;background:rgb(var(--line));margin:3px 0}
+
+/* ---------- the bottom bar (a phone / tablet) ---------- */
+.dock{position:fixed;inset-inline:0;bottom:0;z-index:30;padding:0 12px calc(10px + env(safe-area-inset-bottom,0px))}
+.dock .in{display:grid;grid-template-columns:repeat(5,1fr);height:66px;max-width:520px;margin-inline:auto;padding-inline:4px;border-radius:26px;
+  border:1px solid rgb(var(--line) / .7);background:rgb(var(--surface) / var(--glass));
+  -webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:0 10px 30px -10px rgb(0 0 0 / .35)}
+.dk{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:0;border:0;background:none;cursor:pointer;
+  font:700 10.5px/1.2 var(--display);color:rgb(var(--ink) / .7);text-decoration:none;-webkit-tap-highlight-color:transparent}
+.dk .ic{width:22px;height:22px}
+.dk span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dk[aria-current="true"],.dk[aria-expanded="true"]{color:rgb(var(--pri-ink))}
+.dk .bub{width:50px;height:50px;margin-top:-24px;border-radius:50%;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 10px 22px -8px rgb(18 140 126 / .8),0 0 0 4px rgb(var(--surface))}
+.dk .bub .ic{width:24px;height:24px}
+@media (min-width:1024px){.dock{display:none}}
+
+/* ---------- the flyouts of WhatsApp and email ---------- */
+.fly{position:fixed;z-index:40;width:310px;max-width:calc(100vw - 24px);padding:14px;border-radius:20px;border:1px solid rgb(var(--line) / .8);
+  background:rgb(var(--surface) / .97);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 18px 50px -18px rgb(0 0 0 / .45);
+  opacity:0;visibility:hidden;transform:translateY(6px) scale(.98);transition:opacity .16s,transform .16s,visibility 0s .16s}
+.fly.on{opacity:1;visibility:visible;transform:none;transition:opacity .16s,transform .16s}
+.fh{display:flex;gap:12px;align-items:center;margin-bottom:6px}
+.fh b{display:block;font:800 15px var(--display)}
+.fh small{display:block;font-size:12.5px;color:rgb(var(--muted));line-height:1.4}
+.fr{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;text-decoration:none;color:inherit;margin-top:8px;
+  border:1px solid rgb(var(--line) / .8);background:rgb(var(--surface2) / .6);transition:border-color .2s,background .2s}
+.fr:hover{border-color:rgb(var(--wa) / .7);background:rgb(var(--wa) / .08)}
+.fr .fl{flex:1;font:700 13.5px var(--display)}
+.fr .num{font-size:13px}
+.fr .ic{width:16px;height:16px;color:rgb(var(--muted))}
+.fmail{display:block;margin-top:8px;font:500 14px var(--mono);padding:10px 12px;border-radius:12px;background:rgb(var(--primary) / .08);
+  user-select:all;word-break:break-all;direction:ltr;text-align:start}
+.fbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.fb{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;border-radius:12px;border:1px solid rgb(var(--line));
+  background:rgb(var(--surface));font:700 13.5px var(--display);color:rgb(var(--ink));text-decoration:none;cursor:pointer}
+.fb .ic{width:17px;height:17px}
+.fb.pri{background:rgb(var(--btn));border-color:transparent;color:#fff}
+
+/* ---------- the page ---------- */
+main{max-width:1440px;margin-inline:auto;padding:14px 16px 124px}
+@media (min-width:1024px){main{padding-block:20px 64px;padding-inline:104px 24px}}
+.sec{padding-top:60px;scroll-margin-top:92px}
+.sec-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px}
+.sec-head .si{width:48px;height:48px;border-radius:14px}
+.sec-head .si .ic{width:22px;height:22px}
+.sec-head h2{font-size:clamp(23px,3vw,31px);font-weight:900;letter-spacing:-.01em}
+.sec-head .sub{margin-top:4px;color:rgb(var(--muted));font-size:15px}
+
+/* the banner: the brand gradient with three soft lights drifting across it and a dotted grid fading out */
+.hero{position:relative;overflow:hidden;isolation:isolate;border-radius:28px;background:var(--hero-bg);color:#fff;
+  box-shadow:0 24px 60px -30px rgb(var(--side) / .7)}
+.fx{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.6;will-change:transform}
+.blob.b1{width:520px;height:520px;top:-300px;inset-inline-start:-160px;background:rgb(31 79 216 / .7);animation:aurora1 22s ease-in-out infinite alternate}
+.blob.b2{width:440px;height:440px;bottom:-300px;inset-inline-end:-120px;background:rgb(124 77 204 / .6);animation:aurora2 26s ease-in-out infinite alternate}
+.blob.b3{width:340px;height:340px;top:-80px;inset-inline-start:45%;background:rgb(13 148 136 / .42);animation:aurora3 30s ease-in-out infinite alternate}
+@keyframes aurora1{to{transform:translate(220px,140px) scale(1.15)}}
+@keyframes aurora2{to{transform:translate(-200px,-120px) scale(1.2)}}
+@keyframes aurora3{to{transform:translate(-160px,160px) scale(.85)}}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgb(255 255 255 / .16) 1px,transparent 1.2px);background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(ellipse at 30% 40%,#000 0%,transparent 75%);mask-image:radial-gradient(ellipse at 30% 40%,#000 0%,transparent 75%)}
+.hin{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 36px;padding:30px}
+.hmain{flex:1 1 560px;min-width:0}
+.hdate{display:flex;flex-wrap:wrap;align-items:center;gap:8px;color:rgb(255 255 255 / .78);font:700 12.5px var(--display)}
+.hdate .ic{width:16px;height:16px}
+.hello{margin-top:12px;font:800 clamp(17px,2vw,21px)/1.3 var(--display);color:rgb(255 255 255 / .92)}
+.hero h1{margin-top:6px;font-size:clamp(30px,4.6vw,52px);font-weight:900;letter-spacing:-.015em;max-width:22ch}
+.lede{margin-top:14px;font-size:clamp(16px,1.6vw,18.5px);line-height:1.65;color:rgb(255 255 255 / .82);max-width:62ch}
+.hchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.hchip{height:38px;padding-inline:14px;border-radius:999px;background:rgb(255 255 255 / .12);border:1px solid rgb(255 255 255 / .16);color:#fff;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;font:700 13px var(--display);transition:background .2s;white-space:nowrap}
+.hchip:hover{background:rgb(255 255 255 / .22)}
+.hchip b{font:900 15px var(--display)}
+.hd{width:8px;height:8px;border-radius:50%;flex:none}
+.hd.ok{background:#4ADE80;box-shadow:0 0 0 3px rgb(74 222 128 / .25)}
+.hd.or{background:#FB923C;box-shadow:0 0 0 3px rgb(251 146 60 / .25)}
+.hd.sk{background:#7DD3FC;box-shadow:0 0 0 3px rgb(125 211 252 / .25)}
+.hd.pulse{animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgb(74 222 128 / 0)}}
+.hend{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex:none;margin-inline-start:auto}
+.hend .hl{font:700 11.5px var(--display);color:rgb(255 255 255 / .72)}
+.seg{display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:rgb(255 255 255 / .12);border:1px solid rgb(255 255 255 / .18);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sg{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding-inline:16px;border-radius:999px;border:0;background:transparent;
+  color:rgb(255 255 255 / .9);font:700 13.5px var(--display);text-decoration:none;cursor:pointer;white-space:nowrap;transition:background .2s}
+.sg .ic{width:17px;height:17px}
+.sg:hover{background:rgb(255 255 255 / .14)}
+.sg.on{background:#fff;color:#0B1F50;box-shadow:0 12px 26px -14px rgb(0 0 0 / .6)}
+@media (max-width:640px){
+  .hin{padding:22px 20px}
+  .hend{align-items:stretch;width:100%}
+  .seg{display:grid;grid-template-columns:1fr 1fr;border-radius:22px}
+  .sg.on{grid-column:1 / -1}
+}
+
+/* the figures: framed tiles that count up */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:14px;margin-top:16px}
+.stat{display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:20px;background:rgb(var(--surface));border:1px solid rgb(var(--line) / .8);
+  box-shadow:var(--shadow-card);min-width:0;transition:transform .2s,border-color .2s,box-shadow .2s}
+.stat:hover{transform:translateY(-2px);border-color:rgb(var(--primary) / .4);box-shadow:0 14px 30px -16px rgb(var(--primary) / .45)}
+.stat:hover .si{transform:scale(1.1)}
+.stat b{display:block;font:900 30px/1 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.stat .sl{display:block;margin-top:8px;font:700 13px/1.35 var(--display);color:rgb(var(--ink) / .82)}
+.stat .sh{display:block;margin-top:2px;font-size:12px;line-height:1.4;color:rgb(var(--muted))}
+@media (max-width:560px){.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat b{font-size:26px}}
+
+/* chips with counts */
+.jumps{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{display:inline-flex;align-items:center;gap:10px;height:46px;padding-inline:18px 10px;border-radius:999px;border:1px solid rgb(var(--line) / .7);
+  background:rgb(var(--surface) / var(--glass));font:700 14px var(--display);color:rgb(var(--ink) / .85);text-decoration:none;white-space:nowrap;
+  transition:border-color .2s,background .2s,color .2s}
+.chip:hover{border-color:rgb(var(--primary) / .5);color:rgb(var(--ink))}
+.chip .cnt{min-width:28px;height:26px;padding-inline:8px;border-radius:999px;background:rgb(var(--ink) / .07);font:800 12px var(--display);display:grid;place-items:center}
+.chip.on{background:rgb(var(--btn));color:#fff;border-color:transparent;box-shadow:0 0 24px -4px rgb(var(--primary) / .45)}
+.chip.on .cnt{background:rgb(255 255 255 / .22)}
+.chip.sm{height:36px;padding-inline:14px;font-size:13px;gap:8px}
 .chip i{width:10px;height:10px;border-radius:50%;flex:none}
+@media (max-width:480px){.chip{height:40px;padding-inline:14px 8px;font-size:13px}}
 
-/* case study */
-.case{display:grid;gap:28px}
-.case-head{display:grid;gap:10px}
-.tag{display:inline-flex;align-items:center;gap:8px;font:600 13px var(--display);color:var(--brown);background:var(--brown-soft);padding:5px 12px;border-radius:999px;width:max-content;max-width:100%}
-.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;min-width:0;display:grid;gap:10px;align-content:start}
-ul.clean{margin:0;padding:0;list-style:none;display:grid;gap:8px}
-ul.clean li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start}
-ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:9px;justify-self:center}
+/* glass cards */
+.card{background:linear-gradient(180deg,var(--glass-hi),transparent 40%),rgb(var(--surface) / var(--glass));border:1px solid rgb(var(--line) / .7);
+  border-radius:22px;padding:20px;min-width:0;display:grid;gap:10px;align-content:start;box-shadow:var(--shadow-card)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.case{display:grid;gap:20px}
+.intro{gap:14px;padding:24px}
+.tag{display:inline-flex;align-items:center;gap:8px;font:700 13px var(--display);color:rgb(var(--brown-ink));
+  background:rgb(var(--orange) / .1);border:1px solid rgb(var(--orange) / .2);padding:5px 12px;border-radius:999px;width:max-content;max-width:100%}
+.tag .ic{width:15px;height:15px}
+.strip{display:flex;flex-wrap:wrap;gap:8px}
+.ch{display:flex;align-items:center;gap:10px}
+.ch .si{width:36px;height:36px;border-radius:11px}
+.ch .si .ic{width:18px;height:18px}
+ul.clean{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+ul.clean li{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start}
+ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radius:50%;
+  background:rgb(var(--ok) / .14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2320A04E' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4 8-9'/%3E%3C/svg%3E") center/11px no-repeat}
 
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+/* pill tabs */
+.tabs{display:inline-flex;gap:4px;padding:5px;border-radius:999px;border:1px solid rgb(var(--line) / .7);background:rgb(var(--surface) / var(--glass));
+  max-width:100%;overflow-x:auto;scrollbar-width:none;box-shadow:var(--shadow-card)}
+.tab{display:inline-flex;align-items:center;gap:8px;height:42px;padding-inline:18px;border-radius:999px;border:0;background:none;flex:none;
+  font:700 14px var(--display);color:rgb(var(--ink) / .7);white-space:nowrap;cursor:pointer;transition:background .2s,color .2s}
+.tab .ic{width:17px;height:17px}
+.tab:hover{color:rgb(var(--ink))}
+.tab[aria-selected="true"]{background:rgb(var(--btn));color:#fff;box-shadow:0 0 24px -4px rgb(var(--primary) / .45)}
+.tab .cnt{font:800 11.5px var(--display);border-radius:999px;padding:1px 8px;background:rgb(var(--ink) / .07)}
+.tab[aria-selected="true"] .cnt{background:rgb(255 255 255 / .22)}
+.tp{margin-top:18px}
+.tp[hidden]{display:none}
+@media (max-width:480px){.tab{padding-inline:13px;font-size:13px}.tab .ic{display:none}}
+
+/* screenshots */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
 .shot{display:grid;gap:8px;min-width:0;margin:0}
-.frame{border-radius:22px;border:6px solid #111633;background:#111633;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:390/844;max-width:100%}
+.frame{border-radius:24px;border:6px solid #111633;background:#111633;overflow:hidden;box-shadow:var(--shadow-card);aspect-ratio:390/844;max-width:100%;transition:transform .25s}
+.frame:hover{transform:translateY(-3px)}
 .frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
-.shot figcaption{font-size:13px;color:var(--muted);line-height:1.35}
-.wide{border-radius:14px;border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow);background:#111633;max-width:100%}
+.shot figcaption{font-size:13px;color:rgb(var(--muted));line-height:1.4}
+.wide{border-radius:18px;border:1px solid rgb(var(--line) / .8);overflow:hidden;box-shadow:var(--shadow-card);background:#111633;max-width:100%}
 .wide img{display:block;width:100%;height:auto}
-@media (max-width:480px){.gallery{grid-template-columns:repeat(2,1fr)}}
+.note{font-size:13px;color:rgb(var(--muted))}
+@media (max-width:480px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
 
-.sys{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
-.sys .card{border-inline-start:4px solid var(--c,var(--accent));padding:16px 18px}
+/* the eight systems */
+.sys{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.sys .card{padding:18px}
 .sys h3{font-size:16px}
-.sys p{font-size:14px;color:var(--muted)}
+.sys p{font-size:14px;color:rgb(var(--muted))}
 
 /* decisions: problem → decision → why */
-.dec{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.dec{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
 .dec .card{gap:8px}
-.dec .k{font:700 11px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-[dir=rtl] .dec .k{letter-spacing:.03em}
-.dec .q{font:700 15.5px var(--display);color:var(--brown)}
+.dh{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.no{font:900 13px var(--display);color:rgb(var(--pri-ink));background:rgb(var(--primary) / .1);border-radius:10px;padding:4px 9px}
+.k{display:inline-flex;width:max-content;font:800 11px var(--display);letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
+[dir=rtl] .k{letter-spacing:.02em}
+.k.kp{color:rgb(var(--danger-ink));background:rgb(var(--danger) / .1)}
+.k.kd{color:rgb(var(--ok-ink));background:rgb(var(--ok) / .12);margin-top:4px}
+.dec .q{font:700 15.5px/1.5 var(--display)}
 .dec .d{font-size:15px}
-.dec .w{font-size:14px;color:var(--muted)}
+.dec .w{font-size:14px;color:rgb(var(--muted));border-top:1px dashed rgb(var(--line));padding-top:9px;margin-top:2px}
 
-/* products */
-.prod{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
-.prod .card{border-top:4px solid var(--c,var(--accent))}
-.prod .kind{font:600 12px var(--display);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-[dir=rtl] .prod .kind{letter-spacing:.02em}
+/* products and websites */
+.prod{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.ph{display:flex;align-items:center;gap:12px}
+.kind{font:700 12px var(--display);color:rgb(var(--muted));letter-spacing:.06em;text-transform:uppercase}
+[dir=rtl] .kind{letter-spacing:.02em}
+.prod h3 a{color:inherit;text-decoration:none;border-bottom:2px solid rgb(var(--primary) / .35)}
+.prod h3 a:hover{border-bottom-color:rgb(var(--primary))}
 .prod p{font-size:14.5px}
 .prod ul.clean li{font-size:14px}
-.prod .state{display:inline-flex;align-items:center;gap:6px;font:600 12px var(--display);padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--fg);width:max-content}
-.prod .state.ok{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}
-.prod .state.soon{background:color-mix(in srgb,var(--warn) 15%,transparent);color:var(--warn)}
+.state{display:inline-flex;align-items:center;gap:7px;font:700 12px var(--display);padding:3px 11px;border-radius:999px;width:max-content;
+  background:rgb(var(--primary) / .1);color:rgb(var(--pri-ink))}
+.state::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.state.ok{background:rgb(var(--ok) / .13);color:rgb(var(--ok-ink))}
+.state.soon{background:rgb(var(--amber) / .16);color:rgb(var(--amber-ink))}
 
-/* contact */
-.contact{display:grid;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;margin-top:8px}
-.contact .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.contact code{font:500 15px var(--mono);background:var(--accent-soft);padding:8px 12px;border-radius:10px;user-select:all;word-break:break-all}
-.toast{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));inset-inline:0;margin-inline:auto;width:max-content;max-width:90%;
-  background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font:600 14px var(--display);opacity:0;transition:opacity .2s;pointer-events:none}
+/* contact: the banner again */
+.banner{position:relative;overflow:hidden;isolation:isolate;border-radius:28px;background:var(--hero-bg);color:#fff;padding:30px;display:grid;gap:14px;
+  box-shadow:0 24px 60px -30px rgb(var(--side) / .7)}
+.banner .eyebrow{color:rgb(255 255 255 / .75)}
+.banner h2{font-size:clamp(23px,3vw,31px);font-weight:900}
+.banner p{color:rgb(255 255 255 / .82)}
+.banner .blob.b1{width:380px;height:380px;top:-240px}
+.banner .blob.b2{width:340px;height:340px;bottom:-240px}
+.banner .blob.b3{width:260px;height:260px;top:-120px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.bw,.bg{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px;border-radius:999px;font:700 14px var(--display);text-decoration:none;cursor:pointer;
+  transition:transform .15s,background .2s}
+.bw{background:#fff;color:#0B1F50;border:0;box-shadow:0 12px 26px -14px rgb(0 0 0 / .6)}
+.bg{background:rgb(255 255 255 / .12);border:1px solid rgb(255 255 255 / .22);color:#fff}
+.bw:hover,.bg:hover{transform:translateY(-1px)}
+.bg:hover{background:rgb(255 255 255 / .22)}
+.bw .ic,.bg .ic{width:18px;height:18px}
+.banner code{font:500 15px var(--mono);background:rgb(255 255 255 / .12);border:1px solid rgb(255 255 255 / .18);padding:9px 14px;border-radius:12px;
+  user-select:all;word-break:break-all;direction:ltr}
+.foot{margin-top:24px;font-size:13px;color:rgb(var(--muted))}
+@media (max-width:640px){.banner{padding:22px 20px}}
+
+.toast{position:fixed;bottom:calc(98px + env(safe-area-inset-bottom,0px));inset-inline:0;margin-inline:auto;width:max-content;max-width:90%;z-index:50;
+  background:rgb(var(--ink));color:rgb(var(--bg));padding:10px 16px;border-radius:999px;font:700 14px var(--display);opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.on{opacity:1}
-.foot{margin-top:28px;font-size:13px;color:var(--muted)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media (min-width:1024px){.toast{bottom:24px}}
+
+/* motion: the banner's pieces rise in turn; what is below rises as it scrolls into view */
+@keyframes rise{from{opacity:0;transform:translateY(16px);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
+@keyframes rise-soft{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rise{animation:rise .7s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--d,0) * 90ms + 60ms)}
+.js main :is(.stat,.jumps,.sec-head,.card,.shot,.tabs):not(.in){opacity:0}
+.js main :is(.stat,.jumps,.sec-head,.card,.shot,.tabs).in{animation:rise-soft .6s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--d,0) * 70ms)}
+.tt,.tt *{transition:background-color .35s,color .35s,border-color .35s!important}
+@media (prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .blob,.hd.pulse,.rise,.js main *{animation:none!important}
+  .js main :is(.stat,.jumps,.sec-head,.card,.shot,.tabs){opacity:1}
+}
+@media print{
+  .top,.rail,.dock,.fly,.toast{display:none!important}
+  .tp[hidden]{display:block!important}
+  .js main *{opacity:1!important;animation:none!important}
+  main{padding:0}
+}
 </style>
 </head>
 <body>
-<div class="wrap" id="root">
-  <div class="top">
-    <div class="brand"><span class="dot"></span><span data-i="brand">Ahmed Sayed</span></div>
-    <nav class="nav" aria-label="Sections">
-      <a href="#flagship" data-i="n1">Flagship</a>
-      <a href="#decisions" class="hide-sm" data-i="n2">Decisions</a>
-      <a href="#products" data-i="n3">Products</a>
-      <a href="#contact" class="hide-sm" data-i="n4">Contact</a>
-      <button class="btn sm" id="langBtn" type="button" aria-label="Switch language">عربي</button>
-    </nav>
-  </div>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-calc" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M8 6h8"/><path d="M16 14v4"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+  <symbol id="i-pkg" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="i-lang" viewBox="0 0 24 24"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+  <symbol id="i-fuel" viewBox="0 0 24 24"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2 2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></symbol>
+  <symbol id="i-bldg" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></symbol>
+  <symbol id="i-id" viewBox="0 0 24 24"><path d="M16 10h2"/><path d="M16 14h2"/><path d="M6.17 15a3 3 0 0 1 5.66 0"/><circle cx="9" cy="11" r="2"/><rect x="2" y="5" width="20" height="14" rx="2"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+  <symbol id="i-gh" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+</svg>
 
-  <section class="hero">
-    <span class="eyebrow" data-i="eyebrow">Portfolio · 2026 · UAE &amp; Egypt</span>
-    <h1 data-i="h1">I turn messy operations into systems people trust.</h1>
-    <p class="lede" data-i="lede">Eleven products in real use: a fleet and finance platform of eight systems, an HR system for 805 employees, cost control and procurement, IT asset control, three live websites, and two commerce apps. Each one replaced spreadsheets, chat photos and guesswork with figures that have a source, a date and an owner.</p>
-    <div class="cta">
-      <a class="btn primary" href="https://wa.me/971588487272" target="_blank" rel="noopener" data-i="ctaWa">WhatsApp</a>
-      <button class="btn" type="button" data-copy="a.sayed.xc@gmail.com" data-i="ctaMail">Copy email</button>
-      <a class="btn" href="https://github.com/ahmdsydysf" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn" href="#flagship" data-i="ctaWork">See the work</a>
+<span id="top"></span>
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="Ahmed Sayed">
+      <span class="mark" aria-hidden="true">AS</span>
+      <span class="bt"><b data-i="brand">Ahmed Sayed</b><small data-i="eyebrow">Portfolio · UAE &amp; Egypt</small></span>
+    </a>
+    <nav class="pills" aria-label="Sections" data-ia="navLbl">
+      <div class="track">
+        <a class="pill" href="#flagship" data-spy="flagship" title="Flagship"><svg class="ic"><use href="#i-grid"/></svg><span class="lb" data-i="n1">Flagship</span></a>
+        <a class="pill" href="#decisions" data-spy="decisions" title="Decisions"><svg class="ic"><use href="#i-bulb"/></svg><span class="lb" data-i="n2">Decisions</span></a>
+        <a class="pill" href="#hr" data-spy="hr" title="HR"><svg class="ic"><use href="#i-users"/></svg><span class="lb" data-i="n5">HR</span></a>
+        <a class="pill" href="#costcontrol" data-spy="costcontrol" title="Cost control"><svg class="ic"><use href="#i-calc"/></svg><span class="lb" data-i="n6">Cost control</span></a>
+        <a class="pill" href="#websites" data-spy="websites" title="Websites"><svg class="ic"><use href="#i-globe"/></svg><span class="lb" data-i="n7">Websites</span></a>
+        <a class="pill" href="#products" data-spy="products" title="Products"><svg class="ic"><use href="#i-pkg"/></svg><span class="lb" data-i="n3">Products</span></a>
+        <a class="pill" href="#contact" data-spy="contact" title="Contact"><svg class="ic"><use href="#i-send"/></svg><span class="lb" data-i="n4">Contact</span></a>
+      </div>
+    </nav>
+    <div class="end">
+      <span class="live" title="UAE time"><span class="dot"></span><span class="num ltr" id="clock">--:--</span><span data-i="clockLoc">UAE time</span></span>
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language"><svg class="ic"><use href="#i-lang"/></svg><span id="langTxt">عربي</span></button>
     </div>
-    <div class="stats">
-      <div class="stat"><b class="num">11</b><span data-i="s0">products delivered</span></div>
-      <div class="stat"><b class="num">8</b><span data-i="s1">systems on one platform, one sign-in</span></div>
-      <div class="stat"><b class="num">255+</b><span data-i="s2">vehicles and machines managed</span></div>
-      <div class="stat"><b class="num">805</b><span data-i="s3">employees in the HR system</span></div>
-      <div class="stat"><b class="num">3</b><span data-i="s4">languages: Arabic · English · Urdu</span></div>
-      <div class="stat"><b class="num">60+</b><span data-i="s5">automated test suites guarding it all</span></div>
+  </div>
+</header>
+
+<!-- the rail at the start (a computer): WhatsApp, email, light / dark -->
+<aside class="rail" aria-label="Contact and display" data-ia="railLbl">
+  <button class="rb wa" type="button" data-fly="flyWa" aria-expanded="false" aria-controls="flyWa" aria-label="WhatsApp" data-ia="ctaWa"><svg class="ic f"><use href="#i-wa"/></svg><span class="tip" data-i="ctaWa">WhatsApp</span></button>
+  <button class="rb ml" type="button" data-fly="flyMail" aria-expanded="false" aria-controls="flyMail" aria-label="Email" data-ia="railMail"><svg class="ic"><use href="#i-mail"/></svg><span class="tip" data-i="railMail">Email</span></button>
+  <span class="rsep" aria-hidden="true"></span>
+  <button class="rb" type="button" data-theme-btn aria-label="Dark mode"><svg class="ic"><use data-theme-ic href="#i-moon"/></svg><span class="tip" data-theme-lb>Dark mode</span></button>
+</aside>
+
+<div class="fly" id="flyWa" role="dialog" aria-labelledby="flyWaT">
+  <div class="fh"><span class="si t-wa"><svg class="ic f"><use href="#i-wa"/></svg></span><div><b id="flyWaT" data-i="ctaWa">WhatsApp</b><small data-i="flyWaS">Pick the number to message</small></div></div>
+  <a class="fr" href="https://wa.me/971588487272" target="_blank" rel="noopener"><span class="fl" data-i="flyUae">UAE</span><span class="num ltr">+971 58 848 7272</span><svg class="ic flip"><use href="#i-arrow"/></svg></a>
+  <a class="fr" href="https://wa.me/201005323668" target="_blank" rel="noopener"><span class="fl" data-i="flyEg">Egypt</span><span class="num ltr">+20 100 532 3668</span><svg class="ic flip"><use href="#i-arrow"/></svg></a>
+</div>
+<div class="fly" id="flyMail" role="dialog" aria-labelledby="flyMailT">
+  <div class="fh"><span class="si t-primary"><svg class="ic"><use href="#i-mail"/></svg></span><div><b id="flyMailT" data-i="railMail">Email</b><small data-i="flyMailS">Write to me, or copy the address</small></div></div>
+  <span class="fmail">a.sayed.xc@gmail.com</span>
+  <div class="fbtns">
+    <button class="fb" type="button" data-copy="a.sayed.xc@gmail.com"><svg class="ic"><use href="#i-copy"/></svg><span data-i="ctCopy">Copy</span></button>
+    <a class="fb pri" href="mailto:a.sayed.xc@gmail.com"><svg class="ic"><use href="#i-send"/></svg><span data-i="flyWrite">Write</span></a>
+  </div>
+</div>
+
+<main>
+  <!-- the banner -->
+  <section class="hero" aria-labelledby="h1">
+    <div class="fx" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="dots"></span></div>
+    <div class="hin">
+      <div class="hmain">
+        <div class="hdate rise" style="--d:1"><svg class="ic"><use href="#i-cal"/></svg><span id="today"></span></div>
+        <p class="hello rise" style="--d:2" id="greet">Hello, I’m Ahmed Sayed</p>
+        <h1 class="rise" style="--d:2" id="h1" data-i="h1">I turn messy operations into systems people trust.</h1>
+        <p class="lede rise" style="--d:3" data-i="lede">Eleven products in real use: a fleet and finance platform of eight systems, an HR system for 805 employees, cost control and procurement, IT asset control, three live websites, and two commerce apps. Each one replaced spreadsheets, chat photos and guesswork with figures that have a source, a date and an owner.</p>
+        <div class="hchips rise" style="--d:4">
+          <a class="hchip" href="#flagship"><span class="hd sk"></span><span data-i="hc1">Systems in daily use:</span><b>8</b></a>
+          <a class="hchip" href="#websites"><span class="hd or"></span><span data-i="hc2">Live websites:</span><b>3</b></a>
+          <a class="hchip" href="#contact"><span class="hd ok pulse"></span><span data-i="ctEyebrow">Available for new projects</span></a>
+        </div>
+      </div>
+      <div class="hend rise" style="--d:4">
+        <span class="hl" data-i="ctaLbl">Get in touch</span>
+        <div class="seg">
+          <a class="sg on" href="https://wa.me/971588487272" target="_blank" rel="noopener"><svg class="ic f"><use href="#i-wa"/></svg><span data-i="ctaWa">WhatsApp</span></a>
+          <button class="sg" type="button" data-copy="a.sayed.xc@gmail.com"><svg class="ic"><use href="#i-copy"/></svg><span data-i="ctaMail">Copy email</span></button>
+          <a class="sg" href="https://github.com/ahmdsydysf" target="_blank" rel="noopener"><svg class="ic f"><use href="#i-gh"/></svg><span>GitHub</span></a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="flagship">
+  <!-- the figures -->
+  <div class="stats">
+    <div class="stat"><span class="si t-primary"><svg class="ic"><use href="#i-layers"/></svg></span><span><b><span class="ltr" data-count>11</span></b><span class="sl" data-i="s0">products delivered</span><span class="sh" data-i="s0h">in real, daily use</span></span></div>
+    <div class="stat"><span class="si t-violet"><svg class="ic"><use href="#i-grid"/></svg></span><span><b><span class="ltr" data-count>8</span></b><span class="sl" data-i="s1">systems on one platform, one sign-in</span><span class="sh" data-i="s1h">installed from one QR code</span></span></div>
+    <div class="stat"><span class="si t-orange"><svg class="ic"><use href="#i-truck"/></svg></span><span><b><span class="ltr" data-count>255+</span></b><span class="sl" data-i="s2">vehicles and machines managed</span><span class="sh" data-i="s2h">fuel, rent and timesheets</span></span></div>
+    <div class="stat"><span class="si t-c2"><svg class="ic"><use href="#i-users"/></svg></span><span><b><span class="ltr" data-count>805</span></b><span class="sl" data-i="s3">employees in the HR system</span><span class="sh" data-i="s3h">every document, every renewal</span></span></div>
+    <div class="stat"><span class="si t-amber"><svg class="ic"><use href="#i-lang"/></svg></span><span><b><span class="ltr" data-count>3</span></b><span class="sl" data-i="s4">languages: Arabic · English · Urdu</span><span class="sh" data-i="s4h">right-to-left first</span></span></div>
+    <div class="stat"><span class="si t-ok"><svg class="ic"><use href="#i-shield"/></svg></span><span><b><span class="ltr" data-count>60+</span></b><span class="sl" data-i="s5">automated test suites guarding it all</span><span class="sh" data-i="s5h">run before every release</span></span></div>
+  </div>
+
+  <!-- the work, by kind, with counts -->
+  <nav class="jumps" aria-label="Work by kind" data-ia="jumpsLbl">
+    <a class="chip on" href="#flagship"><span data-i="j0">All products</span><span class="cnt">11</span></a>
+    <a class="chip" href="#flagship"><span data-i="j1">Operations systems</span><span class="cnt">4</span></a>
+    <a class="chip" href="#websites"><span data-i="j2">Websites</span><span class="cnt">3</span></a>
+    <a class="chip" href="#products"><span data-i="j3">Mobile apps</span><span class="cnt">2</span></a>
+    <a class="chip" href="#products"><span data-i="j4">Team tools</span><span class="cnt">2</span></a>
+  </nav>
+
+  <section id="flagship" class="sec">
     <div class="sec-head">
-      <span class="eyebrow" data-i="caseEyebrow">Flagship</span>
-      <h2 data-i="caseTitle">Fleet &amp; finance platform for a contracting company</h2>
-      <p class="muted" data-i="caseSub">Ras Al Khaimah, UAE · in production since September 2026 · installed on every phone from one QR code</p>
+      <span class="si t-primary"><svg class="ic"><use href="#i-grid"/></svg></span>
+      <div>
+        <span class="eyebrow" data-i="caseEyebrow">Flagship</span>
+        <h2 data-i="caseTitle">Fleet &amp; finance platform for a contracting company</h2>
+        <p class="sub" data-i="caseSub">Ras Al Khaimah, UAE · in production since September 2026 · installed on every phone from one QR code</p>
+      </div>
     </div>
     <div class="case">
-      <div class="case-head">
-        <span class="tag" data-i="tag">Eight systems · one sign-in · one source of truth</span>
+      <div class="card intro">
+        <span class="tag"><svg class="ic"><use href="#i-layers"/></svg><span data-i="tag">Eight systems · one sign-in · one source of truth</span></span>
         <p data-i="caseP1">Fleet fuel and site reporting used to travel as WhatsApp photos and Excel files. Now a driver logs a fill-up with two photos in ten seconds, a document controller files the site’s daily equipment report, the project manager and then logistics approve it with an e-signature and a stamp, and accounts issue supplier invoices straight from the timesheets.</p>
         <p data-i="caseP2">Every figure has a source, a date and an author. Every edit is logged. Every rule the owner set is written down with its date and reason, so the system explains itself a year later. The result: numbers the owner trusts, PDF and Excel reports ready for accounts, and a monthly archive built without anyone asking.</p>
         <div class="strip" aria-label="Systems">
-          <span class="chip"><i style="background:#1F4FD8"></i><span data-i="c1">Diesel</span></span>
-          <span class="chip"><i style="background:#0F7C7C"></i><span data-i="c2">Petrol wallet</span></span>
-          <span class="chip"><i style="background:#C74300"></i><span data-i="c3">Aber · trailers</span></span>
-          <span class="chip"><i style="background:#C8102E"></i><span data-i="c4">ADNOC diesel</span></span>
-          <span class="chip"><i style="background:#6D28D9"></i><span data-i="c5">Petty cash</span></span>
-          <span class="chip"><i style="background:#9A6A2E"></i><span data-i="c6">Supplier portal</span></span>
-          <span class="chip"><i style="background:#0E8A5F"></i><span data-i="c7">Registrations</span></span>
-          <span class="chip"><i style="background:#E8B70A"></i><span data-i="c8">Fines</span></span>
+          <span class="chip sm"><i style="background:#1F4FD8"></i><span data-i="c1">Diesel</span></span>
+          <span class="chip sm"><i style="background:#0F7C7C"></i><span data-i="c2">Petrol wallet</span></span>
+          <span class="chip sm"><i style="background:#C74300"></i><span data-i="c3">Aber · trailers</span></span>
+          <span class="chip sm"><i style="background:#C8102E"></i><span data-i="c4">ADNOC diesel</span></span>
+          <span class="chip sm"><i style="background:#6D28D9"></i><span data-i="c5">Petty cash</span></span>
+          <span class="chip sm"><i style="background:#9A6A2E"></i><span data-i="c6">Supplier portal</span></span>
+          <span class="chip sm"><i style="background:#0E8A5F"></i><span data-i="c7">Registrations</span></span>
+          <span class="chip sm"><i style="background:#E8B70A"></i><span data-i="c8">Fines</span></span>
         </div>
       </div>
-
-      <div class="gallery" aria-label="Screens">
-        <figure class="shot"><div class="frame"><img src="img/diesel-dashboard.jpg" alt="Diesel dashboard" loading="lazy"></div><figcaption data-i="g1">Diesel dashboard: this month’s consumption and a door to every screen</figcaption></figure>
-        <figure class="shot"><div class="frame"><img src="img/dc-form.jpg" alt="Site daily report form" loading="lazy"></div><figcaption data-i="g2">The document controller’s daily equipment report</figcaption></figure>
-        <figure class="shot"><div class="frame"><img src="img/diesel-reports.jpg" alt="Diesel reports" loading="lazy"></div><figcaption data-i="g3">Diesel report: period, filters, PDF or Excel</figcaption></figure>
-        <figure class="shot"><div class="frame"><img src="img/diesel-stock.jpg" alt="Tank and purchases" loading="lazy"></div><figcaption data-i="g4">The tank: purchases, accounts invoices, balance</figcaption></figure>
-        <figure class="shot"><div class="frame"><img src="img/petrol.jpg" alt="Petrol wallet" loading="lazy"></div><figcaption data-i="g5">Petrol wallet: purchase orders covered automatically</figcaption></figure>
-        <figure class="shot"><div class="frame"><img src="img/aber.jpg" alt="Aber trailers" loading="lazy"></div><figcaption data-i="g6">Aber: gate deduction receipts from the camera</figcaption></figure>
-        <figure class="shot"><div class="frame"><img src="img/adnoc.jpg" alt="ADNOC diesel" loading="lazy"></div><figcaption data-i="g7">ADNOC diesel: each day at its own price</figcaption></figure>
-        <figure class="shot"><div class="frame"><img src="img/pettycash.jpg" alt="Petty cash" loading="lazy"></div><figcaption data-i="g8">Petty cash: requests and statements with e-signature</figcaption></figure>
-        <figure class="shot"><div class="frame"><img src="img/supplier.jpg" alt="Supplier portal" loading="lazy"></div><figcaption data-i="g9">Supplier portal: his account and tax invoice, read-only</figcaption></figure>
-        <figure class="shot"><div class="frame"><img src="img/mulkiya.jpg" alt="Vehicle registrations" loading="lazy"></div><figcaption data-i="g10">Registrations: coloured by days left, morning alerts</figcaption></figure>
-        <figure class="shot"><div class="frame"><img src="img/fines.jpg" alt="Fines" loading="lazy"></div><figcaption data-i="g11">Fines: the month’s statement for payroll</figcaption></figure>
-        <figure class="shot"><div class="frame"><img src="img/dc-form-2.jpg" alt="Site report save" loading="lazy"></div><figcaption data-i="g12">Morning and evening shifts, save and send for review</figcaption></figure>
-      </div>
-      <figure class="shot"><div class="wide"><img src="img/diesel-reports-desktop.jpg" alt="Reports on a computer" loading="lazy"></div><figcaption data-i="g13">The same screen on a computer: one design that adapts from a 375px phone to full width</figcaption></figure>
-      <p class="muted" style="font-size:13px" data-i="shotNote">Screens are from a preview build with sample data. No real company data is shown.</p>
 
       <div>
-        <h3 style="margin-bottom:12px" data-i="sysH">What each system does</h3>
-        <div class="sys">
-          <div class="card" style="--c:#1F4FD8"><h3 data-i="y1t">Diesel</h3><p data-i="y1">Fill-ups with two mandatory photos, tank stock consumed oldest-first, an accounts invoice every 10,000 gallons, site reports, a timesheet per machine, day-by-day approval by the project manager and logistics, rental-supplier invoices straight from the timesheets.</p></div>
-          <div class="card" style="--c:#0F7C7C"><h3 data-i="y2t">Petrol wallet</h3><p data-i="y2">Cars and drivers with fuel tags, a price per litre that applies from the moment it changes, and every top-up a purchase order that the oldest fills cover first and that becomes ready to issue by itself.</p></div>
-          <div class="card" style="--c:#C74300"><h3 data-i="y3t">Aber · trailers</h3><p data-i="y3">The driver photographs the gate deduction receipt and records the amount; the office reviews it and lays the receipts onto purchase orders as the papers handed to accounts.</p></div>
-          <div class="card" style="--c:#C8102E"><h3 data-i="y4t">ADNOC diesel</h3><p data-i="y4">The same diesel data in a separate face for station drivers, every fill priced at its own day, a wallet in dirhams and litres.</p></div>
-          <div class="card" style="--c:#6D28D9"><h3 data-i="y5t">Petty cash</h3><p data-i="y5">Expenses in the accounts sheet’s own columns, requests with official numbering, statements with ordered codes, an independent reviewer who signs what he accepts, and a full report for any period.</p></div>
-          <div class="card" style="--c:#9A6A2E"><h3 data-i="y6t">Supplier portal</h3><p data-i="y6">A supplier’s own account that sees only what is his: deliveries, invoices, statement, and his tax invoice printed on his letterhead. Read-only, behind three independent security walls.</p></div>
-          <div class="card" style="--c:#0E8A5F"><h3 data-i="y7t">Registrations</h3><p data-i="y7">Every vehicle registration coloured by days left, renewal files with their checklist and costs, and a morning alert 20, 18, 15 days before expiry and every third day after it.</p></div>
-          <div class="card" style="--c:#E8B70A"><h3 data-i="y8t">Fines</h3><p data-i="y8">Driver and employee deductions with receipt, attachments kept for good and payment status, and the month’s or year’s statement for payroll as PDF and Excel.</p></div>
+        <div class="tabs" role="tablist" aria-label="Flagship" data-ia="caseEyebrow">
+          <button class="tab" type="button" role="tab" id="tb-shots" aria-controls="tp-shots" aria-selected="true"><svg class="ic"><use href="#i-image"/></svg><span data-i="tbShots">Screens</span><span class="cnt">13</span></button>
+          <button class="tab" type="button" role="tab" id="tb-sys" aria-controls="tp-sys" aria-selected="false" tabindex="-1"><svg class="ic"><use href="#i-grid"/></svg><span data-i="tbSys">Systems</span><span class="cnt">8</span></button>
+          <button class="tab" type="button" role="tab" id="tb-qual" aria-controls="tp-qual" aria-selected="false" tabindex="-1"><svg class="ic"><use href="#i-file"/></svg><span data-i="tbQual">Trust &amp; papers</span></button>
         </div>
-      </div>
 
-      <div class="two">
-        <div class="card">
-          <h3 data-i="archH">Built to be trusted</h3>
-          <ul class="clean">
-            <li data-i="a1">Every business rule is enforced in the database, not in the screen: a wrong unit, a reading below the last one, a fill-up too soon or an edit in a closed month is refused whatever app sends it.</li>
-            <li data-i="a2">Installs on any phone from one printed QR code that never changes; works offline and sends when the signal returns.</li>
-            <li data-i="a3">Notifications in three languages by role: a new fill-up, a refusal, low stock, a report awaiting your approval, a registration about to expire.</li>
-            <li data-i="a4">An audit log of every edit and deletion, a refusals log of every attempt that was stopped, and a monthly PDF archive of every paper, built automatically.</li>
-            <li data-i="a5">Role-by-role security reviews: the whole schema loaded into a test database and every write tried as every role, so “read-only” is proven, not assumed.</li>
-          </ul>
+        <div class="tp" role="tabpanel" id="tp-shots" aria-labelledby="tb-shots">
+          <div class="case">
+            <div class="gallery" aria-label="Screens">
+              <figure class="shot"><div class="frame"><img src="img/diesel-dashboard.jpg" alt="Diesel dashboard" loading="lazy"></div><figcaption data-i="g1">Diesel dashboard: this month’s consumption and a door to every screen</figcaption></figure>
+              <figure class="shot"><div class="frame"><img src="img/dc-form.jpg" alt="Site daily report form" loading="lazy"></div><figcaption data-i="g2">The document controller’s daily equipment report</figcaption></figure>
+              <figure class="shot"><div class="frame"><img src="img/diesel-reports.jpg" alt="Diesel reports" loading="lazy"></div><figcaption data-i="g3">Diesel report: period, filters, PDF or Excel</figcaption></figure>
+              <figure class="shot"><div class="frame"><img src="img/diesel-stock.jpg" alt="Tank and purchases" loading="lazy"></div><figcaption data-i="g4">The tank: purchases, accounts invoices, balance</figcaption></figure>
+              <figure class="shot"><div class="frame"><img src="img/petrol.jpg" alt="Petrol wallet" loading="lazy"></div><figcaption data-i="g5">Petrol wallet: purchase orders covered automatically</figcaption></figure>
+              <figure class="shot"><div class="frame"><img src="img/aber.jpg" alt="Aber trailers" loading="lazy"></div><figcaption data-i="g6">Aber: gate deduction receipts from the camera</figcaption></figure>
+              <figure class="shot"><div class="frame"><img src="img/adnoc.jpg" alt="ADNOC diesel" loading="lazy"></div><figcaption data-i="g7">ADNOC diesel: each day at its own price</figcaption></figure>
+              <figure class="shot"><div class="frame"><img src="img/pettycash.jpg" alt="Petty cash" loading="lazy"></div><figcaption data-i="g8">Petty cash: requests and statements with e-signature</figcaption></figure>
+              <figure class="shot"><div class="frame"><img src="img/supplier.jpg" alt="Supplier portal" loading="lazy"></div><figcaption data-i="g9">Supplier portal: his account and tax invoice, read-only</figcaption></figure>
+              <figure class="shot"><div class="frame"><img src="img/mulkiya.jpg" alt="Vehicle registrations" loading="lazy"></div><figcaption data-i="g10">Registrations: coloured by days left, morning alerts</figcaption></figure>
+              <figure class="shot"><div class="frame"><img src="img/fines.jpg" alt="Fines" loading="lazy"></div><figcaption data-i="g11">Fines: the month’s statement for payroll</figcaption></figure>
+              <figure class="shot"><div class="frame"><img src="img/dc-form-2.jpg" alt="Site report save" loading="lazy"></div><figcaption data-i="g12">Morning and evening shifts, save and send for review</figcaption></figure>
+            </div>
+            <figure class="shot"><div class="wide"><img src="img/diesel-reports-desktop.jpg" alt="Reports on a computer" loading="lazy"></div><figcaption data-i="g13">The same screen on a computer: one design that adapts from a 375px phone to full width</figcaption></figure>
+            <p class="note" data-i="shotNote">Screens are from a preview build with sample data. No real company data is shown.</p>
+          </div>
         </div>
-        <div class="card">
-          <h3 data-i="qH">Papers that accounts accept</h3>
-          <ul class="clean">
-            <li data-i="q1">Supplier tax invoices printed on each supplier’s own letterhead and layout: one row per day for one, an invoice book with dirhams and fils for another.</li>
-            <li data-i="q2">Machine timesheets laid out to hold a full month on one A4 sheet with both approval boxes, whatever the phone’s fonts do.</li>
-            <li data-i="q3">One project per page in every multi-project report, the project banner repeated on each page it runs onto, totals in the same blue on screen, on paper and in Excel.</li>
-            <li data-i="q4">Rates that show their own division, so a manager can check a figure with a calculator and find the same number.</li>
-            <li data-i="q5">Excel files whose totals are formulas with stored results, so they open correctly on a phone and recompute in Excel.</li>
-          </ul>
+
+        <div class="tp" role="tabpanel" id="tp-sys" aria-labelledby="tb-sys">
+          <h3 style="margin-bottom:14px" data-i="sysH">What each system does</h3>
+          <div class="sys">
+            <div class="card" style="--c:#1F4FD8"><div class="ch"><span class="si t-c"><svg class="ic"><use href="#i-fuel"/></svg></span><h3 data-i="y1t">Diesel</h3></div><p data-i="y1">Fill-ups with two mandatory photos, tank stock consumed oldest-first, an accounts invoice every 10,000 gallons, site reports, a timesheet per machine, day-by-day approval by the project manager and logistics, rental-supplier invoices straight from the timesheets.</p></div>
+            <div class="card" style="--c:#0F7C7C"><div class="ch"><span class="si t-c"><svg class="ic"><use href="#i-car"/></svg></span><h3 data-i="y2t">Petrol wallet</h3></div><p data-i="y2">Cars and drivers with fuel tags, a price per litre that applies from the moment it changes, and every top-up a purchase order that the oldest fills cover first and that becomes ready to issue by itself.</p></div>
+            <div class="card" style="--c:#C74300"><div class="ch"><span class="si t-c"><svg class="ic"><use href="#i-truck"/></svg></span><h3 data-i="y3t">Aber · trailers</h3></div><p data-i="y3">The driver photographs the gate deduction receipt and records the amount; the office reviews it and lays the receipts onto purchase orders as the papers handed to accounts.</p></div>
+            <div class="card" style="--c:#C8102E"><div class="ch"><span class="si t-c"><svg class="ic"><use href="#i-fuel"/></svg></span><h3 data-i="y4t">ADNOC diesel</h3></div><p data-i="y4">The same diesel data in a separate face for station drivers, every fill priced at its own day, a wallet in dirhams and litres.</p></div>
+            <div class="card" style="--c:#7C3AED"><div class="ch"><span class="si t-c"><svg class="ic"><use href="#i-wallet"/></svg></span><h3 data-i="y5t">Petty cash</h3></div><p data-i="y5">Expenses in the accounts sheet’s own columns, requests with official numbering, statements with ordered codes, an independent reviewer who signs what he accepts, and a full report for any period.</p></div>
+            <div class="card" style="--c:#9A6A2E"><div class="ch"><span class="si t-c"><svg class="ic"><use href="#i-bldg"/></svg></span><h3 data-i="y6t">Supplier portal</h3></div><p data-i="y6">A supplier’s own account that sees only what is his: deliveries, invoices, statement, and his tax invoice printed on his letterhead. Read-only, behind three independent security walls.</p></div>
+            <div class="card" style="--c:#0E8A5F"><div class="ch"><span class="si t-c"><svg class="ic"><use href="#i-id"/></svg></span><h3 data-i="y7t">Registrations</h3></div><p data-i="y7">Every vehicle registration coloured by days left, renewal files with their checklist and costs, and a morning alert 20, 18, 15 days before expiry and every third day after it.</p></div>
+            <div class="card" style="--c:#C99A06"><div class="ch"><span class="si t-c"><svg class="ic"><use href="#i-receipt"/></svg></span><h3 data-i="y8t">Fines</h3></div><p data-i="y8">Driver and employee deductions with receipt, attachments kept for good and payment status, and the month’s or year’s statement for payroll as PDF and Excel.</p></div>
+          </div>
+        </div>
+
+        <div class="tp" role="tabpanel" id="tp-qual" aria-labelledby="tb-qual">
+          <div class="two">
+            <div class="card">
+              <div class="ch"><span class="si t-ok"><svg class="ic"><use href="#i-shield"/></svg></span><h3 data-i="archH">Built to be trusted</h3></div>
+              <ul class="clean">
+                <li data-i="a1">Every business rule is enforced in the database, not in the screen: a wrong unit, a reading below the last one, a fill-up too soon or an edit in a closed month is refused whatever app sends it.</li>
+                <li data-i="a2">Installs on any phone from one printed QR code that never changes; works offline and sends when the signal returns.</li>
+                <li data-i="a3">Notifications in three languages by role: a new fill-up, a refusal, low stock, a report awaiting your approval, a registration about to expire.</li>
+                <li data-i="a4">An audit log of every edit and deletion, a refusals log of every attempt that was stopped, and a monthly PDF archive of every paper, built automatically.</li>
+                <li data-i="a5">Role-by-role security reviews: the whole schema loaded into a test database and every write tried as every role, so “read-only” is proven, not assumed.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="ch"><span class="si t-violet"><svg class="ic"><use href="#i-file"/></svg></span><h3 data-i="qH">Papers that accounts accept</h3></div>
+              <ul class="clean">
+                <li data-i="q1">Supplier tax invoices printed on each supplier’s own letterhead and layout: one row per day for one, an invoice book with dirhams and fils for another.</li>
+                <li data-i="q2">Machine timesheets laid out to hold a full month on one A4 sheet with both approval boxes, whatever the phone’s fonts do.</li>
+                <li data-i="q3">One project per page in every multi-project report, the project banner repeated on each page it runs onto, totals in the same blue on screen, on paper and in Excel.</li>
+                <li data-i="q4">Rates that show their own division, so a manager can check a figure with a calculator and find the same number.</li>
+                <li data-i="q5">Excel files whose totals are formulas with stored results, so they open correctly on a phone and recompute in Excel.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="decisions">
+  <section id="decisions" class="sec">
     <div class="sec-head">
-      <span class="eyebrow" data-i="decEyebrow">Judgement</span>
-      <h2 data-i="decTitle">Decisions that made the difference</h2>
-      <p class="muted" data-i="decSub">Each one started as a request or a complaint. The value was in choosing the right rule, not the fastest one.</p>
+      <span class="si t-amber"><svg class="ic"><use href="#i-bulb"/></svg></span>
+      <div>
+        <span class="eyebrow" data-i="decEyebrow">Judgement</span>
+        <h2 data-i="decTitle">Decisions that made the difference</h2>
+        <p class="sub" data-i="decSub">Each one started as a request or a complaint. The value was in choosing the right rule, not the fastest one.</p>
+      </div>
     </div>
     <div class="dec">
-      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d1q">The owner asked to truncate every fraction a driver types.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d1d">Keep the exact figure in the data and give each account a switch for what it sees on screen; the accounting stays exact and the owner still reads whole numbers.</span><span class="w" data-i="d1w">A month total of 45,842.6 gallons must still add up for the supplier’s invoice. Cutting at entry would have made two systems disagree forever.</span></div>
-      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d2q">A refused fill-up left no trace, and the owner could not see who kept trying.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d2d">A refusal is returned as an answer and written to a log before it is shown, instead of being thrown away as an error.</span><span class="w" data-i="d2w">Fifteen refusals an hour became a list with names and times, and a push to the admin within fifteen minutes.</span></div>
-      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d3q">Approving a whole month locked days that had not happened yet, and a late report looked approved.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d3d">One approval is one machine on one day. A line added later reopens only its own day, and the month closes by itself once every day is signed.</span><span class="w" data-i="d3w">Project managers approve what they actually saw, and nothing they signed is ever changed under them.</span></div>
-      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d4q">A rent or a contract price changes, and the new price must not rewrite the months already invoiced.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d4d">Prices are a dated history: a new price applies from a chosen day, earlier days keep theirs, closed months are never touched, and the preview shows exactly what will move before anything does.</span><span class="w" data-i="d4w">The office corrects the past safely and the supplier’s already-issued invoices stay as issued unless re-issued on purpose.</span></div>
-      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d5q">A supplier wanted to see his own account inside our system.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d5d">A read-only role below every other rank, let through only a short list of named calls, with a restrictive policy on every table as a second wall and a trimmed sign-in answer as a third.</span><span class="w" data-i="d5w">If one wall ever fails, the other two still hold. He prints his own statement; we type nothing for him.</span></div>
-      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d6q">The manager needed to approve in place of a document controller or a project manager who was away.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d6d">One special button for the manager alone that completes whatever step is missing in its owner’s name, signed and logged as his own act; a closed month still refuses.</span><span class="w" data-i="d6w">Work never stops for an absence, and the audit trail says who really approved.</span></div>
-      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d7q">Photos were purged after two months, sometimes before the month’s archive had been built.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d7d">A photo is deleted only once a finished archive holds it; otherwise it waits and the office is told every morning what is being held.</span><span class="w" data-i="d7w">Storage stays small and no evidence is ever lost to a timer.</span></div>
-      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d8q">The budget workbook had to move to the web without anyone trusting the new numbers.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d8d">Build the calculation engine first and prove it equal to the original workbook with golden scenarios before drawing a single screen.</span><span class="w" data-i="d8w">The estimators saw their own numbers come out of the new tool, which is the only argument that ever convinces an estimator.</span></div>
-      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d9q">Nobody could reach the install page or the right guide for their job.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d9d">One printed QR code pointing at one address that never changes; the page behind it asks for the job and gives that job’s app, its install steps for that phone, and its guide in three languages.</span><span class="w" data-i="d9w">The poster on the site wall outlives every release.</span></div>
+      <div class="card"><div class="dh"><span class="k kp" data-i="kP">Problem</span><span class="no">01</span></div><span class="q" data-i="d1q">The owner asked to truncate every fraction a driver types.</span><span class="k kd" data-i="kD">Decision</span><span class="d" data-i="d1d">Keep the exact figure in the data and give each account a switch for what it sees on screen; the accounting stays exact and the owner still reads whole numbers.</span><span class="w" data-i="d1w">A month total of 45,842.6 gallons must still add up for the supplier’s invoice. Cutting at entry would have made two systems disagree forever.</span></div>
+      <div class="card"><div class="dh"><span class="k kp" data-i="kP">Problem</span><span class="no">02</span></div><span class="q" data-i="d2q">A refused fill-up left no trace, and the owner could not see who kept trying.</span><span class="k kd" data-i="kD">Decision</span><span class="d" data-i="d2d">A refusal is returned as an answer and written to a log before it is shown, instead of being thrown away as an error.</span><span class="w" data-i="d2w">Fifteen refusals an hour became a list with names and times, and a push to the admin within fifteen minutes.</span></div>
+      <div class="card"><div class="dh"><span class="k kp" data-i="kP">Problem</span><span class="no">03</span></div><span class="q" data-i="d3q">Approving a whole month locked days that had not happened yet, and a late report looked approved.</span><span class="k kd" data-i="kD">Decision</span><span class="d" data-i="d3d">One approval is one machine on one day. A line added later reopens only its own day, and the month closes by itself once every day is signed.</span><span class="w" data-i="d3w">Project managers approve what they actually saw, and nothing they signed is ever changed under them.</span></div>
+      <div class="card"><div class="dh"><span class="k kp" data-i="kP">Problem</span><span class="no">04</span></div><span class="q" data-i="d4q">A rent or a contract price changes, and the new price must not rewrite the months already invoiced.</span><span class="k kd" data-i="kD">Decision</span><span class="d" data-i="d4d">Prices are a dated history: a new price applies from a chosen day, earlier days keep theirs, closed months are never touched, and the preview shows exactly what will move before anything does.</span><span class="w" data-i="d4w">The office corrects the past safely and the supplier’s already-issued invoices stay as issued unless re-issued on purpose.</span></div>
+      <div class="card"><div class="dh"><span class="k kp" data-i="kP">Problem</span><span class="no">05</span></div><span class="q" data-i="d5q">A supplier wanted to see his own account inside our system.</span><span class="k kd" data-i="kD">Decision</span><span class="d" data-i="d5d">A read-only role below every other rank, let through only a short list of named calls, with a restrictive policy on every table as a second wall and a trimmed sign-in answer as a third.</span><span class="w" data-i="d5w">If one wall ever fails, the other two still hold. He prints his own statement; we type nothing for him.</span></div>
+      <div class="card"><div class="dh"><span class="k kp" data-i="kP">Problem</span><span class="no">06</span></div><span class="q" data-i="d6q">The manager needed to approve in place of a document controller or a project manager who was away.</span><span class="k kd" data-i="kD">Decision</span><span class="d" data-i="d6d">One special button for the manager alone that completes whatever step is missing in its owner’s name, signed and logged as his own act; a closed month still refuses.</span><span class="w" data-i="d6w">Work never stops for an absence, and the audit trail says who really approved.</span></div>
+      <div class="card"><div class="dh"><span class="k kp" data-i="kP">Problem</span><span class="no">07</span></div><span class="q" data-i="d7q">Photos were purged after two months, sometimes before the month’s archive had been built.</span><span class="k kd" data-i="kD">Decision</span><span class="d" data-i="d7d">A photo is deleted only once a finished archive holds it; otherwise it waits and the office is told every morning what is being held.</span><span class="w" data-i="d7w">Storage stays small and no evidence is ever lost to a timer.</span></div>
+      <div class="card"><div class="dh"><span class="k kp" data-i="kP">Problem</span><span class="no">08</span></div><span class="q" data-i="d8q">The budget workbook had to move to the web without anyone trusting the new numbers.</span><span class="k kd" data-i="kD">Decision</span><span class="d" data-i="d8d">Build the calculation engine first and prove it equal to the original workbook with golden scenarios before drawing a single screen.</span><span class="w" data-i="d8w">The estimators saw their own numbers come out of the new tool, which is the only argument that ever convinces an estimator.</span></div>
+      <div class="card"><div class="dh"><span class="k kp" data-i="kP">Problem</span><span class="no">09</span></div><span class="q" data-i="d9q">Nobody could reach the install page or the right guide for their job.</span><span class="k kd" data-i="kD">Decision</span><span class="d" data-i="d9d">One printed QR code pointing at one address that never changes; the page behind it asks for the job and gives that job’s app, its install steps for that phone, and its guide in three languages.</span><span class="w" data-i="d9w">The poster on the site wall outlives every release.</span></div>
     </div>
   </section>
 
-  <section id="hr">
+  <section id="hr" class="sec">
     <div class="sec-head">
-      <span class="eyebrow" data-i="hrEyebrow">Second project</span>
-      <h2 data-i="hrTitle">An HR system for 805 employees</h2>
-      <p class="muted" data-i="hrSub">Replaces the one Excel file that used to run everything</p>
+      <span class="si t-c2"><svg class="ic"><use href="#i-users"/></svg></span>
+      <div>
+        <span class="eyebrow" data-i="hrEyebrow">Second project</span>
+        <h2 data-i="hrTitle">An HR system for 805 employees</h2>
+        <p class="sub" data-i="hrSub">Replaces the one Excel file that used to run everything</p>
+      </div>
     </div>
-    <div class="case" style="margin-bottom:22px">
+    <div class="case" style="margin-bottom:20px">
       <figure class="shot"><div class="wide"><img src="img/hr-dashboard-desktop.jpg" alt="HR dashboard on a computer" loading="lazy"></div><figcaption data-i="hg0">The dashboard: on the job, expiring within 30 days, open fines, and the next twelve months</figcaption></figure>
       <div class="gallery">
         <figure class="shot"><div class="frame"><img src="img/hr-dashboard-phone.jpg" alt="HR dashboard on a phone" loading="lazy"></div><figcaption data-i="hg1">The same dashboard on a phone</figcaption></figure>
@@ -287,7 +680,7 @@ ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background
     </div>
     <div class="two">
       <div class="card">
-        <h3 data-i="hr1H">What it does</h3>
+        <div class="ch"><span class="si t-primary"><svg class="ic"><use href="#i-list"/></svg></span><h3 data-i="hr1H">What it does</h3></div>
         <ul class="clean">
           <li data-i="hr1a">A record per employee and their documents: passport, residence, visit visa, ID, labour card. Every renewal is a kept version, never an overwrite.</li>
           <li data-i="hr1b">An alert engine that runs every morning: 30, 20, 14 and 7 days before expiry, daily in the final week, then daily after expiry until renewed. Reading an alert hides it; only a renewal closes it.</li>
@@ -296,7 +689,7 @@ ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background
         </ul>
       </div>
       <div class="card">
-        <h3 data-i="hr2H">How it holds up</h3>
+        <div class="ch"><span class="si t-ok"><svg class="ic"><use href="#i-shield"/></svg></span><h3 data-i="hr2H">How it holds up</h3></div>
         <ul class="clean">
           <li data-i="hr2a">Four roles enforced by the database itself; the screen only hides buttons.</li>
           <li data-i="hr2b">A full demo that runs inside the browser with the real rules and 180 sample employees, so anyone can try it before a single account exists.</li>
@@ -307,13 +700,16 @@ ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background
     </div>
   </section>
 
-  <section id="costcontrol">
+  <section id="costcontrol" class="sec">
     <div class="sec-head">
-      <span class="eyebrow" data-i="ccEyebrow">Third project</span>
-      <h2 data-i="ccTitle">Cost control: estimation, tenders and letters</h2>
-      <p class="muted" data-i="ccSub">Moves the cost-control team off the budget workbook and the procurement team off email threads</p>
+      <span class="si t-violet"><svg class="ic"><use href="#i-calc"/></svg></span>
+      <div>
+        <span class="eyebrow" data-i="ccEyebrow">Third project</span>
+        <h2 data-i="ccTitle">Cost control: estimation, tenders and letters</h2>
+        <p class="sub" data-i="ccSub">Moves the cost-control team off the budget workbook and the procurement team off email threads</p>
+      </div>
     </div>
-    <div class="case" style="margin-bottom:22px">
+    <div class="case" style="margin-bottom:20px">
       <div class="two">
         <figure class="shot"><div class="wide"><img src="img/cc-dashboard.jpg" alt="Cost control dashboard" loading="lazy"></div><figcaption data-i="cg1">The dashboard: what needs attention across projects, tenders and vendors</figcaption></figure>
         <figure class="shot"><div class="wide"><img src="img/cc-project.jpg" alt="Project bill of quantities" loading="lazy"></div><figcaption data-i="cg2">A project’s bill of quantities by section, with totals, scope and budget rate</figcaption></figure>
@@ -322,11 +718,11 @@ ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background
         <figure class="shot"><div class="wide"><img src="img/cc-packages.jpg" alt="Tender packages list" loading="lazy"></div><figcaption data-i="cg5">Packages with their status, closing date, vendors invited and budget</figcaption></figure>
         <figure class="shot"><div class="wide"><img src="img/cc-letter.jpg" alt="Project letter" loading="lazy"></div><figcaption data-i="cg6">A numbered project letter: record, approval steps and the PDF as sent</figcaption></figure>
       </div>
-      <p class="muted" style="font-size:13px" data-i="ccNote">Screens are from the built-in demo with sample projects and vendors.</p>
+      <p class="note" data-i="ccNote">Screens are from the built-in demo with sample projects and vendors.</p>
     </div>
     <div class="two">
       <div class="card">
-        <h3 data-i="cc1H">What it does</h3>
+        <div class="ch"><span class="si t-primary"><svg class="ic"><use href="#i-list"/></svg></span><h3 data-i="cc1H">What it does</h3></div>
         <ul class="clean">
           <li data-i="cc1a">Project data, take-off per building, cost analysis by material, manpower, equipment and subcontract, priced bills of quantities, and the material and subcontract lists that feed procurement.</li>
           <li data-i="cc1b">Tender packages built from the budget, RFQ emails, a secure vendor portal, offers from any channel, one-click comparison against budget and terms, awards and approvals.</li>
@@ -335,7 +731,7 @@ ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background
         </ul>
       </div>
       <div class="card">
-        <h3 data-i="cc2H">Why they trust it</h3>
+        <div class="ch"><span class="si t-ok"><svg class="ic"><use href="#i-shield"/></svg></span><h3 data-i="cc2H">Why they trust it</h3></div>
         <ul class="clean">
           <li data-i="cc2a">Same numbers as the workbook: the calculation engine was proven equal to the original budget file with golden scenarios before any screen was drawn.</li>
           <li data-i="cc2b">Vendor eligibility is a rule, not an opinion: only vendors with a valid licence and accreditation can receive an RFQ, and expiring licences are flagged on the dashboard.</li>
@@ -346,29 +742,32 @@ ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background
     </div>
   </section>
 
-  <section id="websites">
+  <section id="websites" class="sec">
     <div class="sec-head">
-      <span class="eyebrow" data-i="wbEyebrow">Websites</span>
-      <h2 data-i="wbTitle">Live sites with their own admin panels</h2>
-      <p class="muted" data-i="wbSub">Public faces that the owners update themselves.</p>
+      <span class="si t-orange"><svg class="ic"><use href="#i-globe"/></svg></span>
+      <div>
+        <span class="eyebrow" data-i="wbEyebrow">Websites</span>
+        <h2 data-i="wbTitle">Live sites with their own admin panels</h2>
+        <p class="sub" data-i="wbSub">Public faces that the owners update themselves.</p>
+      </div>
     </div>
     <div class="prod">
-      <div class="card" style="--c:#0B1F50">
-        <span class="kind" data-i="w1k">Contracting · UAE</span>
+      <div class="card" style="--c:#2F55C8">
+        <div class="ph"><span class="si t-c"><svg class="ic"><use href="#i-bldg"/></svg></span><span class="kind" data-i="w1k">Contracting · UAE</span></div>
         <h3><a href="https://orioncc.com" target="_blank" rel="noopener">orioncc.com</a></h3>
         <span class="state ok" data-i="w1s">Live</span>
         <p data-i="w1p">Orion Contracting’s public site: projects with galleries and key points, sectors, clients, certificates, news and events, contact submissions, and every homepage block editable from the panel.</p>
       </div>
       <div class="card" style="--c:#1D4ED8">
-        <span class="kind" data-i="w2k">Training · consulting</span>
+        <div class="ph"><span class="si t-c"><svg class="ic"><use href="#i-globe"/></svg></span><span class="kind" data-i="w2k">Training · consulting</span></div>
         <h3><a href="https://btsconsultant.com/" target="_blank" rel="noopener">btsconsultant.com</a></h3>
-        <div class="wide"><img src="img/bts-home.webp" alt="BTS Training & Consultancy homepage" loading="lazy"></div>
+        <div class="wide"><img src="img/bts-home.webp" alt="BTS Training &amp; Consultancy homepage" loading="lazy"></div>
         <div class="wide"><img src="img/bts-services.webp" alt="BTS course search and services" loading="lazy"></div>
         <span class="state ok" data-i="w2s">Live</span>
         <p data-i="w2p">A training institute’s site and back office: course catalogue by category, rounds by venue and date, trainers and speakers, online applications, offers, partners, a download centre, careers and a newsletter.</p>
       </div>
-      <div class="card" style="--c:#B45309">
-        <span class="kind" data-i="w3k">Products · Egypt</span>
+      <div class="card" style="--c:#C2620A">
+        <div class="ph"><span class="si t-c"><svg class="ic"><use href="#i-pkg"/></svg></span><span class="kind" data-i="w3k">Products · Egypt</span></div>
         <h3><a href="https://www.varex.com.eg/" target="_blank" rel="noopener">varex.com.eg</a></h3>
         <div class="wide"><img src="img/varex-home.webp" alt="Varex homepage" loading="lazy"></div>
         <div class="wide"><img src="img/varex-products.webp" alt="Varex products catalogue" loading="lazy"></div>
@@ -378,15 +777,18 @@ ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background
     </div>
   </section>
 
-  <section id="products">
+  <section id="products" class="sec">
     <div class="sec-head">
-      <span class="eyebrow" data-i="prEyebrow">More products</span>
-      <h2 data-i="prTitle">Operations, web and mobile</h2>
-      <p class="muted" data-i="prSub">Each built for a real owner with a real deadline.</p>
+      <span class="si t-danger"><svg class="ic"><use href="#i-pkg"/></svg></span>
+      <div>
+        <span class="eyebrow" data-i="prEyebrow">More products</span>
+        <h2 data-i="prTitle">Operations, web and mobile</h2>
+        <p class="sub" data-i="prSub">Each built for a real owner with a real deadline.</p>
+      </div>
     </div>
     <div class="prod">
-      <div class="card" style="--c:#2F6F4E">
-        <span class="kind" data-i="p2k">IT · assets · web</span>
+      <div class="card" style="--c:#2F8F5E">
+        <div class="ph"><span class="si t-c"><svg class="ic"><use href="#i-monitor"/></svg></span><span class="kind" data-i="p2k">IT · assets · web</span></div>
         <h3 data-i="p2t">IT Asset Control System</h3>
         <span class="state ok" data-i="p2s">In production</span>
         <p data-i="p2p">Every device, SIM card, router, printer and internet line the company owns: who holds it, on which project, since when. Handover and clearance forms signed on screen and printed as PDF.</p>
@@ -396,8 +798,8 @@ ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background
           <li data-i="p2c">Employees imported from Excel; clients’ and consultants’ staff tracked beside the company’s own.</li>
         </ul>
       </div>
-      <div class="card" style="--c:#F2B705">
-        <span class="kind" data-i="p4k">Mobile · commerce · single vendor</span>
+      <div class="card" style="--c:#C99A06">
+        <div class="ph"><span class="si t-c"><svg class="ic"><use href="#i-phone"/></svg></span><span class="kind" data-i="p4k">Mobile · commerce · single vendor</span></div>
         <h3 data-i="p4t">Phonatna (Phonex)</h3>
         <span class="state soon" data-i="p4s">Ready for the stores</span>
         <p data-i="p4p">A shop app for phones and accessories: the owner and admins add products, customers browse, search, order and pay with Egyptian wallets. Light and dark, Arabic and English, push notifications.</p>
@@ -407,8 +809,8 @@ ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background
           <li data-i="p4c">Account deletion inside the app and legal pages ready, as the stores require.</li>
         </ul>
       </div>
-      <div class="card" style="--c:#C2410C">
-        <span class="kind" data-i="p5k">Mobile · marketplace · multi vendor</span>
+      <div class="card" style="--c:#D2550F">
+        <div class="ph"><span class="si t-c"><svg class="ic"><use href="#i-bag"/></svg></span><span class="kind" data-i="p5k">Mobile · marketplace · multi vendor</span></div>
         <h3 data-i="p5t">Hanwafar</h3>
         <span class="state" data-i="p5s">Built · in review</span>
         <p data-i="p5p">A multi-vendor marketplace: sellers open stores under a contract, admins approve, pause and manage them, customers shop across stores, rate products and track orders. Phonatna grew out of its lessons.</p>
@@ -418,51 +820,92 @@ ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background
         </ul>
       </div>
       <div class="card" style="--c:#7C3AED">
-        <span class="kind" data-i="p6k">Project management · web</span>
+        <div class="ph"><span class="si t-c"><svg class="ic"><use href="#i-list"/></svg></span><span class="kind" data-i="p6k">Project management · web</span></div>
         <h3 data-i="p6t">Issue Tracker</h3>
         <span class="state ok" data-i="p6s">In use</span>
         <p data-i="p6p">Issues, labels, comments and history per project, meetings with their minutes, a portfolio view across projects, and notifications, with roles for company admin, construction manager, general manager and project manager.</p>
       </div>
-      <div class="card" style="--c:#475569">
-        <span class="kind" data-i="p7k">Documents · web</span>
+      <div class="card" style="--c:#64748B">
+        <div class="ph"><span class="si t-c"><svg class="ic"><use href="#i-folder"/></svg></span><span class="kind" data-i="p7k">Documents · web</span></div>
         <h3 data-i="p7t">Document store</h3>
         <span class="state ok" data-i="p7s">In use</span>
         <p data-i="p7p">Projects, folders and files for the company’s drawings and documents, with users and permissions, replacing shared drives nobody could search.</p>
       </div>
     </div>
-    <p class="muted" style="font-size:13px;margin-top:14px" data-i="prNote">Screens of these products are available on request; the systems above hold client data and are not shown live.</p>
+    <p class="note" style="margin-top:14px" data-i="prNote">Screens of these products are available on request; the systems above hold client data and are not shown live.</p>
   </section>
 
-  <section id="contact">
-    <div class="contact">
+  <section id="contact" class="sec">
+    <div class="banner">
+      <div class="fx" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="dots"></span></div>
       <span class="eyebrow" data-i="ctEyebrow">Available for new projects</span>
       <h2 data-i="ctTitle">Internal operations systems, founder products, Arabic-first apps</h2>
-      <p class="muted" data-i="ctP">If a process in your company still runs on spreadsheets and chat, or you have a product that needs to be working in weeks rather than months, write to me.</p>
+      <p data-i="ctP">If a process in your company still runs on spreadsheets and chat, or you have a product that needs to be working in weeks rather than months, write to me.</p>
       <div class="row">
-        <a class="btn sm primary" href="https://wa.me/971588487272" target="_blank" rel="noopener"><span data-i="waUae">WhatsApp UAE</span> · <span class="num">+971 58 848 7272</span></a>
-        <a class="btn sm primary" href="https://wa.me/201005323668" target="_blank" rel="noopener"><span data-i="waEg">WhatsApp Egypt</span> · <span class="num">+20 100 532 3668</span></a>
+        <a class="bw" href="https://wa.me/971588487272" target="_blank" rel="noopener"><svg class="ic f"><use href="#i-wa"/></svg><span data-i="waUae">WhatsApp UAE</span> · <span class="num ltr">+971 58 848 7272</span></a>
+        <a class="bw" href="https://wa.me/201005323668" target="_blank" rel="noopener"><svg class="ic f"><use href="#i-wa"/></svg><span data-i="waEg">WhatsApp Egypt</span> · <span class="num ltr">+20 100 532 3668</span></a>
       </div>
       <div class="row">
         <code id="mail">a.sayed.xc@gmail.com</code>
-        <button class="btn sm" type="button" data-copy="a.sayed.xc@gmail.com" data-i="ctCopy">Copy</button>
-        <a class="btn sm" href="https://github.com/ahmdsydysf" target="_blank" rel="noopener">github.com/ahmdsydysf</a>
+        <button class="bg" type="button" data-copy="a.sayed.xc@gmail.com"><svg class="ic"><use href="#i-copy"/></svg><span data-i="ctCopy">Copy</span></button>
+        <a class="bg" href="mailto:a.sayed.xc@gmail.com"><svg class="ic"><use href="#i-mail"/></svg><span data-i="flyWrite">Write</span></a>
+        <a class="bg" href="https://github.com/ahmdsydysf" target="_blank" rel="noopener"><svg class="ic f"><use href="#i-gh"/></svg><span>github.com/ahmdsydysf</span></a>
       </div>
     </div>
     <p class="foot" data-i="foot">All figures on this page come from systems in daily use. Screens are from preview builds with sample data.</p>
   </section>
-</div>
+</main>
+
+<!-- the bottom bar (a phone / tablet): the work, WhatsApp, email, light / dark -->
+<nav class="dock" aria-label="Quick actions" data-ia="railLbl">
+  <div class="in">
+    <a class="dk" href="#flagship" data-spy="flagship decisions hr costcontrol"><svg class="ic"><use href="#i-grid"/></svg><span data-i="dkWork">Work</span></a>
+    <a class="dk" href="#products" data-spy="websites products"><svg class="ic"><use href="#i-pkg"/></svg><span data-i="n3">Products</span></a>
+    <button class="dk" type="button" data-fly="flyWa" aria-expanded="false" aria-controls="flyWa"><span class="bub"><svg class="ic f"><use href="#i-wa"/></svg></span><span data-i="ctaWa">WhatsApp</span></button>
+    <button class="dk" type="button" data-fly="flyMail" aria-expanded="false" aria-controls="flyMail"><svg class="ic"><use href="#i-mail"/></svg><span data-i="railMail">Email</span></button>
+    <button class="dk" type="button" data-theme-btn aria-label="Dark mode"><svg class="ic"><use data-theme-ic href="#i-moon"/></svg><span data-theme-lb="s">Dark</span></button>
+  </div>
+</nav>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
+/* the reveal on scroll, apart from the rest: if anything here fails, the page shows everything */
 (function () {
+  var h = document.documentElement;
+  try {
+    var els = [].slice.call(document.querySelectorAll('main :is(.stat,.jumps,.sec-head,.card,.shot,.tabs)'));
+    var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (still || !('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    els.forEach(function (e) {
+      var sib = e.parentElement ? [].indexOf.call(e.parentElement.children, e) : 0;
+      e.style.setProperty('--d', String(Math.min(sib, 6)));
+    });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.08 });
+    els.forEach(function (e) { io.observe(e); });
+  } catch (err) { h.classList.remove('js'); }
+})();
+</script>
+<script>
+(function () {
+  var html = document.documentElement;
   var AR = {
-    brand: 'أحمد سيد', n1: 'المشروع الرئيسي', n2: 'القرارات', n3: 'المنتجات', n4: 'تواصل',
-    eyebrow: 'بورتفوليو · 2026 · الإمارات ومصر',
+    brand: 'أحمد سيد', n1: 'المشروع الرئيسي', n2: 'القرارات', n3: 'المنتجات', n4: 'تواصل', n5: 'الموارد البشرية', n6: 'التكاليف', n7: 'المواقع',
+    navLbl: 'الأقسام', railLbl: 'التواصل والعرض', jumpsLbl: 'الأعمال حسب النوع',
+    eyebrow: 'بورتفوليو · الإمارات ومصر', clockLoc: 'بتوقيت الإمارات',
     h1: 'أحوّل العمليات المتشابكة إلى أنظمة يثق بها الناس.',
     lede: 'أحد عشر منتجاً قيد الاستخدام الفعلي: منصّة أسطول ومالية من ثمانية أنظمة، نظام موارد بشرية لـ 805 موظفين، تحكّم في التكاليف والمشتريات، تحكّم في أصول تقنية المعلومات، ثلاثة مواقع تعمل، وتطبيقا تجارة. كلٌّ منها استبدل الجداول وصور الدردشة والتخمين بأرقام لها مصدر وتاريخ وصاحب.',
-    ctaMail: 'انسخ الإيميل', ctaWork: 'شاهد الشغل', ctaWa: 'واتساب', waUae: 'واتساب الإمارات', waEg: 'واتساب مصر',
+    hc1: 'أنظمة قيد الاستخدام اليومي:', hc2: 'مواقع تعمل:', ctaLbl: 'تواصل معي',
+    ctaMail: 'انسخ الإيميل', ctaWa: 'واتساب', waUae: 'واتساب الإمارات', waEg: 'واتساب مصر',
+    railMail: 'الإيميل', dkWork: 'الأعمال', flyWaS: 'اختر الرقم الذي تراسله', flyUae: 'الإمارات', flyEg: 'مصر',
+    flyMailS: 'راسلني أو انسخ العنوان', flyWrite: 'اكتب رسالة',
     s0: 'منتجات مُسلَّمة', s1: 'أنظمة على منصّة واحدة بحساب دخول واحد', s2: 'مركبة ومعدة تحت الإدارة', s3: 'موظف في نظام الموارد البشرية',
     s4: 'لغات: عربي · إنجليزي · أردو', s5: 'حزمة اختبار آلي تحرس كل ذلك',
+    s0h: 'قيد الاستخدام اليومي الفعلي', s1h: 'تُثبَّت من رمز QR واحد', s2h: 'وقود وإيجار وتايم شيت', s3h: 'كل وثيقة وكل تجديد',
+    s4h: 'من اليمين لليسار أولاً', s5h: 'تعمل قبل كل إصدار',
+    j0: 'كل المنتجات', j1: 'أنظمة تشغيل', j2: 'مواقع', j3: 'تطبيقات جوال', j4: 'أدوات الفرق',
+    tbShots: 'الشاشات', tbSys: 'الأنظمة', tbQual: 'الثقة والأوراق',
     caseEyebrow: 'المشروع الرئيسي', caseTitle: 'منصّة إدارة الأسطول والمالية لشركة مقاولات',
     caseSub: 'رأس الخيمة، الإمارات · في الإنتاج منذ سبتمبر 2026 · تُثبَّت على كل جوال من رمز QR واحد',
     tag: 'ثمانية أنظمة · حساب واحد · مصدر واحد للحقيقة',
@@ -540,20 +983,11 @@ ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background
     w2k: 'تدريب · استشارات', w2s: 'يعمل', w2p: 'موقع معهد تدريب ومكتبه الخلفي: دليل دورات بالفئات، دفعات بالمكان والتاريخ، مدرّبون ومتحدثون، تقديم إلكتروني، عروض، شركاء، مركز تحميل، وظائف ونشرة بريدية.',
     w3k: 'منتجات · مصر', w3s: 'يعمل', w3p: 'موقع شركة تصنيع: دليل منتجات بالفئات، شهادات، وسائط ومدونة، أسئلة شائعة، طلبات توزيع ونماذج تواصل، كلها تُدار من لوحتها.',
     prEyebrow: 'منتجات أخرى', prTitle: 'عمليات وويب وجوال', prSub: 'كلٌّ بُني لمالك حقيقي وموعد حقيقي.',
-    p1k: 'تقدير · مشتريات · ويب', p1t: 'أوريون للتحكم في التكاليف', p1s: 'في الإنتاج',
-    p1p: 'ينقل فريق التحكم في التكاليف من دفتر الميزانية: بيانات المشروع، حصر لكل مبنى، تحليل تكلفة بالمواد والعمالة والمعدات والمقاولين من الباطن، جداول كميات مسعّرة، وقوائم المواد والباطن التي تغذّي المشتريات.',
-    p1a: 'الأرقام نفسها كالدفتر، مُثبَتة بسيناريوهات اختبار ذهبية قبل بناء أي شاشة.',
-    p1b: 'حزم مناقصات، رسائل طلب عروض، بوابة موردين آمنة، مقارنة عروض مقابل الميزانية، ترسية واعتمادات.',
-    p1c: 'جدول كميات الاستشاري مستورَد ومحفوظ منفصلاً عن الميزانية الداخلية؛ خطابات مشاريع مرقّمة كـ PDF من دور مراقب مستندات.',
     p2k: 'تقنية معلومات · أصول · ويب', p2t: 'نظام التحكم في أصول تقنية المعلومات', p2s: 'في الإنتاج',
     p2p: 'كل جهاز وشريحة وراوتر وطابعة وخط إنترنت تملكه الشركة: من يحمله، على أي مشروع، منذ متى. نماذج تسليم وإخلاء طرف تُوقَّع على الشاشة وتُطبع PDF.',
     p2a: 'رمز QR على كل جهاز يفتح سجله؛ ورمز ثابت للشركة للملتحقين الجدد.',
     p2b: 'طلبات أصول باعتماد، نقل بين المشاريع، تقارير شرائح شهرية، خصومات للمفقودات، تقييمات موظفين.',
     p2c: 'الموظفون مستورَدون من إكسل؛ موظفو العملاء والاستشاريين يُتابَعون بجانب موظفي الشركة.',
-    p3k: 'موقع شركة · إدارة محتوى', p3t: 'موقع أوريون للمقاولات', p3s: 'يعمل',
-    p3p: 'الواجهة العامة للشركة ولوحة الإدارة خلفها: مشاريع بمعارض ونقاط رئيسية، قطاعات، عملاء، شهادات، أخبار وفعاليات، رسائل التواصل، وكل مكوّن في الصفحة الرئيسية قابل للتعديل دون مطوّر.',
-    p3a: 'الغلاف والفيديو التعريفي وشريط الدعوة وقسم «عن الشركة» والشعار تُغيَّر من اللوحة.',
-    p3b: 'جولة تقوية أمنية بقائمة مكتوبة، خريطة موقع، ورمز QR للموقع.',
     p4k: 'جوال · تجارة · بائع واحد', p4t: 'فوناتنا (Phonex)', p4s: 'جاهز للمتاجر',
     p4p: 'تطبيق متجر للهواتف والإكسسوارات: المالك والمشرفون يضيفون المنتجات، والعملاء يتصفحون ويبحثون ويطلبون ويدفعون بالمحافظ المصرية. فاتح وداكن، عربي وإنجليزي، إشعارات فورية.',
     p4a: 'ثلاث درجات إدارية والمالك مخفي عمّن دونه؛ الإيصالات في تخزين خاص.',
@@ -572,30 +1006,187 @@ ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background
     ctP: 'إن كانت عملية في شركتك ما زالت تُدار بالجداول والدردشة، أو لديك منتج يجب أن يعمل خلال أسابيع لا شهور، راسلني.',
     ctCopy: 'نسخ', foot: 'كل الأرقام في هذه الصفحة من أنظمة قيد الاستخدام اليومي. الصور من نُسخ معاينة ببيانات تجريبية.'
   };
-  var EN = {};
-  var root = document.getElementById('root'), btn = document.getElementById('langBtn'), toast = document.getElementById('toast');
+  /* what the script writes itself (the greeting, the theme button, the toasts) */
+  var T = {
+    en: { morning: 'Good morning', afternoon: 'Good afternoon', evening: 'Good evening', me: 'I’m Ahmed Sayed', join: ', ',
+          dark: 'Dark mode', light: 'Light mode', darkS: 'Dark', lightS: 'Light', copied: 'Email copied', sel: 'Select and copy', lang: 'عربي', langL: 'التبديل إلى العربية' },
+    ar: { morning: 'صباح الخير', afternoon: 'مساء الخير', evening: 'مساء الخير', me: 'أنا أحمد سيد', join: '، ',
+          dark: 'الوضع الداكن', light: 'الوضع الفاتح', darkS: 'داكن', lightS: 'فاتح', copied: 'تم نسخ الإيميل', sel: 'حدّد وانسخ', lang: 'English', langL: 'Switch to English' }
+  };
+  var EN = {}, ENA = {};
   document.querySelectorAll('[data-i]').forEach(function (el) { var k = el.getAttribute('data-i'); if (!(k in EN)) EN[k] = el.textContent; });
+  document.querySelectorAll('[data-ia]').forEach(function (el) { var k = el.getAttribute('data-ia'); if (!(k in ENA)) ENA[k] = el.getAttribute('aria-label') || ''; });
   var lang = 'en';
   try { lang = localStorage.getItem('pf-lang') === 'ar' ? 'ar' : 'en'; } catch (e) {}
-  function apply(l) {
-    lang = l; var D = l === 'ar' ? AR : EN;
-    document.querySelectorAll('[data-i]').forEach(function (el) { var k = el.getAttribute('data-i'); if (D[k]) el.textContent = D[k]; });
-    document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr'); document.documentElement.setAttribute('lang', l);
-    btn.textContent = l === 'ar' ? 'English' : 'عربي';
-    try { localStorage.setItem('pf-lang', l); } catch (e) {}
+  var toast = document.getElementById('toast');
+  var meta = document.querySelector('meta[name="theme-color"]');
+  var mq = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : null;
+
+  /* the date, the greeting, the UAE clock */
+  function today() {
+    var el = document.getElementById('today');
+    try { el.textContent = new Intl.DateTimeFormat(lang === 'ar' ? 'ar-EG-u-nu-latn' : 'en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date()); }
+    catch (e) { el.textContent = new Date().toDateString(); }
   }
-  if (lang === 'ar') apply('ar');
-  btn.addEventListener('click', function () { apply(lang === 'ar' ? 'en' : 'ar'); });
-  var t;
-  function say(m) { toast.textContent = m; toast.classList.add('on'); clearTimeout(t); t = setTimeout(function () { toast.classList.remove('on'); }, 1800); }
+  function greet() {
+    var h = new Date().getHours(), L = T[lang];
+    var g = h >= 5 && h < 12 ? L.morning : h >= 12 && h < 17 ? L.afternoon : L.evening;
+    document.getElementById('greet').textContent = g + L.join + L.me;
+  }
+  var fClock = null;
+  try { fClock = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Dubai' }); } catch (e) {}
+  function clock() { var c = document.getElementById('clock'); if (fClock && c) c.textContent = fClock.format(new Date()); }
+  clock(); setInterval(clock, 20000);
+
+  /* light / dark */
+  function theme() { var a = html.getAttribute('data-theme'); return a || (mq && mq.matches ? 'dark' : 'light'); }
+  function themeUi() {
+    var d = theme() === 'dark', L = T[lang];
+    document.querySelectorAll('[data-theme-ic]').forEach(function (u) { u.setAttribute('href', d ? '#i-sun' : '#i-moon'); });
+    document.querySelectorAll('[data-theme-btn]').forEach(function (b) { b.setAttribute('aria-label', d ? L.light : L.dark); });
+    document.querySelectorAll('[data-theme-lb]').forEach(function (s) { var sh = s.getAttribute('data-theme-lb') === 's'; s.textContent = d ? (sh ? L.lightS : L.light) : (sh ? L.darkS : L.dark); });
+    if (meta) meta.setAttribute('content', d ? '#0C1735' : '#F3F6FC');
+  }
+  document.querySelectorAll('[data-theme-btn]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var n = theme() === 'dark' ? 'light' : 'dark';
+      html.classList.add('tt'); setTimeout(function () { html.classList.remove('tt'); }, 450);
+      html.setAttribute('data-theme', n);
+      try { localStorage.setItem('pf-theme', n); } catch (e) {}
+      themeUi();
+    });
+  });
+  if (mq && mq.addEventListener) mq.addEventListener('change', themeUi);
+
+  /* the WhatsApp and email flyouts: beside the rail on a computer, above the bottom bar on a phone */
+  var openFly = null, openFrom = null;
+  function place(fly, btn) {
+    fly.style.cssText = '';
+    if (innerWidth < 1024) {
+      var w = Math.min(420, innerWidth - 24);
+      fly.style.width = w + 'px'; fly.style.left = ((innerWidth - w) / 2) + 'px';
+      fly.style.bottom = 'calc(88px + env(safe-area-inset-bottom, 0px))';
+    } else {
+      var r = btn.getBoundingClientRect(), fw = fly.offsetWidth, fh = fly.offsetHeight;
+      fly.style.left = (html.getAttribute('dir') === 'rtl' ? r.left - 12 - fw : r.right + 12) + 'px';
+      fly.style.top = Math.min(Math.max(12, r.top + r.height / 2 - fh / 2), innerHeight - fh - 12) + 'px';
+    }
+  }
+  function closeFly(back) {
+    if (!openFly) return;
+    var f = openFly, from = openFrom; openFly = openFrom = null;
+    f.classList.remove('on');
+    document.querySelectorAll('[data-fly]').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+    if (back && from && f.contains(document.activeElement)) from.focus();
+  }
+  document.querySelectorAll('[data-fly]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var f = document.getElementById(b.getAttribute('data-fly'));
+      if (openFly === f) { closeFly(true); return; }
+      closeFly(false);
+      place(f, b); f.classList.add('on'); openFly = f; openFrom = b;
+      document.querySelectorAll('[data-fly="' + f.id + '"]').forEach(function (x) { x.setAttribute('aria-expanded', 'true'); });
+      var first = f.querySelector('a,button');
+      if (first && e.detail === 0) first.focus();
+    });
+  });
+  document.addEventListener('click', function (e) { if (openFly && !openFly.contains(e.target)) closeFly(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeFly(true); });
+  addEventListener('resize', function () { closeFly(false); });
+
+  /* the language */
+  var langBtn = document.getElementById('langBtn'), langTxt = document.getElementById('langTxt');
+  function apply(l) {
+    lang = l; var D = l === 'ar' ? AR : EN, DA = l === 'ar' ? AR : ENA;
+    document.querySelectorAll('[data-i]').forEach(function (el) { var k = el.getAttribute('data-i'); if (D[k]) el.textContent = D[k]; });
+    document.querySelectorAll('[data-ia]').forEach(function (el) { var k = el.getAttribute('data-ia'); if (DA[k]) el.setAttribute('aria-label', DA[k]); });
+    html.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr'); html.setAttribute('lang', l);
+    langTxt.textContent = T[l].lang; langBtn.setAttribute('aria-label', T[l].langL);
+    try { localStorage.setItem('pf-lang', l); } catch (e) {}
+    today(); greet(); themeUi(); closeFly(false);
+  }
+  apply(lang);
+  langBtn.addEventListener('click', function () { apply(lang === 'ar' ? 'en' : 'ar'); });
+
+  /* copy the email */
+  var tm;
+  function say(m) { toast.textContent = m; toast.classList.add('on'); clearTimeout(tm); tm = setTimeout(function () { toast.classList.remove('on'); }, 1900); }
   document.querySelectorAll('[data-copy]').forEach(function (b) {
     b.addEventListener('click', function () {
       var v = b.getAttribute('data-copy');
-      var done = function () { say(lang === 'ar' ? 'تم النسخ' : 'Copied'); };
-      var fail = function () { var c = document.getElementById('mail'); var r = document.createRange(); r.selectNodeContents(c); var s = getSelection(); s.removeAllRanges(); s.addRange(r); say(lang === 'ar' ? 'حدّد وانسخ' : 'Select and copy'); };
+      var done = function () { say(T[lang].copied); };
+      var fail = function () {
+        var c = openFly ? openFly.querySelector('.fmail') : null; c = c || document.getElementById('mail');
+        var r = document.createRange(); r.selectNodeContents(c); var s = getSelection(); s.removeAllRanges(); s.addRange(r); say(T[lang].sel);
+      };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(done, fail); else fail();
     });
   });
+
+  /* the section under the middle of the screen lights its pill (and its tab of the bottom bar) */
+  var ids = ['flagship', 'decisions', 'hr', 'costcontrol', 'websites', 'products', 'contact'];
+  var secs = ids.map(function (id) { return document.getElementById(id); });
+  var spy = [].slice.call(document.querySelectorAll('[data-spy]'));
+  var cur = '#', ticking = false;
+  function spyNow() {
+    ticking = false;
+    var at = null, line = innerHeight * 0.42;
+    secs.forEach(function (s, i) { if (s.getBoundingClientRect().top <= line) at = ids[i]; });
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) at = 'contact';
+    if (at === cur) return; cur = at;
+    spy.forEach(function (a) {
+      var on = at && (' ' + a.getAttribute('data-spy') + ' ').indexOf(' ' + at + ' ') > -1;
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+  }
+  addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(spyNow); } }, { passive: true });
+  spyNow();
+
+  /* the chips of the work by kind */
+  var chips = [].slice.call(document.querySelectorAll('.jumps .chip'));
+  chips.forEach(function (c) { c.addEventListener('click', function () { chips.forEach(function (x) { x.classList.toggle('on', x === c); }); }); });
+
+  /* the flagship's tabs (arrow keys move between them; without the script every panel shows) */
+  var tabs = [].slice.call(document.querySelectorAll('[role="tab"]'));
+  function pick(t, focus) {
+    tabs.forEach(function (x) {
+      var on = x === t;
+      x.setAttribute('aria-selected', on ? 'true' : 'false'); x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) t.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { pick(t, false); });
+    t.addEventListener('keydown', function (e) {
+      var rtl = html.getAttribute('dir') === 'rtl', n = null;
+      if (e.key === 'ArrowRight') n = rtl ? i - 1 : i + 1;
+      else if (e.key === 'ArrowLeft') n = rtl ? i + 1 : i - 1;
+      else if (e.key === 'Home') n = 0; else if (e.key === 'End') n = tabs.length - 1;
+      if (n === null) return;
+      e.preventDefault(); pick(tabs[(n + tabs.length) % tabs.length], true);
+    });
+  });
+  if (tabs.length) pick(tabs[0], false);
+
+  /* the figures count up */
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!still && window.requestAnimationFrame) {
+    document.querySelectorAll('[data-count]').forEach(function (el, k) {
+      var m = /^(\d+)(.*)$/.exec(el.textContent.trim()); if (!m) return;
+      var to = +m[1], suf = m[2], t0 = null, dur = 900, wait = 250 + k * 60;
+      el.textContent = '0' + suf;
+      setTimeout(function () {
+        requestAnimationFrame(function f(ts) {
+          if (t0 === null) t0 = ts;
+          var p = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(to * e) + suf;
+          if (p < 1) requestAnimationFrame(f);
+        });
+      }, wait);
+    });
+  }
 })();
 </script>
 </body>
