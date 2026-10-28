@@ -389,6 +389,70 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
 .foot{margin-top:24px;font-size:13px;color:rgb(var(--muted))}
 @media (max-width:640px){.banner{padding:22px 20px}}
 
+/* the gallery: a screenshot opens large; the section's screenshots are browsed with the arrows, a swipe or the strip */
+.zm{position:relative;cursor:zoom-in}
+.zm::after{content:"";position:absolute;top:10px;inset-inline-end:10px;width:32px;height:32px;border-radius:50%;pointer-events:none;
+  background:rgb(11 31 80 / .62) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6'/%3E%3Cpath d='M9 21H3v-6'/%3E%3Cpath d='m21 3-7 7'/%3E%3Cpath d='m3 21 7-7'/%3E%3C/svg%3E") center/15px no-repeat;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;transform:scale(.85);transition:opacity .2s,transform .2s}
+.zm:hover::after,.zm:focus-within::after{opacity:1;transform:none}
+.zm img:focus-visible{outline:3px solid rgb(var(--primary));outline-offset:-3px}
+@media (hover:none){.zm::after{opacity:.9;transform:none;width:28px;height:28px;top:8px;inset-inline-end:8px;background-size:13px}}
+.grow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px}
+.gbtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding-inline:16px 8px;border-radius:999px;border:1px solid rgb(var(--line) / .8);
+  background:rgb(var(--surface));font:700 13.5px var(--display);color:rgb(var(--pri-ink));cursor:pointer;box-shadow:var(--shadow-card);transition:border-color .2s,transform .15s}
+.gbtn:hover{border-color:rgb(var(--primary) / .5);transform:translateY(-1px)}
+.gbtn .ic{width:18px;height:18px}
+.gbtn .cnt{min-width:26px;height:24px;padding-inline:8px;border-radius:999px;background:rgb(var(--primary) / .12);font:800 12px var(--display);display:grid;place-items:center}
+html.lb-open{overflow:hidden}
+.lb{position:fixed;inset:0;z-index:60;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;color:#fff;
+  background:rgb(5 9 24 / .93);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  opacity:0;visibility:hidden;transition:opacity .2s,visibility 0s .2s}
+.lb.on{opacity:1;visibility:visible;transition:opacity .2s}
+.lb-top{display:flex;align-items:center;gap:8px;padding:12px 14px;padding-top:max(12px,env(safe-area-inset-top,0px))}
+.lb-t{flex:1;min-width:0;display:flex;align-items:baseline;gap:10px}
+.lb-t b{font:800 15px var(--display);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-t span{flex:none;font:700 12.5px var(--display);color:rgb(255 255 255 / .65)}
+.lb-btn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;flex:none;border:1px solid rgb(255 255 255 / .16);
+  background:rgb(255 255 255 / .08);color:#fff;cursor:pointer;text-decoration:none;transition:background .2s}
+.lb-btn:hover{background:rgb(255 255 255 / .2)}
+.lb-btn .ic{width:19px;height:19px}
+.lb-mid{position:relative;min-height:0}
+.lb-scroll{position:absolute;inset:0;overflow:auto;display:flex;direction:ltr;overscroll-behavior:contain;scrollbar-width:thin;touch-action:pan-x pan-y pinch-zoom}
+.lb-fig{margin:auto;display:flex;flex-direction:column;align-items:center;gap:12px;padding:8px 68px 14px}
+.lb-img{display:block;max-width:none;border-radius:14px;background:#111633;box-shadow:0 30px 80px -30px rgb(0 0 0 / .85);cursor:zoom-in;
+  transition:opacity .18s;user-select:none;-webkit-user-select:none;-webkit-user-drag:none}
+.lb-img.ld{opacity:0}
+.lb-cap{max-width:min(720px,100%);text-align:center}
+[dir=rtl] .lb-cap{direction:rtl}
+.lb-cap b{display:block;font:700 14.5px/1.5 var(--display)}
+.lb-cap small{display:block;margin-top:3px;font-size:12px;color:rgb(255 255 255 / .6)}
+.lb.zoom .lb-img{cursor:zoom-out;border-radius:0}
+.lb.zoom .lb-fig{padding:0}
+.lb.zoom .lb-cap{display:none}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgb(255 255 255 / .18);background:rgb(255 255 255 / .1);color:#fff;cursor:pointer;transition:background .2s}
+.lb-nav:hover{background:rgb(255 255 255 / .22)}
+.lb-nav .ic{width:22px;height:22px}
+.lb-nav.prev{inset-inline-start:12px}
+.lb-nav.next{inset-inline-end:12px}
+.lb.zoom .lb-nav{display:none}
+.lb-thumbs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 14px calc(12px + env(safe-area-inset-bottom,0px))}
+.lb-th{flex:none;height:62px;padding:0;border-radius:10px;overflow:hidden;border:2px solid transparent;background:#111633;opacity:.5;cursor:pointer;
+  transition:opacity .2s,border-color .2s}
+.lb-th:first-child{margin-inline-start:auto}
+.lb-th:last-child{margin-inline-end:auto}
+.lb-th:hover{opacity:.85}
+.lb-th[aria-current="true"]{opacity:1;border-color:#fff}
+.lb-th img{display:block;height:100%;width:auto}
+.lb.one .lb-nav,.lb.one .lb-thumbs{display:none}
+@media (max-width:640px){
+  .lb-fig{padding:6px 12px 12px}
+  .lb-nav{width:40px;height:40px;background:rgb(0 0 0 / .4)}
+  .lb-nav.prev{inset-inline-start:6px}
+  .lb-nav.next{inset-inline-end:6px}
+  .lb-th{height:52px}
+}
+
 .toast{position:fixed;bottom:calc(98px + env(safe-area-inset-bottom,0px));inset-inline:0;margin-inline:auto;width:max-content;max-width:90%;z-index:50;
   background:rgb(var(--ink));color:rgb(var(--bg));padding:10px 16px;border-radius:999px;font:700 14px var(--display);opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.on{opacity:1}
@@ -407,7 +471,7 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
   .js main :is(.stat,.jumps,.sec-head,.card,.shot,.tabs){opacity:1}
 }
 @media print{
-  .top,.rail,.dock,.fly,.toast{display:none!important}
+  .top,.rail,.dock,.fly,.toast,.lb,.gbtn{display:none!important}
   .tp[hidden]{display:block!important}
   .js main *{opacity:1!important;animation:none!important}
   main{padding:0}
@@ -445,6 +509,13 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
   <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></symbol>
   <symbol id="i-bldg" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></symbol>
   <symbol id="i-id" viewBox="0 0 24 24"><path d="M16 10h2"/><path d="M16 14h2"/><path d="M6.17 15a3 3 0 0 1 5.66 0"/><circle cx="9" cy="11" r="2"/><rect x="2" y="5" width="20" height="14" rx="2"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-zoomin" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></symbol>
+  <symbol id="i-zoomout" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+  <symbol id="i-images" viewBox="0 0 24 24"><path d="M18 22H4a2 2 0 0 1-2-2V6"/><path d="m22 13-1.3-1.3a2.41 2.41 0 0 0-3.4 0L11 18"/><circle cx="12" cy="8" r="2"/><rect width="16" height="16" x="6" y="2" rx="2"/></symbol>
   <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
   <symbol id="i-gh" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
@@ -593,7 +664,7 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
               <figure class="shot"><div class="frame"><img src="img/dc-form-2.jpg" alt="Site report save" loading="lazy"></div><figcaption data-i="g12">Morning and evening shifts, save and send for review</figcaption></figure>
             </div>
             <figure class="shot"><div class="wide"><img src="img/diesel-reports-desktop.jpg" alt="Reports on a computer" loading="lazy"></div><figcaption data-i="g13">The same screen on a computer: one design that adapts from a 375px phone to full width</figcaption></figure>
-            <p class="note" data-i="shotNote">Screens are from a preview build with sample data. No real company data is shown.</p>
+            <div class="grow"><p class="note" data-i="shotNote">Screens are from a preview build with sample data. No real company data is shown.</p><button class="gbtn" type="button" data-lb="flagship"><svg class="ic"><use href="#i-images"/></svg><span data-i="gOpen">Open the gallery</span><span class="cnt">13</span></button></div>
           </div>
         </div>
 
@@ -677,6 +748,7 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
         <figure class="shot"><div class="frame"><img src="img/hr-employees-phone.jpg" alt="Employees list" loading="lazy"></div><figcaption data-i="hg2">Employees: categories, search, filters, Excel and print</figcaption></figure>
         <figure class="shot"><div class="frame"><img src="img/hr-alerts-phone.jpg" alt="Alerts" loading="lazy"></div><figcaption data-i="hg3">Alerts: violation, urgent, warning. Closed by a renewal, not by reading</figcaption></figure>
       </div>
+      <div class="grow"><span></span><button class="gbtn" type="button" data-lb="hr"><svg class="ic"><use href="#i-images"/></svg><span data-i="gOpen">Open the gallery</span><span class="cnt">4</span></button></div>
     </div>
     <div class="two">
       <div class="card">
@@ -718,7 +790,7 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
         <figure class="shot"><div class="wide"><img src="img/cc-packages.jpg" alt="Tender packages list" loading="lazy"></div><figcaption data-i="cg5">Packages with their status, closing date, vendors invited and budget</figcaption></figure>
         <figure class="shot"><div class="wide"><img src="img/cc-letter.jpg" alt="Project letter" loading="lazy"></div><figcaption data-i="cg6">A numbered project letter: record, approval steps and the PDF as sent</figcaption></figure>
       </div>
-      <p class="note" data-i="ccNote">Screens are from the built-in demo with sample projects and vendors.</p>
+      <div class="grow"><p class="note" data-i="ccNote">Screens are from the built-in demo with sample projects and vendors.</p><button class="gbtn" type="button" data-lb="costcontrol"><svg class="ic"><use href="#i-images"/></svg><span data-i="gOpen">Open the gallery</span><span class="cnt">6</span></button></div>
     </div>
     <div class="two">
       <div class="card">
@@ -866,6 +938,23 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
     <button class="dk" type="button" data-theme-btn aria-label="Dark mode"><svg class="ic"><use data-theme-ic href="#i-moon"/></svg><span data-theme-lb="s">Dark</span></button>
   </div>
 </nav>
+<!-- the gallery viewer -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <div class="lb-top">
+    <div class="lb-t"><b id="lbTitle"></b><span class="ltr" id="lbCount"></span></div>
+    <button class="lb-btn" type="button" id="lbZoom" aria-label="Zoom in"><svg class="ic"><use href="#i-zoomin"/></svg></button>
+    <a class="lb-btn" id="lbOrig" href="#" target="_blank" rel="noopener" aria-label="Open the original image" data-ia="lbOrig"><svg class="ic"><use href="#i-ext"/></svg></a>
+    <button class="lb-btn" type="button" id="lbClose" aria-label="Close" data-ia="lbClose"><svg class="ic"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="lb-mid">
+    <button class="lb-nav prev" type="button" id="lbPrev" aria-label="Previous image" data-ia="lbPrev"><svg class="ic flip"><use href="#i-left"/></svg></button>
+    <div class="lb-scroll" id="lbScroll">
+      <figure class="lb-fig"><img class="lb-img" id="lbImg" alt="" draggable="false"><figcaption class="lb-cap" id="lbCapBox"><b id="lbCap"></b><small id="lbHint"></small></figcaption></figure>
+    </div>
+    <button class="lb-nav next" type="button" id="lbNext" aria-label="Next image" data-ia="lbNext"><svg class="ic flip"><use href="#i-right"/></svg></button>
+  </div>
+  <div class="lb-thumbs" id="lbThumbs"></div>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -1004,14 +1093,17 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
     prNote: 'شاشات هذه المنتجات متاحة عند الطلب؛ الأنظمة أعلاه تحمل بيانات عملاء ولا تُعرض مباشرة.',
     ctEyebrow: 'متاح لمشاريع جديدة', ctTitle: 'أنظمة تشغيل داخلية، منتجات للمؤسسين، تطبيقات عربية أولاً',
     ctP: 'إن كانت عملية في شركتك ما زالت تُدار بالجداول والدردشة، أو لديك منتج يجب أن يعمل خلال أسابيع لا شهور، راسلني.',
+    gOpen: 'افتح معرض الصور', lbOrig: 'فتح الصورة الأصلية', lbClose: 'إغلاق', lbPrev: 'الصورة السابقة', lbNext: 'الصورة التالية',
     ctCopy: 'نسخ', foot: 'كل الأرقام في هذه الصفحة من أنظمة قيد الاستخدام اليومي. الصور من نُسخ معاينة ببيانات تجريبية.'
   };
   /* what the script writes itself (the greeting, the theme button, the toasts) */
   var T = {
     en: { morning: 'Good morning', afternoon: 'Good afternoon', evening: 'Good evening', me: 'I’m Ahmed Sayed', join: ', ',
-          dark: 'Dark mode', light: 'Light mode', darkS: 'Dark', lightS: 'Light', copied: 'Email copied', sel: 'Select and copy', lang: 'عربي', langL: 'التبديل إلى العربية' },
+          dark: 'Dark mode', light: 'Light mode', darkS: 'Dark', lightS: 'Light', copied: 'Email copied', sel: 'Select and copy', lang: 'عربي', langL: 'التبديل إلى العربية',
+          lbOpen: 'Open image', lbHint: 'Click the image to zoom · ← → to browse', lbHintT: 'Tap to zoom · swipe to browse', zoomIn: 'Zoom in', zoomOut: 'Zoom out', lbGallery: 'Gallery' },
     ar: { morning: 'صباح الخير', afternoon: 'مساء الخير', evening: 'مساء الخير', me: 'أنا أحمد سيد', join: '، ',
-          dark: 'الوضع الداكن', light: 'الوضع الفاتح', darkS: 'داكن', lightS: 'فاتح', copied: 'تم نسخ الإيميل', sel: 'حدّد وانسخ', lang: 'English', langL: 'Switch to English' }
+          dark: 'الوضع الداكن', light: 'الوضع الفاتح', darkS: 'داكن', lightS: 'فاتح', copied: 'تم نسخ الإيميل', sel: 'حدّد وانسخ', lang: 'English', langL: 'Switch to English',
+          lbOpen: 'فتح الصورة', lbHint: 'اضغط على الصورة للتكبير · ← → للتنقل', lbHintT: 'اضغط للتكبير · اسحب للتنقل', zoomIn: 'تكبير', zoomOut: 'تصغير', lbGallery: 'معرض الصور' }
   };
   var EN = {}, ENA = {};
   document.querySelectorAll('[data-i]').forEach(function (el) { var k = el.getAttribute('data-i'); if (!(k in EN)) EN[k] = el.textContent; });
@@ -1095,7 +1187,8 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeFly(true); });
   addEventListener('resize', function () { closeFly(false); });
 
-  /* the language */
+  /* the language (what later parts write themselves joins onLang) */
+  var onLang = [];
   var langBtn = document.getElementById('langBtn'), langTxt = document.getElementById('langTxt');
   function apply(l) {
     lang = l; var D = l === 'ar' ? AR : EN, DA = l === 'ar' ? AR : ENA;
@@ -1105,6 +1198,7 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
     langTxt.textContent = T[l].lang; langBtn.setAttribute('aria-label', T[l].langL);
     try { localStorage.setItem('pf-lang', l); } catch (e) {}
     today(); greet(); themeUi(); closeFly(false);
+    onLang.forEach(function (f) { f(); });
   }
   apply(lang);
   langBtn.addEventListener('click', function () { apply(lang === 'ar' ? 'en' : 'ar'); });
@@ -1169,6 +1263,143 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
     });
   });
   if (tabs.length) pick(tabs[0], false);
+
+  /* the gallery: every screenshot opens large; the screenshots of its section are browsed with the arrows, a swipe or
+     the strip; a click (a tap) zooms to the full size; Escape, the close button or the phone's back button closes it */
+  (function () {
+    var $ = function (id) { return document.getElementById(id); };
+    var lb = $('lb'), sc = $('lbScroll'), im = $('lbImg'), capBox = $('lbCapBox'), cap = $('lbCap'), hint = $('lbHint'),
+        ttl = $('lbTitle'), cnt = $('lbCount'), strip = $('lbThumbs'), bZoom = $('lbZoom'), bOrig = $('lbOrig'), bClose = $('lbClose');
+    var all = [].slice.call(document.querySelectorAll('main .frame img, main .wide img')), groups = {};
+    var list = [], idx = 0, isOpen = false, zoom = false, from = null, pushed = false;
+    all.forEach(function (img) {
+      var s = img.closest('section'), g = s && s.id ? s.id : 'top';
+      (groups[g] = groups[g] || []).push(img);
+      img.setAttribute('data-g', g); img.setAttribute('role', 'button'); img.tabIndex = 0;
+      img.parentElement.classList.add('zm');
+      img.addEventListener('click', function () { openAt(img); });
+      img.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(img); } });
+    });
+    document.querySelectorAll('[data-lb]').forEach(function (b) {
+      b.addEventListener('click', function () { var g = groups[b.getAttribute('data-lb')]; if (g && g.length) openAt(g[0]); });
+    });
+    function capOf(img) { var f = img.closest('figure'), c = f && f.querySelector('figcaption'); return c ? c.textContent : img.alt; }
+    function zoomUi() {
+      var L = T[lang];
+      bZoom.setAttribute('aria-label', zoom ? L.zoomOut : L.zoomIn);
+      bZoom.querySelector('use').setAttribute('href', zoom ? '#i-zoomout' : '#i-zoomin');
+    }
+    function labels() {
+      var L = T[lang];
+      all.forEach(function (img) { img.setAttribute('aria-label', L.lbOpen + ': ' + capOf(img)); });
+      hint.textContent = window.matchMedia && matchMedia('(hover: none)').matches ? L.lbHintT : L.lbHint;
+      zoomUi();
+      if (isOpen) words();
+    }
+    /* the size: the whole image in the screen, or (zoomed) its full size — at least 1.6 and at most 3 times larger */
+    function fit() {
+      var nw = im.naturalWidth, nh = im.naturalHeight; if (!nw) return;
+      var px = innerWidth <= 640 ? 24 : 136;
+      var aw = sc.clientWidth - px, ah = sc.clientHeight - (zoom ? 0 : capBox.offsetHeight + 34);
+      var f = Math.max(0.05, Math.min(aw / nw, ah / nh, 1)), w = nw * f;
+      if (zoom) w = Math.min(Math.max(nw, w * 1.6), w * 3);
+      im.style.width = Math.round(w) + 'px'; im.style.height = Math.round(w * nh / nw) + 'px';
+    }
+    function words() {
+      var src = list[idx], sec = src.closest('section'), h2 = sec && sec.querySelector('h2');
+      cap.textContent = capOf(src);
+      ttl.textContent = h2 ? h2.textContent : T[lang].lbGallery;
+      cnt.textContent = (idx + 1) + ' / ' + list.length;
+    }
+    function show(i, smooth) {
+      idx = (i + list.length) % list.length;
+      var src = list[idx], url = src.getAttribute('src');
+      setZoom(false);
+      words();
+      bOrig.href = url; im.alt = src.alt;
+      if (im.getAttribute('src') !== url) {
+        im.classList.add('ld');
+        im.onload = function () { fit(); requestAnimationFrame(function () { im.classList.remove('ld'); }); };
+        im.src = url;
+      }
+      if (im.complete && im.naturalWidth) { fit(); im.classList.remove('ld'); }
+      [].forEach.call(strip.children, function (b, k) { if (k === idx) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
+      var t = strip.children[idx];
+      if (t && t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'center', behavior: smooth ? 'smooth' : 'auto' });
+      [idx + 1, idx - 1].forEach(function (k) { var n = list[(k + list.length) % list.length]; if (n) { var p = new Image(); p.src = n.getAttribute('src'); } });
+    }
+    function openAt(img) {
+      list = groups[img.getAttribute('data-g')] || [img]; from = img;
+      strip.innerHTML = '';
+      list.forEach(function (s, k) {
+        var b = document.createElement('button'), t = document.createElement('img');
+        b.type = 'button'; b.className = 'lb-th'; b.setAttribute('aria-label', (k + 1) + ' / ' + list.length);
+        t.src = s.getAttribute('src'); t.alt = ''; t.loading = 'lazy'; t.decoding = 'async';
+        b.appendChild(t); b.addEventListener('click', function () { show(k, true); });
+        strip.appendChild(b);
+      });
+      lb.classList.toggle('one', list.length < 2);
+      html.classList.add('lb-open'); lb.classList.add('on'); isOpen = true;
+      show(list.indexOf(img), false);
+      try { history.pushState({ pfLb: 1 }, ''); pushed = true; } catch (e) { pushed = false; }
+      bClose.focus({ preventScroll: true });
+    }
+    function hide() {
+      if (!isOpen) return;
+      isOpen = false; setZoom(false);
+      lb.classList.remove('on'); html.classList.remove('lb-open');
+      if (from) from.focus({ preventScroll: true });
+    }
+    function close() {
+      if (pushed && history.state && history.state.pfLb) { pushed = false; history.back(); } else hide();
+    }
+    addEventListener('popstate', function () { if (isOpen) { pushed = false; hide(); } });
+    function setZoom(on, x, y) {
+      if (zoom === on) return;
+      var r = im.getBoundingClientRect(), s = sc.getBoundingClientRect();
+      var rx = x == null || !r.width ? .5 : (x - r.left) / r.width, ry = y == null || !r.height ? .5 : (y - r.top) / r.height;
+      zoom = on; lb.classList.toggle('zoom', on); zoomUi(); fit();
+      if (on) {
+        var r2 = im.getBoundingClientRect(), vx = x == null ? s.width / 2 : x - s.left, vy = y == null ? s.height / 2 : y - s.top;
+        sc.scrollLeft = (r2.left - s.left + sc.scrollLeft) + rx * r2.width - vx;
+        sc.scrollTop = (r2.top - s.top + sc.scrollTop) + ry * r2.height - vy;
+      } else { sc.scrollTop = 0; sc.scrollLeft = 0; }
+    }
+    im.addEventListener('click', function (e) { e.stopPropagation(); setZoom(!zoom, e.clientX, e.clientY); });
+    sc.addEventListener('click', function (e) { if (e.target.closest('.lb-cap')) return; if (zoom) setZoom(false); else close(); });
+    bZoom.addEventListener('click', function () { setZoom(!zoom); });
+    bClose.addEventListener('click', close);
+    $('lbPrev').addEventListener('click', function () { show(idx - 1, true); });
+    $('lbNext').addEventListener('click', function () { show(idx + 1, true); });
+    document.addEventListener('keydown', function (e) {
+      if (!isOpen) return;
+      var rtl = html.getAttribute('dir') === 'rtl';
+      if (e.key === 'Escape') { e.preventDefault(); if (zoom) setZoom(false); else close(); }
+      else if (!zoom && e.key === 'ArrowRight') { e.preventDefault(); show(idx + (rtl ? -1 : 1), true); }
+      else if (!zoom && e.key === 'ArrowLeft') { e.preventDefault(); show(idx + (rtl ? 1 : -1), true); }
+      else if (!zoom && e.key === 'Home') { e.preventDefault(); show(0, true); }
+      else if (!zoom && e.key === 'End') { e.preventDefault(); show(list.length - 1, true); }
+      else if (e.key === 'Tab') {
+        var f = [].filter.call(lb.querySelectorAll('button, a[href]'), function (x) { return x.offsetParent !== null; });
+        if (!f.length) return;
+        var a = document.activeElement;
+        if (!lb.contains(a)) { e.preventDefault(); f[0].focus(); }
+        else if (e.shiftKey && a === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && a === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+      }
+    });
+    /* a swipe sideways browses, a swipe down closes; nothing while zoomed or pinch-zoomed */
+    var sx = 0, sy = 0, multi = false;
+    sc.addEventListener('touchstart', function (e) { multi = e.touches.length > 1; if (!multi) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; } }, { passive: true });
+    sc.addEventListener('touchend', function (e) {
+      if (multi || zoom || (window.visualViewport && visualViewport.scale > 1.01)) return;
+      var t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy, rtl = html.getAttribute('dir') === 'rtl';
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.3) show(idx + ((dx < 0) !== rtl ? 1 : -1), true);
+      else if (dy > 90 && dy > Math.abs(dx) * 1.5) close();
+    }, { passive: true });
+    addEventListener('resize', function () { if (isOpen) fit(); });
+    onLang.push(labels); labels();
+  })();
 
   /* the figures count up */
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
