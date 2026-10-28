@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ahmed Sayed — Products that run real companies</title>
+<meta name="description" content="Ahmed Sayed builds operations systems companies run on every day: a fleet & finance platform of eight systems, an HR system for 805 employees, cost control, IT asset control, a corporate site, and two commerce apps.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ahmed Sayed — Products that run real companies">
+<meta property="og:description" content="Operations systems in daily production use: fleet & finance (8 systems), HR for 805 employees, cost control, IT assets, corporate site and CMS, two commerce apps.">
+<meta property="og:url" content="https://ahmed-sayed.a-sayed-xc.workers.dev/">
+<meta property="og:image" content="https://ahmed-sayed.a-sayed-xc.workers.dev/img/diesel-reports-desktop.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1F50">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230B1F50'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='30' fill='%23fff' text-anchor='middle'%3EAS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one calm column (max 1040px). Phone screenshots sit in device frames on a wrapping grid; the eight
+   systems appear as a strip of their own product colours; decisions read as problem → decision → why. */
+:root{
+  --bg:#F3F5FA; --card:#FFFFFF; --fg:#0B1F50; --muted:#56618A; --line:#D7DDEC;
+  --accent:#1F4FD8; --accent-ink:#FFFFFF; --accent-soft:#E4EAFB; --brown:#7A4A1E; --brown-soft:#F3EBE2;
+  --ok:#1E8A5A; --warn:#B8690A;
+  --display:'Cairo',system-ui,sans-serif; --body:'Tajawal','Segoe UI',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --radius:16px; --shadow:0 1px 2px rgba(11,31,80,.06),0 10px 30px -18px rgba(11,31,80,.25);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0A1128; --card:#121B3A; --fg:#E9EDF8; --muted:#A5B0D0; --line:#263257;
+  --accent:#7A97FF; --accent-ink:#0A1128; --accent-soft:#1A2750; --brown:#D9AB7A; --brown-soft:#2B2118;
+  --ok:#5CCB93; --warn:#F0B35A; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.7); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0A1128; --card:#121B3A; --fg:#E9EDF8; --muted:#A5B0D0; --line:#263257;
+  --accent:#7A97FF; --accent-ink:#0A1128; --accent-soft:#1A2750; --brown:#D9AB7A; --brown-soft:#2B2118;
+  --ok:#5CCB93; --warn:#F0B35A; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.7); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 var(--body);
+  padding-block:0 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+img{max-width:100%}
+.wrap{max-width:1040px;margin-inline:auto}
+h1,h2,h3{font-family:var(--display);line-height:1.2;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,6vw,56px);font-weight:900;letter-spacing:-.01em}
+h2{font-size:clamp(24px,3.6vw,32px);font-weight:800}
+h3{font-size:18px;font-weight:700}
+p{margin:0;max-width:68ch}
+a{color:var(--accent)}
+.eyebrow{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+[dir=rtl] .eyebrow{letter-spacing:.04em}
+.muted{color:var(--muted)}
+.num{font-variant-numeric:tabular-nums;font-family:var(--mono)}
+section{padding-block:44px;border-top:1px solid var(--line)}
+section.hero{border-top:0}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px;border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-weight:800;font-size:15px;display:flex;align-items:center;gap:10px}
+.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.nav{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.nav a{font:600 13px var(--display);color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:999px}
+.nav a:hover{color:var(--fg);background:var(--accent-soft)}
+@media (max-width:720px){.nav a.hide-sm{display:none}}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 16px;font:600 14px var(--display);
+  border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer;text-decoration:none;transition:transform .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.sm{padding:7px 12px;font-size:13px}
+
+/* hero */
+.hero{display:grid;gap:22px;padding-block:48px 36px}
+.hero .lede{font-size:clamp(18px,2.4vw,22px);line-height:1.6;max-width:40ch;font-weight:500}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:8px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;min-width:0}
+.stat b{display:block;font:800 28px/1.1 var(--display);color:var(--accent);font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--muted)}
+
+.strip{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;font:600 13px var(--display);background:var(--card);border:1px solid var(--line)}
+.chip i{width:10px;height:10px;border-radius:50%;flex:none}
+
+/* case study */
+.case{display:grid;gap:28px}
+.case-head{display:grid;gap:10px}
+.tag{display:inline-flex;align-items:center;gap:8px;font:600 13px var(--display);color:var(--brown);background:var(--brown-soft);padding:5px 12px;border-radius:999px;width:max-content;max-width:100%}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;min-width:0;display:grid;gap:10px;align-content:start}
+ul.clean{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+ul.clean li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start}
+ul.clean li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:9px;justify-self:center}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.shot{display:grid;gap:8px;min-width:0;margin:0}
+.frame{border-radius:22px;border:6px solid #111633;background:#111633;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:390/844;max-width:100%}
+.frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.shot figcaption{font-size:13px;color:var(--muted);line-height:1.35}
+.wide{border-radius:14px;border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow);background:#111633;max-width:100%}
+.wide img{display:block;width:100%;height:auto}
+@media (max-width:480px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+.sys{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.sys .card{border-inline-start:4px solid var(--c,var(--accent));padding:16px 18px}
+.sys h3{font-size:16px}
+.sys p{font-size:14px;color:var(--muted)}
+
+/* decisions: problem → decision → why */
+.dec{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.dec .card{gap:8px}
+.dec .k{font:700 11px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+[dir=rtl] .dec .k{letter-spacing:.03em}
+.dec .q{font:700 15.5px var(--display);color:var(--brown)}
+.dec .d{font-size:15px}
+.dec .w{font-size:14px;color:var(--muted)}
+
+/* products */
+.prod{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+.prod .card{border-top:4px solid var(--c,var(--accent))}
+.prod .kind{font:600 12px var(--display);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+[dir=rtl] .prod .kind{letter-spacing:.02em}
+.prod p{font-size:14.5px}
+.prod ul.clean li{font-size:14px}
+.prod .state{display:inline-flex;align-items:center;gap:6px;font:600 12px var(--display);padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--fg);width:max-content}
+.prod .state.ok{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}
+.prod .state.soon{background:color-mix(in srgb,var(--warn) 15%,transparent);color:var(--warn)}
+
+/* contact */
+.contact{display:grid;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;margin-top:8px}
+.contact .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.contact code{font:500 15px var(--mono);background:var(--accent-soft);padding:8px 12px;border-radius:10px;user-select:all;word-break:break-all}
+.toast{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));inset-inline:0;margin-inline:auto;width:max-content;max-width:90%;
+  background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font:600 14px var(--display);opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+.foot{margin-top:28px;font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap" id="root">
+  <div class="top">
+    <div class="brand"><span class="dot"></span><span data-i="brand">Ahmed Sayed</span></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="#flagship" data-i="n1">Flagship</a>
+      <a href="#decisions" class="hide-sm" data-i="n2">Decisions</a>
+      <a href="#products" data-i="n3">Products</a>
+      <a href="#contact" class="hide-sm" data-i="n4">Contact</a>
+      <button class="btn sm" id="langBtn" type="button" aria-label="Switch language">عربي</button>
+    </nav>
+  </div>
+
+  <section class="hero">
+    <span class="eyebrow" data-i="eyebrow">Portfolio · 2026 · UAE &amp; Egypt</span>
+    <h1 data-i="h1">I turn messy operations into systems people trust.</h1>
+    <p class="lede" data-i="lede">Eleven products in real use: a fleet and finance platform of eight systems, an HR system for 805 employees, cost control and procurement, IT asset control, three live websites, and two commerce apps. Each one replaced spreadsheets, chat photos and guesswork with figures that have a source, a date and an owner.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://wa.me/971588487272" target="_blank" rel="noopener" data-i="ctaWa">WhatsApp</a>
+      <button class="btn" type="button" data-copy="a.sayed.xc@gmail.com" data-i="ctaMail">Copy email</button>
+      <a class="btn" href="https://github.com/ahmdsydysf" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="#flagship" data-i="ctaWork">See the work</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b class="num">11</b><span data-i="s0">products delivered</span></div>
+      <div class="stat"><b class="num">8</b><span data-i="s1">systems on one platform, one sign-in</span></div>
+      <div class="stat"><b class="num">255+</b><span data-i="s2">vehicles and machines managed</span></div>
+      <div class="stat"><b class="num">805</b><span data-i="s3">employees in the HR system</span></div>
+      <div class="stat"><b class="num">3</b><span data-i="s4">languages: Arabic · English · Urdu</span></div>
+      <div class="stat"><b class="num">60+</b><span data-i="s5">automated test suites guarding it all</span></div>
+    </div>
+  </section>
+
+  <section id="flagship">
+    <div class="sec-head">
+      <span class="eyebrow" data-i="caseEyebrow">Flagship</span>
+      <h2 data-i="caseTitle">Fleet &amp; finance platform for a contracting company</h2>
+      <p class="muted" data-i="caseSub">Ras Al Khaimah, UAE · in production since September 2026 · installed on every phone from one QR code</p>
+    </div>
+    <div class="case">
+      <div class="case-head">
+        <span class="tag" data-i="tag">Eight systems · one sign-in · one source of truth</span>
+        <p data-i="caseP1">Fleet fuel and site reporting used to travel as WhatsApp photos and Excel files. Now a driver logs a fill-up with two photos in ten seconds, a document controller files the site’s daily equipment report, the project manager and then logistics approve it with an e-signature and a stamp, and accounts issue supplier invoices straight from the timesheets.</p>
+        <p data-i="caseP2">Every figure has a source, a date and an author. Every edit is logged. Every rule the owner set is written down with its date and reason, so the system explains itself a year later. The result: numbers the owner trusts, PDF and Excel reports ready for accounts, and a monthly archive built without anyone asking.</p>
+        <div class="strip" aria-label="Systems">
+          <span class="chip"><i style="background:#1F4FD8"></i><span data-i="c1">Diesel</span></span>
+          <span class="chip"><i style="background:#0F7C7C"></i><span data-i="c2">Petrol wallet</span></span>
+          <span class="chip"><i style="background:#C74300"></i><span data-i="c3">Aber · trailers</span></span>
+          <span class="chip"><i style="background:#C8102E"></i><span data-i="c4">ADNOC diesel</span></span>
+          <span class="chip"><i style="background:#6D28D9"></i><span data-i="c5">Petty cash</span></span>
+          <span class="chip"><i style="background:#9A6A2E"></i><span data-i="c6">Supplier portal</span></span>
+          <span class="chip"><i style="background:#0E8A5F"></i><span data-i="c7">Registrations</span></span>
+          <span class="chip"><i style="background:#E8B70A"></i><span data-i="c8">Fines</span></span>
+        </div>
+      </div>
+
+      <div class="gallery" aria-label="Screens">
+        <figure class="shot"><div class="frame"><img src="img/diesel-dashboard.jpg" alt="Diesel dashboard" loading="lazy"></div><figcaption data-i="g1">Diesel dashboard: this month’s consumption and a door to every screen</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/dc-form.jpg" alt="Site daily report form" loading="lazy"></div><figcaption data-i="g2">The document controller’s daily equipment report</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/diesel-reports.jpg" alt="Diesel reports" loading="lazy"></div><figcaption data-i="g3">Diesel report: period, filters, PDF or Excel</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/diesel-stock.jpg" alt="Tank and purchases" loading="lazy"></div><figcaption data-i="g4">The tank: purchases, accounts invoices, balance</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/petrol.jpg" alt="Petrol wallet" loading="lazy"></div><figcaption data-i="g5">Petrol wallet: purchase orders covered automatically</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/aber.jpg" alt="Aber trailers" loading="lazy"></div><figcaption data-i="g6">Aber: gate deduction receipts from the camera</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/adnoc.jpg" alt="ADNOC diesel" loading="lazy"></div><figcaption data-i="g7">ADNOC diesel: each day at its own price</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/pettycash.jpg" alt="Petty cash" loading="lazy"></div><figcaption data-i="g8">Petty cash: requests and statements with e-signature</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/supplier.jpg" alt="Supplier portal" loading="lazy"></div><figcaption data-i="g9">Supplier portal: his account and tax invoice, read-only</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/mulkiya.jpg" alt="Vehicle registrations" loading="lazy"></div><figcaption data-i="g10">Registrations: coloured by days left, morning alerts</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/fines.jpg" alt="Fines" loading="lazy"></div><figcaption data-i="g11">Fines: the month’s statement for payroll</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/dc-form-2.jpg" alt="Site report save" loading="lazy"></div><figcaption data-i="g12">Morning and evening shifts, save and send for review</figcaption></figure>
+      </div>
+      <figure class="shot"><div class="wide"><img src="img/diesel-reports-desktop.jpg" alt="Reports on a computer" loading="lazy"></div><figcaption data-i="g13">The same screen on a computer: one design that adapts from a 375px phone to full width</figcaption></figure>
+      <p class="muted" style="font-size:13px" data-i="shotNote">Screens are from a preview build with sample data. No real company data is shown.</p>
+
+      <div>
+        <h3 style="margin-bottom:12px" data-i="sysH">What each system does</h3>
+        <div class="sys">
+          <div class="card" style="--c:#1F4FD8"><h3 data-i="y1t">Diesel</h3><p data-i="y1">Fill-ups with two mandatory photos, tank stock consumed oldest-first, an accounts invoice every 10,000 gallons, site reports, a timesheet per machine, day-by-day approval by the project manager and logistics, rental-supplier invoices straight from the timesheets.</p></div>
+          <div class="card" style="--c:#0F7C7C"><h3 data-i="y2t">Petrol wallet</h3><p data-i="y2">Cars and drivers with fuel tags, a price per litre that applies from the moment it changes, and every top-up a purchase order that the oldest fills cover first and that becomes ready to issue by itself.</p></div>
+          <div class="card" style="--c:#C74300"><h3 data-i="y3t">Aber · trailers</h3><p data-i="y3">The driver photographs the gate deduction receipt and records the amount; the office reviews it and lays the receipts onto purchase orders as the papers handed to accounts.</p></div>
+          <div class="card" style="--c:#C8102E"><h3 data-i="y4t">ADNOC diesel</h3><p data-i="y4">The same diesel data in a separate face for station drivers, every fill priced at its own day, a wallet in dirhams and litres.</p></div>
+          <div class="card" style="--c:#6D28D9"><h3 data-i="y5t">Petty cash</h3><p data-i="y5">Expenses in the accounts sheet’s own columns, requests with official numbering, statements with ordered codes, an independent reviewer who signs what he accepts, and a full report for any period.</p></div>
+          <div class="card" style="--c:#9A6A2E"><h3 data-i="y6t">Supplier portal</h3><p data-i="y6">A supplier’s own account that sees only what is his: deliveries, invoices, statement, and his tax invoice printed on his letterhead. Read-only, behind three independent security walls.</p></div>
+          <div class="card" style="--c:#0E8A5F"><h3 data-i="y7t">Registrations</h3><p data-i="y7">Every vehicle registration coloured by days left, renewal files with their checklist and costs, and a morning alert 20, 18, 15 days before expiry and every third day after it.</p></div>
+          <div class="card" style="--c:#E8B70A"><h3 data-i="y8t">Fines</h3><p data-i="y8">Driver and employee deductions with receipt, attachments kept for good and payment status, and the month’s or year’s statement for payroll as PDF and Excel.</p></div>
+        </div>
+      </div>
+
+      <div class="two">
+        <div class="card">
+          <h3 data-i="archH">Built to be trusted</h3>
+          <ul class="clean">
+            <li data-i="a1">Every business rule is enforced in the database, not in the screen: a wrong unit, a reading below the last one, a fill-up too soon or an edit in a closed month is refused whatever app sends it.</li>
+            <li data-i="a2">Installs on any phone from one printed QR code that never changes; works offline and sends when the signal returns.</li>
+            <li data-i="a3">Notifications in three languages by role: a new fill-up, a refusal, low stock, a report awaiting your approval, a registration about to expire.</li>
+            <li data-i="a4">An audit log of every edit and deletion, a refusals log of every attempt that was stopped, and a monthly PDF archive of every paper, built automatically.</li>
+            <li data-i="a5">Role-by-role security reviews: the whole schema loaded into a test database and every write tried as every role, so “read-only” is proven, not assumed.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 data-i="qH">Papers that accounts accept</h3>
+          <ul class="clean">
+            <li data-i="q1">Supplier tax invoices printed on each supplier’s own letterhead and layout: one row per day for one, an invoice book with dirhams and fils for another.</li>
+            <li data-i="q2">Machine timesheets laid out to hold a full month on one A4 sheet with both approval boxes, whatever the phone’s fonts do.</li>
+            <li data-i="q3">One project per page in every multi-project report, the project banner repeated on each page it runs onto, totals in the same blue on screen, on paper and in Excel.</li>
+            <li data-i="q4">Rates that show their own division, so a manager can check a figure with a calculator and find the same number.</li>
+            <li data-i="q5">Excel files whose totals are formulas with stored results, so they open correctly on a phone and recompute in Excel.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="decisions">
+    <div class="sec-head">
+      <span class="eyebrow" data-i="decEyebrow">Judgement</span>
+      <h2 data-i="decTitle">Decisions that made the difference</h2>
+      <p class="muted" data-i="decSub">Each one started as a request or a complaint. The value was in choosing the right rule, not the fastest one.</p>
+    </div>
+    <div class="dec">
+      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d1q">The owner asked to truncate every fraction a driver types.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d1d">Keep the exact figure in the data and give each account a switch for what it sees on screen; the accounting stays exact and the owner still reads whole numbers.</span><span class="w" data-i="d1w">A month total of 45,842.6 gallons must still add up for the supplier’s invoice. Cutting at entry would have made two systems disagree forever.</span></div>
+      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d2q">A refused fill-up left no trace, and the owner could not see who kept trying.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d2d">A refusal is returned as an answer and written to a log before it is shown, instead of being thrown away as an error.</span><span class="w" data-i="d2w">Fifteen refusals an hour became a list with names and times, and a push to the admin within fifteen minutes.</span></div>
+      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d3q">Approving a whole month locked days that had not happened yet, and a late report looked approved.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d3d">One approval is one machine on one day. A line added later reopens only its own day, and the month closes by itself once every day is signed.</span><span class="w" data-i="d3w">Project managers approve what they actually saw, and nothing they signed is ever changed under them.</span></div>
+      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d4q">A rent or a contract price changes, and the new price must not rewrite the months already invoiced.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d4d">Prices are a dated history: a new price applies from a chosen day, earlier days keep theirs, closed months are never touched, and the preview shows exactly what will move before anything does.</span><span class="w" data-i="d4w">The office corrects the past safely and the supplier’s already-issued invoices stay as issued unless re-issued on purpose.</span></div>
+      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d5q">A supplier wanted to see his own account inside our system.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d5d">A read-only role below every other rank, let through only a short list of named calls, with a restrictive policy on every table as a second wall and a trimmed sign-in answer as a third.</span><span class="w" data-i="d5w">If one wall ever fails, the other two still hold. He prints his own statement; we type nothing for him.</span></div>
+      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d6q">The manager needed to approve in place of a document controller or a project manager who was away.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d6d">One special button for the manager alone that completes whatever step is missing in its owner’s name, signed and logged as his own act; a closed month still refuses.</span><span class="w" data-i="d6w">Work never stops for an absence, and the audit trail says who really approved.</span></div>
+      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d7q">Photos were purged after two months, sometimes before the month’s archive had been built.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d7d">A photo is deleted only once a finished archive holds it; otherwise it waits and the office is told every morning what is being held.</span><span class="w" data-i="d7w">Storage stays small and no evidence is ever lost to a timer.</span></div>
+      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d8q">The budget workbook had to move to the web without anyone trusting the new numbers.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d8d">Build the calculation engine first and prove it equal to the original workbook with golden scenarios before drawing a single screen.</span><span class="w" data-i="d8w">The estimators saw their own numbers come out of the new tool, which is the only argument that ever convinces an estimator.</span></div>
+      <div class="card"><span class="k" data-i="kP">Problem</span><span class="q" data-i="d9q">Nobody could reach the install page or the right guide for their job.</span><span class="k" data-i="kD">Decision</span><span class="d" data-i="d9d">One printed QR code pointing at one address that never changes; the page behind it asks for the job and gives that job’s app, its install steps for that phone, and its guide in three languages.</span><span class="w" data-i="d9w">The poster on the site wall outlives every release.</span></div>
+    </div>
+  </section>
+
+  <section id="hr">
+    <div class="sec-head">
+      <span class="eyebrow" data-i="hrEyebrow">Second project</span>
+      <h2 data-i="hrTitle">An HR system for 805 employees</h2>
+      <p class="muted" data-i="hrSub">Replaces the one Excel file that used to run everything</p>
+    </div>
+    <div class="case" style="margin-bottom:22px">
+      <figure class="shot"><div class="wide"><img src="img/hr-dashboard-desktop.jpg" alt="HR dashboard on a computer" loading="lazy"></div><figcaption data-i="hg0">The dashboard: on the job, expiring within 30 days, open fines, and the next twelve months</figcaption></figure>
+      <div class="gallery">
+        <figure class="shot"><div class="frame"><img src="img/hr-dashboard-phone.jpg" alt="HR dashboard on a phone" loading="lazy"></div><figcaption data-i="hg1">The same dashboard on a phone</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/hr-employees-phone.jpg" alt="Employees list" loading="lazy"></div><figcaption data-i="hg2">Employees: categories, search, filters, Excel and print</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/hr-alerts-phone.jpg" alt="Alerts" loading="lazy"></div><figcaption data-i="hg3">Alerts: violation, urgent, warning. Closed by a renewal, not by reading</figcaption></figure>
+      </div>
+    </div>
+    <div class="two">
+      <div class="card">
+        <h3 data-i="hr1H">What it does</h3>
+        <ul class="clean">
+          <li data-i="hr1a">A record per employee and their documents: passport, residence, visit visa, ID, labour card. Every renewal is a kept version, never an overwrite.</li>
+          <li data-i="hr1b">An alert engine that runs every morning: 30, 20, 14 and 7 days before expiry, daily in the final week, then daily after expiry until renewed. Reading an alert hides it; only a renewal closes it.</li>
+          <li data-i="hr1c">Overstay violations with fines computed from the grace period, frozen at the renewal date, and a passport custody log with a numbered bilingual release form.</li>
+          <li data-i="hr1d">Imports the original Excel file without dropping a row: problems go to a review queue, and importing again changes nothing that did not change.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 data-i="hr2H">How it holds up</h3>
+        <ul class="clean">
+          <li data-i="hr2a">Four roles enforced by the database itself; the screen only hides buttons.</li>
+          <li data-i="hr2b">A full demo that runs inside the browser with the real rules and 180 sample employees, so anyone can try it before a single account exists.</li>
+          <li data-i="hr2c">One description of a table produces both the Excel file and the A4 print page, so paper and screen never disagree.</li>
+          <li data-i="hr2d">Every role walked through every screen on phone and desktop, in Arabic and English, light and dark, by an automated run before each release.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="costcontrol">
+    <div class="sec-head">
+      <span class="eyebrow" data-i="ccEyebrow">Third project</span>
+      <h2 data-i="ccTitle">Cost control: estimation, tenders and letters</h2>
+      <p class="muted" data-i="ccSub">Moves the cost-control team off the budget workbook and the procurement team off email threads</p>
+    </div>
+    <div class="case" style="margin-bottom:22px">
+      <div class="two">
+        <figure class="shot"><div class="wide"><img src="img/cc-dashboard.jpg" alt="Cost control dashboard" loading="lazy"></div><figcaption data-i="cg1">The dashboard: what needs attention across projects, tenders and vendors</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/cc-project.jpg" alt="Project bill of quantities" loading="lazy"></div><figcaption data-i="cg2">A project’s bill of quantities by section, with totals, scope and budget rate</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/cc-package.jpg" alt="Tender package" loading="lazy"></div><figcaption data-i="cg3">A tender package: items, terms, invited vendors, offers, comparison and award in one place</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/cc-approvals.jpg" alt="Award approvals" loading="lazy"></div><figcaption data-i="cg4">Award approval: the justification, the award against budget, and the comparison one click away</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/cc-packages.jpg" alt="Tender packages list" loading="lazy"></div><figcaption data-i="cg5">Packages with their status, closing date, vendors invited and budget</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/cc-letter.jpg" alt="Project letter" loading="lazy"></div><figcaption data-i="cg6">A numbered project letter: record, approval steps and the PDF as sent</figcaption></figure>
+      </div>
+      <p class="muted" style="font-size:13px" data-i="ccNote">Screens are from the built-in demo with sample projects and vendors.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <h3 data-i="cc1H">What it does</h3>
+        <ul class="clean">
+          <li data-i="cc1a">Project data, take-off per building, cost analysis by material, manpower, equipment and subcontract, priced bills of quantities, and the material and subcontract lists that feed procurement.</li>
+          <li data-i="cc1b">Tender packages built from the budget, RFQ emails, a secure vendor portal, offers from any channel, one-click comparison against budget and terms, awards and approvals.</li>
+          <li data-i="cc1c">The consultant’s contract BOQ imported and kept apart from the internal budget, so the contract value and the real cost never get confused.</li>
+          <li data-i="cc1d">Numbered project letters as PDFs on the company letterhead, written by a document controller, reviewed, signed and sent, with a register per project.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 data-i="cc2H">Why they trust it</h3>
+        <ul class="clean">
+          <li data-i="cc2a">Same numbers as the workbook: the calculation engine was proven equal to the original budget file with golden scenarios before any screen was drawn.</li>
+          <li data-i="cc2b">Vendor eligibility is a rule, not an opinion: only vendors with a valid licence and accreditation can receive an RFQ, and expiring licences are flagged on the dashboard.</li>
+          <li data-i="cc2c">Every award carries its justification and its saving against budget, and only a manager can approve it.</li>
+          <li data-i="cc2d">Lint, types, unit tests and database tests run on every change, and the deployment publishes itself only when they pass.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="websites">
+    <div class="sec-head">
+      <span class="eyebrow" data-i="wbEyebrow">Websites</span>
+      <h2 data-i="wbTitle">Live sites with their own admin panels</h2>
+      <p class="muted" data-i="wbSub">Public faces that the owners update themselves.</p>
+    </div>
+    <div class="prod">
+      <div class="card" style="--c:#0B1F50">
+        <span class="kind" data-i="w1k">Contracting · UAE</span>
+        <h3><a href="https://orioncc.com" target="_blank" rel="noopener">orioncc.com</a></h3>
+        <span class="state ok" data-i="w1s">Live</span>
+        <p data-i="w1p">Orion Contracting’s public site: projects with galleries and key points, sectors, clients, certificates, news and events, contact submissions, and every homepage block editable from the panel.</p>
+      </div>
+      <div class="card" style="--c:#1D4ED8">
+        <span class="kind" data-i="w2k">Training · consulting</span>
+        <h3><a href="https://btsconsultant.com/" target="_blank" rel="noopener">btsconsultant.com</a></h3>
+        <div class="wide"><img src="img/bts-home.webp" alt="BTS Training & Consultancy homepage" loading="lazy"></div>
+        <div class="wide"><img src="img/bts-services.webp" alt="BTS course search and services" loading="lazy"></div>
+        <span class="state ok" data-i="w2s">Live</span>
+        <p data-i="w2p">A training institute’s site and back office: course catalogue by category, rounds by venue and date, trainers and speakers, online applications, offers, partners, a download centre, careers and a newsletter.</p>
+      </div>
+      <div class="card" style="--c:#B45309">
+        <span class="kind" data-i="w3k">Products · Egypt</span>
+        <h3><a href="https://www.varex.com.eg/" target="_blank" rel="noopener">varex.com.eg</a></h3>
+        <div class="wide"><img src="img/varex-home.webp" alt="Varex homepage" loading="lazy"></div>
+        <div class="wide"><img src="img/varex-products.webp" alt="Varex products catalogue" loading="lazy"></div>
+        <span class="state ok" data-i="w3s">Live</span>
+        <p data-i="w3p">A manufacturer’s site: product catalogue by category, certificates, media and blog, FAQs, distributor requests and contact forms, all managed from its own panel.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="sec-head">
+      <span class="eyebrow" data-i="prEyebrow">More products</span>
+      <h2 data-i="prTitle">Operations, web and mobile</h2>
+      <p class="muted" data-i="prSub">Each built for a real owner with a real deadline.</p>
+    </div>
+    <div class="prod">
+      <div class="card" style="--c:#2F6F4E">
+        <span class="kind" data-i="p2k">IT · assets · web</span>
+        <h3 data-i="p2t">IT Asset Control System</h3>
+        <span class="state ok" data-i="p2s">In production</span>
+        <p data-i="p2p">Every device, SIM card, router, printer and internet line the company owns: who holds it, on which project, since when. Handover and clearance forms signed on screen and printed as PDF.</p>
+        <ul class="clean">
+          <li data-i="p2a">A QR code on each device opens its record; a fixed company QR for new joiners.</li>
+          <li data-i="p2b">Asset requests with approval, transfers between projects, monthly SIM reports, deductions for lost items, employee evaluations.</li>
+          <li data-i="p2c">Employees imported from Excel; clients’ and consultants’ staff tracked beside the company’s own.</li>
+        </ul>
+      </div>
+      <div class="card" style="--c:#F2B705">
+        <span class="kind" data-i="p4k">Mobile · commerce · single vendor</span>
+        <h3 data-i="p4t">Phonatna (Phonex)</h3>
+        <span class="state soon" data-i="p4s">Ready for the stores</span>
+        <p data-i="p4p">A shop app for phones and accessories: the owner and admins add products, customers browse, search, order and pay with Egyptian wallets. Light and dark, Arabic and English, push notifications.</p>
+        <ul class="clean">
+          <li data-i="p4a">Three admin tiers with the owner hidden from everyone below; receipts kept in private storage.</li>
+          <li data-i="p4b">Forty-two ordered database releases: rate limits, order integrity, stock hardening, honest view counters, an audit and recovery path.</li>
+          <li data-i="p4c">Account deletion inside the app and legal pages ready, as the stores require.</li>
+        </ul>
+      </div>
+      <div class="card" style="--c:#C2410C">
+        <span class="kind" data-i="p5k">Mobile · marketplace · multi vendor</span>
+        <h3 data-i="p5t">Hanwafar</h3>
+        <span class="state" data-i="p5s">Built · in review</span>
+        <p data-i="p5p">A multi-vendor marketplace: sellers open stores under a contract, admins approve, pause and manage them, customers shop across stores, rate products and track orders. Phonatna grew out of its lessons.</p>
+        <ul class="clean">
+          <li data-i="p5a">Seller, admin and customer faces in one app, each seeing only what is theirs.</li>
+          <li data-i="p5b">Store contracts, category management, product visibility controls and notifications to sellers on every admin action.</li>
+        </ul>
+      </div>
+      <div class="card" style="--c:#7C3AED">
+        <span class="kind" data-i="p6k">Project management · web</span>
+        <h3 data-i="p6t">Issue Tracker</h3>
+        <span class="state ok" data-i="p6s">In use</span>
+        <p data-i="p6p">Issues, labels, comments and history per project, meetings with their minutes, a portfolio view across projects, and notifications, with roles for company admin, construction manager, general manager and project manager.</p>
+      </div>
+      <div class="card" style="--c:#475569">
+        <span class="kind" data-i="p7k">Documents · web</span>
+        <h3 data-i="p7t">Document store</h3>
+        <span class="state ok" data-i="p7s">In use</span>
+        <p data-i="p7p">Projects, folders and files for the company’s drawings and documents, with users and permissions, replacing shared drives nobody could search.</p>
+      </div>
+    </div>
+    <p class="muted" style="font-size:13px;margin-top:14px" data-i="prNote">Screens of these products are available on request; the systems above hold client data and are not shown live.</p>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <span class="eyebrow" data-i="ctEyebrow">Available for new projects</span>
+      <h2 data-i="ctTitle">Internal operations systems, founder products, Arabic-first apps</h2>
+      <p class="muted" data-i="ctP">If a process in your company still runs on spreadsheets and chat, or you have a product that needs to be working in weeks rather than months, write to me.</p>
+      <div class="row">
+        <a class="btn sm primary" href="https://wa.me/971588487272" target="_blank" rel="noopener"><span data-i="waUae">WhatsApp UAE</span> · <span class="num">+971 58 848 7272</span></a>
+        <a class="btn sm primary" href="https://wa.me/201005323668" target="_blank" rel="noopener"><span data-i="waEg">WhatsApp Egypt</span> · <span class="num">+20 100 532 3668</span></a>
+      </div>
+      <div class="row">
+        <code id="mail">a.sayed.xc@gmail.com</code>
+        <button class="btn sm" type="button" data-copy="a.sayed.xc@gmail.com" data-i="ctCopy">Copy</button>
+        <a class="btn sm" href="https://github.com/ahmdsydysf" target="_blank" rel="noopener">github.com/ahmdsydysf</a>
+      </div>
+    </div>
+    <p class="foot" data-i="foot">All figures on this page come from systems in daily use. Screens are from preview builds with sample data.</p>
+  </section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  var AR = {
+    brand: 'أحمد سيد', n1: 'المشروع الرئيسي', n2: 'القرارات', n3: 'المنتجات', n4: 'تواصل',
+    eyebrow: 'بورتفوليو · 2026 · الإمارات ومصر',
+    h1: 'أحوّل العمليات المتشابكة إلى أنظمة يثق بها الناس.',
+    lede: 'أحد عشر منتجاً قيد الاستخدام الفعلي: منصّة أسطول ومالية من ثمانية أنظمة، نظام موارد بشرية لـ 805 موظفين، تحكّم في التكاليف والمشتريات، تحكّم في أصول تقنية المعلومات، ثلاثة مواقع تعمل، وتطبيقا تجارة. كلٌّ منها استبدل الجداول وصور الدردشة والتخمين بأرقام لها مصدر وتاريخ وصاحب.',
+    ctaMail: 'انسخ الإيميل', ctaWork: 'شاهد الشغل', ctaWa: 'واتساب', waUae: 'واتساب الإمارات', waEg: 'واتساب مصر',
+    s0: 'منتجات مُسلَّمة', s1: 'أنظمة على منصّة واحدة بحساب دخول واحد', s2: 'مركبة ومعدة تحت الإدارة', s3: 'موظف في نظام الموارد البشرية',
+    s4: 'لغات: عربي · إنجليزي · أردو', s5: 'حزمة اختبار آلي تحرس كل ذلك',
+    caseEyebrow: 'المشروع الرئيسي', caseTitle: 'منصّة إدارة الأسطول والمالية لشركة مقاولات',
+    caseSub: 'رأس الخيمة، الإمارات · في الإنتاج منذ سبتمبر 2026 · تُثبَّت على كل جوال من رمز QR واحد',
+    tag: 'ثمانية أنظمة · حساب واحد · مصدر واحد للحقيقة',
+    caseP1: 'كان وقود الأسطول وتقارير المواقع تسافر كصور واتساب وملفات إكسل. الآن يسجّل السائق تعبئته بصورتين في عشر ثوانٍ، ويرفع مراقب المستندات تقرير معدات الموقع اليومي، ويعتمده مدير المشروع ثم اللوجستيك بتوقيع إلكتروني وختم، وتُصدر المحاسبة فواتير الموردين من التايم شيت مباشرة.',
+    caseP2: 'كل رقم له مصدر وتاريخ وكاتب. كل تعديل مسجَّل. كل قاعدة وضعها المالك مكتوبة بتاريخها وسببها، فيشرح النظام نفسه بعد عام. النتيجة: أرقام يثق بها المالك، وتقارير PDF وExcel جاهزة للحسابات، وأرشيف شهري يُبنى دون أن يطلبه أحد.',
+    c1: 'الديزل', c2: 'محفظة البترول', c3: 'عابر · التريلات', c4: 'أدنوك ديزل', c5: 'العهدة النقدية', c6: 'بوابة المورّد', c7: 'الملكيات', c8: 'الخصومات',
+    g1: 'لوحة الديزل: استهلاك الشهر وباب لكل شاشة', g2: 'تقرير المعدات اليومي لمراقب المستندات', g3: 'تقرير الديزل: فترة، فلاتر، PDF أو Excel',
+    g4: 'الخزان: المشتريات، فواتير الحسابات، الرصيد', g5: 'محفظة البترول: أوامر الشراء تتغطّى تلقائياً', g6: 'عابر: إيصالات خصم البوابات بالكاميرا',
+    g7: 'أدنوك ديزل: كل يوم بسعره', g8: 'العهدة النقدية: طلبات ومستخلصات بتوقيع إلكتروني', g9: 'بوابة المورّد: حسابه وفاتورته الضريبية، قراءة فقط',
+    g10: 'الملكيات: ألوان بالأيام المتبقية وتنبيهات صباحية', g11: 'الخصومات: كشف الشهر للرواتب', g12: 'الوردية الصباحية والمسائية، حفظ وإرسال للمراجعة',
+    g13: 'الشاشة نفسها على الكمبيوتر: تصميم واحد يتكيّف من جوال 375px إلى الشاشة الكاملة',
+    shotNote: 'الصور من نسخة معاينة ببيانات تجريبية. لا تظهر أي بيانات حقيقية للشركة.',
+    sysH: 'ماذا يفعل كل نظام',
+    y1t: 'الديزل', y1: 'تعبئة بصورتين إلزاميتين، مخزون خزان يُستهلك الأقدم أولاً، فاتورة للحسابات كل 10,000 جالون، تقارير المواقع، تايم شيت لكل معدة، اعتماد يومي من مدير المشروع واللوجستيك، وفواتير موردي التأجير من التايم شيت مباشرة.',
+    y2t: 'محفظة البترول', y2: 'سيارات وسائقون ببطاقات وقود، سعر لتر يسري من لحظة تغيّره، وكل شحنة أمر شراء تغطّيه التعبئات الأقدم أولاً ويصبح جاهزاً للإصدار وحده.',
+    y3t: 'عابر · التريلات', y3: 'السائق يصوّر إيصال خصم البوابة ويسجّل المبلغ؛ المكتب يراجع ويرصّ الإيصالات على أوامر الشراء كأوراق تُسلَّم للحسابات.',
+    y4t: 'أدنوك ديزل', y4: 'بيانات الديزل نفسها بواجهة منفصلة لسائقي المحطات، كل تعبئة بسعر يومها، ومحفظة بالدرهم واللتر.',
+    y5t: 'العهدة النقدية', y5: 'مصروفات بأعمدة كشف الحسابات نفسها، طلبات بترقيم رسمي، مستخلصات بكود مرتّب، مراجع مستقل يوقّع ما يقبله، وتقرير شامل لأي فترة.',
+    y6t: 'بوابة المورّد', y6: 'حساب للمورّد يرى ما يخصّه فقط: توريداته وفواتيره وكشف حسابه وفاتورته الضريبية على ورقه الرسمي. قراءة فقط، خلف ثلاثة جدران أمان مستقلة.',
+    y7t: 'الملكيات', y7: 'كل ملكية ملوّنة بالأيام المتبقية، ملفات التجديد وقائمة مهامه وتكاليفه، وتنبيه صباحي قبل الانتهاء بـ 20 و18 و15 يوماً وكل ثلاثة أيام بعده.',
+    y8t: 'الخصومات', y8: 'خصومات السائقين والموظفين بإيصالها ومرفقاتها المحفوظة للأبد وحالة سدادها، وكشف الشهر أو السنة للرواتب PDF وExcel.',
+    archH: 'مبني ليُوثَق به',
+    a1: 'كل قاعدة عمل تُفرض في قاعدة البيانات لا في الشاشة: وحدة خاطئة، قراءة أقل من السابقة، تعبئة مبكرة، أو تعديل في شهر مُغلق يُرفض أياً كان التطبيق الذي أرسله.',
+    a2: 'يُثبَّت على أي جوال من رمز QR مطبوع لا يتغيّر أبداً؛ يعمل أوفلاين ويرسل حين تعود الشبكة.',
+    a3: 'إشعارات بثلاث لغات حسب الدور: تعبئة جديدة، رفض، مخزون منخفض، تقرير بانتظار اعتمادك، ملكية توشك أن تنتهي.',
+    a4: 'سجل تدقيق لكل تعديل وحذف، سجل رفض لكل محاولة أُوقفت، وأرشيف PDF شهري لكل ورقة يُبنى تلقائياً.',
+    a5: 'مراجعات أمان دوراً بدور: المخطط كاملاً يُحمَّل في قاعدة اختبار وتُجرَّب كل كتابة بكل دور، فـ«قراءة فقط» مُثبَتة لا مفترَضة.',
+    qH: 'أوراق تقبلها المحاسبة',
+    q1: 'فواتير ضريبية للموردين على ورق كل مورّد وبتخطيطه: صف لكل يوم عند أحدهم، ودفتر فواتير بالدرهم والفلس عند آخر.',
+    q2: 'تايم شيت المعدة مصمَّم ليحمل شهراً كاملاً على ورقة A4 واحدة بخانتَي الاعتماد، مهما فعلت خطوط الجوال.',
+    q3: 'مشروع واحد لكل صفحة في كل تقرير متعدد المشاريع، وشعار المشروع يتكرر على كل صفحة يمتد إليها، والإجماليات بالأزرق نفسه على الشاشة والورق وExcel.',
+    q4: 'معدلات تُظهر قسمتها، فيراجع المدير الرقم بآلة حاسبة ويجد الناتج نفسه.',
+    q5: 'ملفات Excel إجمالياتها معادلات بنتائج مخزَّنة، تُفتح صحيحة على الجوال وتُعاد حسابها في Excel.',
+    decEyebrow: 'الحُكم', decTitle: 'قرارات صنعت الفرق', decSub: 'كلٌّ منها بدأ بطلب أو شكوى. القيمة كانت في اختيار القاعدة الصحيحة لا الأسرع.',
+    kP: 'المشكلة', kD: 'القرار',
+    d1q: 'طلب المالك قطع كل كسر عشري يكتبه السائق.', d1d: 'الاحتفاظ بالرقم الدقيق في البيانات ومنح كل حساب مفتاحاً لما يراه على الشاشة؛ المحاسبة تبقى دقيقة والمالك يقرأ أرقاماً صحيحة.', d1w: 'إجمالي شهر 45,842.6 جالون يجب أن يطابق فاتورة المورّد. القطع عند الإدخال كان سيجعل نظامين يختلفان للأبد.',
+    d2q: 'تعبئة مرفوضة لا تترك أثراً، والمالك لا يرى من يكرر المحاولة.', d2d: 'الرفض يُعاد كإجابة ويُكتب في سجل قبل أن يُعرض، بدل أن يُرمى كخطأ.', d2w: 'خمسة عشر رفضاً في الساعة صارت قائمة بأسماء وأوقات، وإشعاراً للمسؤول خلال ربع ساعة.',
+    d3q: 'اعتماد شهر كامل يقفل أياماً لم تحدث بعد، وتقرير متأخر يبدو معتمَداً.', d3d: 'الاعتماد الواحد معدة واحدة في يوم واحد. سطر يُضاف لاحقاً يعيد فتح يومه فقط، والشهر يُغلق وحده حين يُوقَّع كل يوم.', d3w: 'مديرو المشاريع يعتمدون ما رأوه فعلاً، ولا يتغيّر شيء وقّعوه من تحتهم.',
+    d4q: 'يتغيّر إيجار أو سعر عقد، ويجب ألا يُعيد السعر الجديد كتابة أشهر فُوترت.', d4d: 'الأسعار تاريخ مؤرَّخ: السعر الجديد يسري من يوم يُختار، الأيام السابقة تحتفظ بسعرها، الأشهر المغلقة لا تُمسّ، والمعاينة تُظهر ما سيتحرك قبل أن يتحرك شيء.', d4w: 'المكتب يصحّح الماضي بأمان، وفواتير المورّد الصادرة تبقى كما صدرت إلا إن أُعيد إصدارها عمداً.',
+    d5q: 'أراد مورّد أن يرى حسابه داخل نظامنا.', d5d: 'دور للقراءة فقط تحت كل الرتب، لا يمرّ إلا بقائمة قصيرة من الاستدعاءات المسمّاة، مع سياسة مقيِّدة على كل جدول كجدار ثانٍ وإجابة دخول مختصرة كجدار ثالث.', d5w: 'إن سقط جدار يصمد الآخران. يطبع كشفه بنفسه ولا نكتب له شيئاً.',
+    d6q: 'احتاج المدير أن يعتمد بدلاً من مراقب مستندات أو مدير مشروع غائب.', d6d: 'زر خاص للمدير وحده يُكمل أي خطوة ناقصة باسم صاحبها، موقَّعاً ومسجَّلاً كفعله هو؛ والشهر المغلق يظل يرفض.', d6w: 'العمل لا يتوقف لغياب، وسجل التدقيق يقول من اعتمد فعلاً.',
+    d7q: 'كانت الصور تُحذف بعد شهرين، أحياناً قبل أن يُبنى أرشيف الشهر.', d7d: 'لا تُحذف صورة إلا بعد أن يحملها أرشيف مكتمل؛ وإلا تنتظر ويُبلَّغ المكتب كل صباح بما يُحتجز.', d7w: 'التخزين يبقى صغيراً ولا يضيع دليل لعدّاد وقت.',
+    d8q: 'كان على دفتر الميزانية أن ينتقل إلى الويب دون أن يثق أحد بالأرقام الجديدة.', d8d: 'بناء محرّك الحساب أولاً وإثبات مساواته للدفتر الأصلي بسيناريوهات ذهبية قبل رسم شاشة واحدة.', d8w: 'رأى المقدّرون أرقامهم تخرج من الأداة الجديدة، وهذه الحجة الوحيدة التي تقنع مقدّراً.',
+    d9q: 'لم يكن أحد يصل إلى صفحة التثبيت أو الدليل المناسب لوظيفته.', d9d: 'رمز QR مطبوع واحد يشير إلى عنوان واحد لا يتغيّر؛ الصفحة خلفه تسأل عن الوظيفة وتعطي تطبيقها وخطوات تثبيته لهذا الجوال ودليلها بثلاث لغات.', d9w: 'ملصق الموقع يعيش بعد كل إصدار.',
+    hrEyebrow: 'المشروع الثاني', hrTitle: 'نظام موارد بشرية لـ 805 موظفين', hrSub: 'يحلّ محل ملف الإكسل الواحد الذي كان يُدار منه كل شيء',
+    hg0: 'اللوحة: على رأس العمل، ما ينتهي خلال 30 يوماً، الغرامات المفتوحة، والأشهر الاثنا عشر القادمة',
+    hg1: 'اللوحة نفسها على الهاتف', hg2: 'الموظفون: فئات، بحث، فلاتر، Excel وطباعة', hg3: 'التنبيهات: مخالفة، عاجل، تحذير. تُغلق بالتجديد لا بالقراءة',
+    hr1H: 'ماذا يفعل',
+    hr1a: 'سجل لكل موظف ووثائقه: جواز، إقامة، تأشيرة زيارة، هوية، بطاقة عمل. كل تجديد نسخة محفوظة لا تُستبدل.',
+    hr1b: 'محرّك تنبيهات يعمل كل صباح: قبل الانتهاء بـ 30 و20 و14 و7 أيام، يومياً في الأسبوع الأخير، ثم يومياً بعد الانتهاء حتى التجديد. قراءة التنبيه تخفيه؛ التجديد وحده يغلقه.',
+    hr1c: 'مخالفات الإقامة بغرامات تُحسب من فترة السماح وتُجمَّد عند تاريخ التجديد، وسجل عهدة جوازات بنموذج تسليم مرقّم بلغتين.',
+    hr1d: 'يستورد ملف الإكسل الأصلي دون إسقاط صف: المشكلات تذهب إلى قائمة مراجعة، وإعادة الاستيراد لا تغيّر ما لم يتغيّر.',
+    hr2H: 'كيف يصمد',
+    hr2a: 'أربعة أدوار تفرضها قاعدة البيانات نفسها؛ الشاشة تخفي الأزرار فقط.',
+    hr2b: 'نسخة تجريبية كاملة تعمل داخل المتصفح بالقواعد الحقيقية و180 موظفاً تجريبياً، فيجرّبها أي أحد قبل وجود حساب واحد.',
+    hr2c: 'وصف واحد للجدول يُنتج ملف Excel وصفحة A4 معاً، فلا يختلف الورق عن الشاشة أبداً.',
+    hr2d: 'كل دور يمرّ على كل شاشة على الهاتف والكمبيوتر، بالعربية والإنجليزية، فاتح وداكن، بتشغيل آلي قبل كل إصدار.',
+    ccEyebrow: 'المشروع الثالث', ccTitle: 'التحكم في التكاليف: التقدير والمناقصات والخطابات', ccSub: 'ينقل فريق التحكم في التكاليف من دفتر الميزانية، وفريق المشتريات من سلاسل البريد',
+    cg1: 'اللوحة: ما يحتاج انتباهاً عبر المشاريع والمناقصات والموردين', cg2: 'جدول كميات مشروع بأقسامه، بالإجماليات والنطاق وسعر الميزانية',
+    cg3: 'حزمة مناقصة: البنود والشروط والموردون المدعوون والعروض والمقارنة والترسية في مكان واحد', cg4: 'اعتماد الترسية: المبرر، والترسية مقابل الميزانية، والمقارنة بضغطة',
+    cg5: 'الحزم بحالتها وموعد إغلاقها والموردين المدعوين والميزانية', cg6: 'خطاب مشروع مرقّم: السجل وخطوات الاعتماد والـ PDF كما أُرسل',
+    ccNote: 'الشاشات من النسخة التجريبية المدمجة بمشاريع وموردين تجريبيين.',
+    cc1H: 'ماذا يفعل',
+    cc1a: 'بيانات المشروع، حصر لكل مبنى، تحليل تكلفة بالمواد والعمالة والمعدات ومقاولي الباطن، جداول كميات مسعّرة، وقوائم المواد والباطن التي تغذّي المشتريات.',
+    cc1b: 'حزم مناقصات من الميزانية، رسائل طلب عروض، بوابة موردين آمنة، عروض من أي قناة، مقارنة بضغطة مقابل الميزانية والشروط، ترسية واعتمادات.',
+    cc1c: 'جدول كميات الاستشاري مستورَد ومحفوظ منفصلاً عن الميزانية الداخلية، فلا تختلط قيمة العقد بالتكلفة الحقيقية أبداً.',
+    cc1d: 'خطابات مشاريع مرقّمة كـ PDF على ورق الشركة، يكتبها مراقب مستندات وتُراجع وتُوقَّع وتُرسل، بسجل لكل مشروع.',
+    cc2H: 'لماذا يثقون به',
+    cc2a: 'الأرقام نفسها كالدفتر: أُثبتت مساواة محرّك الحساب لملف الميزانية الأصلي بسيناريوهات ذهبية قبل رسم أي شاشة.',
+    cc2b: 'أهلية المورّد قاعدة لا رأي: لا يتلقى طلب عروض إلا مورّد برخصة واعتماد ساريين، والرخص التي توشك أن تنتهي تظهر على اللوحة.',
+    cc2c: 'كل ترسية تحمل مبررها ووفرها مقابل الميزانية، ولا يعتمدها إلا مدير.',
+    cc2d: 'الفحص والأنواع واختبارات الوحدات وقاعدة البيانات تعمل مع كل تغيير، والنشر لا يتم إلا بعد نجاحها.',
+    wbEyebrow: 'مواقع', wbTitle: 'مواقع تعمل بلوحات إدارتها', wbSub: 'واجهات عامة يحدّثها أصحابها بأنفسهم.',
+    w1k: 'مقاولات · الإمارات', w1s: 'يعمل', w1p: 'موقع أوريون للمقاولات: مشاريع بمعارض ونقاط رئيسية، قطاعات، عملاء، شهادات، أخبار وفعاليات، رسائل التواصل، وكل مكوّن في الصفحة الرئيسية قابل للتعديل من اللوحة.',
+    w2k: 'تدريب · استشارات', w2s: 'يعمل', w2p: 'موقع معهد تدريب ومكتبه الخلفي: دليل دورات بالفئات، دفعات بالمكان والتاريخ، مدرّبون ومتحدثون، تقديم إلكتروني، عروض، شركاء، مركز تحميل، وظائف ونشرة بريدية.',
+    w3k: 'منتجات · مصر', w3s: 'يعمل', w3p: 'موقع شركة تصنيع: دليل منتجات بالفئات، شهادات، وسائط ومدونة، أسئلة شائعة، طلبات توزيع ونماذج تواصل، كلها تُدار من لوحتها.',
+    prEyebrow: 'منتجات أخرى', prTitle: 'عمليات وويب وجوال', prSub: 'كلٌّ بُني لمالك حقيقي وموعد حقيقي.',
+    p1k: 'تقدير · مشتريات · ويب', p1t: 'أوريون للتحكم في التكاليف', p1s: 'في الإنتاج',
+    p1p: 'ينقل فريق التحكم في التكاليف من دفتر الميزانية: بيانات المشروع، حصر لكل مبنى، تحليل تكلفة بالمواد والعمالة والمعدات والمقاولين من الباطن، جداول كميات مسعّرة، وقوائم المواد والباطن التي تغذّي المشتريات.',
+    p1a: 'الأرقام نفسها كالدفتر، مُثبَتة بسيناريوهات اختبار ذهبية قبل بناء أي شاشة.',
+    p1b: 'حزم مناقصات، رسائل طلب عروض، بوابة موردين آمنة، مقارنة عروض مقابل الميزانية، ترسية واعتمادات.',
+    p1c: 'جدول كميات الاستشاري مستورَد ومحفوظ منفصلاً عن الميزانية الداخلية؛ خطابات مشاريع مرقّمة كـ PDF من دور مراقب مستندات.',
+    p2k: 'تقنية معلومات · أصول · ويب', p2t: 'نظام التحكم في أصول تقنية المعلومات', p2s: 'في الإنتاج',
+    p2p: 'كل جهاز وشريحة وراوتر وطابعة وخط إنترنت تملكه الشركة: من يحمله، على أي مشروع، منذ متى. نماذج تسليم وإخلاء طرف تُوقَّع على الشاشة وتُطبع PDF.',
+    p2a: 'رمز QR على كل جهاز يفتح سجله؛ ورمز ثابت للشركة للملتحقين الجدد.',
+    p2b: 'طلبات أصول باعتماد، نقل بين المشاريع، تقارير شرائح شهرية، خصومات للمفقودات، تقييمات موظفين.',
+    p2c: 'الموظفون مستورَدون من إكسل؛ موظفو العملاء والاستشاريين يُتابَعون بجانب موظفي الشركة.',
+    p3k: 'موقع شركة · إدارة محتوى', p3t: 'موقع أوريون للمقاولات', p3s: 'يعمل',
+    p3p: 'الواجهة العامة للشركة ولوحة الإدارة خلفها: مشاريع بمعارض ونقاط رئيسية، قطاعات، عملاء، شهادات، أخبار وفعاليات، رسائل التواصل، وكل مكوّن في الصفحة الرئيسية قابل للتعديل دون مطوّر.',
+    p3a: 'الغلاف والفيديو التعريفي وشريط الدعوة وقسم «عن الشركة» والشعار تُغيَّر من اللوحة.',
+    p3b: 'جولة تقوية أمنية بقائمة مكتوبة، خريطة موقع، ورمز QR للموقع.',
+    p4k: 'جوال · تجارة · بائع واحد', p4t: 'فوناتنا (Phonex)', p4s: 'جاهز للمتاجر',
+    p4p: 'تطبيق متجر للهواتف والإكسسوارات: المالك والمشرفون يضيفون المنتجات، والعملاء يتصفحون ويبحثون ويطلبون ويدفعون بالمحافظ المصرية. فاتح وداكن، عربي وإنجليزي، إشعارات فورية.',
+    p4a: 'ثلاث درجات إدارية والمالك مخفي عمّن دونه؛ الإيصالات في تخزين خاص.',
+    p4b: 'اثنان وأربعون إصداراً مرتّباً لقاعدة البيانات: حدود معدل، سلامة الطلبات، تقوية المخزون، عدّادات مشاهدة صادقة، ومسار تدقيق واسترداد.',
+    p4c: 'حذف الحساب من داخل التطبيق والصفحات القانونية جاهزة كما تشترط المتاجر.',
+    p5k: 'جوال · سوق · متعدد البائعين', p5t: 'هنوفر', p5s: 'مبني · قيد المراجعة',
+    p5p: 'سوق متعدد البائعين: البائعون يفتحون متاجر بعقد، المشرفون يعتمدونها ويوقفونها ويديرونها، والعملاء يتسوّقون عبر المتاجر ويقيّمون المنتجات ويتابعون الطلبات. خرج فوناتنا من دروسه.',
+    p5a: 'واجهات البائع والمشرف والعميل في تطبيق واحد، كلٌّ يرى ما يخصّه فقط.',
+    p5b: 'عقود المتاجر، إدارة الأقسام، التحكم في ظهور المنتجات، وإشعارات للبائعين عند كل إجراء إداري.',
+    p6k: 'إدارة مشاريع · ويب', p6t: 'متتبع المشكلات', p6s: 'قيد الاستخدام',
+    p6p: 'مشكلات ووسوم وتعليقات وتاريخ لكل مشروع، اجتماعات بمحاضرها، عرض محفظة عبر المشاريع، وإشعارات، بأدوار لمدير الشركة ومدير الإنشاءات والمدير العام ومدير المشروع.',
+    p7k: 'مستندات · ويب', p7t: 'مخزن المستندات', p7s: 'قيد الاستخدام',
+    p7p: 'مشاريع ومجلدات وملفات لرسومات الشركة ومستنداتها، بمستخدمين وصلاحيات، بدلاً من أقراص مشتركة لا يبحث فيها أحد.',
+    prNote: 'شاشات هذه المنتجات متاحة عند الطلب؛ الأنظمة أعلاه تحمل بيانات عملاء ولا تُعرض مباشرة.',
+    ctEyebrow: 'متاح لمشاريع جديدة', ctTitle: 'أنظمة تشغيل داخلية، منتجات للمؤسسين، تطبيقات عربية أولاً',
+    ctP: 'إن كانت عملية في شركتك ما زالت تُدار بالجداول والدردشة، أو لديك منتج يجب أن يعمل خلال أسابيع لا شهور، راسلني.',
+    ctCopy: 'نسخ', foot: 'كل الأرقام في هذه الصفحة من أنظمة قيد الاستخدام اليومي. الصور من نُسخ معاينة ببيانات تجريبية.'
+  };
+  var EN = {};
+  var root = document.getElementById('root'), btn = document.getElementById('langBtn'), toast = document.getElementById('toast');
+  document.querySelectorAll('[data-i]').forEach(function (el) { var k = el.getAttribute('data-i'); if (!(k in EN)) EN[k] = el.textContent; });
+  var lang = 'en';
+  try { lang = localStorage.getItem('pf-lang') === 'ar' ? 'ar' : 'en'; } catch (e) {}
+  function apply(l) {
+    lang = l; var D = l === 'ar' ? AR : EN;
+    document.querySelectorAll('[data-i]').forEach(function (el) { var k = el.getAttribute('data-i'); if (D[k]) el.textContent = D[k]; });
+    document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr'); document.documentElement.setAttribute('lang', l);
+    btn.textContent = l === 'ar' ? 'English' : 'عربي';
+    try { localStorage.setItem('pf-lang', l); } catch (e) {}
+  }
+  if (lang === 'ar') apply('ar');
+  btn.addEventListener('click', function () { apply(lang === 'ar' ? 'en' : 'ar'); });
+  var t;
+  function say(m) { toast.textContent = m; toast.classList.add('on'); clearTimeout(t); t = setTimeout(function () { toast.classList.remove('on'); }, 1800); }
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.getAttribute('data-copy');
+      var done = function () { say(lang === 'ar' ? 'تم النسخ' : 'Copied'); };
+      var fail = function () { var c = document.getElementById('mail'); var r = document.createRange(); r.selectNodeContents(c); var s = getSelection(); s.removeAllRanges(); s.addRange(r); say(lang === 'ar' ? 'حدّد وانسخ' : 'Select and copy'); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(done, fail); else fail();
+    });
+  });
+})();
+</script>
+</body>
+</html>
