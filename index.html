@@ -389,8 +389,9 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
 .foot{margin-top:24px;font-size:13px;color:rgb(var(--muted))}
 @media (max-width:640px){.banner{padding:22px 20px}}
 
+#dental .frame{aspect-ratio:780/1328}
 /* the showcase: screens from every project, first thing under the banner; a tile opens the gallery */
-.showcase{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:190px;gap:14px}
+.showcase{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:190px;gap:14px;grid-auto-flow:dense}
 .showcase .shot{position:relative;display:block}
 .showcase .shot.big{grid-column:span 2;grid-row:span 2}
 .showcase .wide{height:100%;border-radius:18px}
@@ -548,6 +549,7 @@ html.lb-open{overflow:hidden}
         <a class="pill" href="#decisions" data-spy="decisions" title="Decisions"><svg class="ic"><use href="#i-bulb"/></svg><span class="lb" data-i="n2">Decisions</span></a>
         <a class="pill" href="#hr" data-spy="hr" title="HR"><svg class="ic"><use href="#i-users"/></svg><span class="lb" data-i="n5">HR</span></a>
         <a class="pill" href="#costcontrol" data-spy="costcontrol" title="Cost control"><svg class="ic"><use href="#i-calc"/></svg><span class="lb" data-i="n6">Cost control</span></a>
+        <a class="pill" href="#dental" data-spy="dental" title="Dental clinic"><svg class="ic"><use href="#i-cal"/></svg><span class="lb" data-i="n8">Dental clinic</span></a>
         <a class="pill" href="#websites" data-spy="websites" title="Websites"><svg class="ic"><use href="#i-globe"/></svg><span class="lb" data-i="n7">Websites</span></a>
         <a class="pill" href="#products" data-spy="products" title="Products"><svg class="ic"><use href="#i-pkg"/></svg><span class="lb" data-i="n3">Products</span></a>
         <a class="pill" href="#contact" data-spy="contact" title="Contact"><svg class="ic"><use href="#i-send"/></svg><span class="lb" data-i="n4">Contact</span></a>
@@ -620,6 +622,8 @@ html.lb-open{overflow:hidden}
       </div>
     </div>
     <div class="showcase">
+      <figure class="shot big"><div class="wide"><img src="img/dental-chart.jpg" alt="Dental chart" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT8">Dr. Tarek Dental Clinic</span><figcaption data-i="sc11">Dr. Tarek Dental Clinic: the tooth chart with each tooth’s treatment</figcaption></figure>
+      <figure class="shot ph"><div class="wide"><img src="img/dental-p-teeth.jpg" alt="Patient tooth chart" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT8">Dr. Tarek Dental Clinic</span><figcaption data-i="sc12">Dr. Tarek Dental Clinic: the patient sees his own teeth in the app</figcaption></figure>
       <figure class="shot big"><div class="wide"><img src="img/hr-dashboard-desktop.jpg" alt="HR dashboard" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT1">HR system</span><figcaption data-i="sc1">HR system: the dashboard with who is on the job, what expires within 30 days and open fines</figcaption></figure>
       <figure class="shot ph"><div class="wide"><img src="img/diesel-dashboard.jpg" alt="Diesel dashboard" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT2">Fleet &amp; finance</span><figcaption data-i="sc2">Fleet &amp; finance: the diesel dashboard on a driver’s phone</figcaption></figure>
       <figure class="shot"><div class="wide"><img src="img/cc-package.jpg" alt="Tender package" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT3">Cost control</span><figcaption data-i="sc3">Cost control: a tender package with offers, comparison and award</figcaption></figure>
@@ -629,9 +633,6 @@ html.lb-open{overflow:hidden}
       <figure class="shot"><div class="wide"><img src="img/bts-home.webp" alt="BTS homepage" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT6">btsconsultant.com</span><figcaption data-i="sc7">btsconsultant.com: a training institute’s site and back office</figcaption></figure>
       <figure class="shot ph"><div class="wide"><img src="img/hr-employees-phone.jpg" alt="Employees list" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT1">HR system</span><figcaption data-i="sc8">HR system: employees with categories, search, Excel and print</figcaption></figure>
       <figure class="shot ph"><div class="wide"><img src="img/supplier.jpg" alt="Supplier portal" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT7">Supplier portal</span><figcaption data-i="sc9">Supplier portal: the supplier’s own account and tax invoice</figcaption></figure>
-      <figure class="shot"><div class="wide"><img src="img/diesel-reports-desktop.jpg" alt="Diesel reports on a computer" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT2">Fleet &amp; finance</span><figcaption data-i="sc10">Fleet &amp; finance: the diesel report on a computer, PDF or Excel</figcaption></figure>
-      <!-- Dr. Tarek dental clinic: add the tooth chart here once its screenshot is in img/, e.g.
-      <figure class="shot big"><div class="wide"><img src="img/dental-chart.jpg" alt="Dental chart" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT8">Dr. Tarek Dental Clinic</span><figcaption data-i="sc11">Dr. Tarek Dental Clinic: the tooth chart with each tooth’s treatment</figcaption></figure> -->
     </div>
   </section>
 
@@ -854,6 +855,61 @@ html.lb-open{overflow:hidden}
     </div>
   </section>
 
+  <section id="dental" class="sec">
+    <div class="sec-head">
+      <span class="si t-primary"><svg class="ic"><use href="#i-cal"/></svg></span>
+      <div>
+        <span class="eyebrow" data-i="dnEyebrow">Healthcare</span>
+        <h2 data-i="dnTitle">Dr. Tarek Gamal Dental Clinic: website, patient app and clinic dashboard</h2>
+        <p class="sub" data-i="dnSub">Patients book from their phone and see their own teeth and X-rays; the doctor runs the day, the files and the money from one dashboard.</p>
+      </div>
+    </div>
+    <div class="case" style="margin-bottom:20px">
+      <div class="two">
+        <figure class="shot"><div class="wide"><img src="img/dental-chart.jpg" alt="Tooth chart" loading="lazy"></div><figcaption data-i="dg1">The tooth chart in the patient’s file: tap a tooth to record decay, filling, root canal, crown, implant or missing, with every change kept</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/dental-today.jpg" alt="Clinic day" loading="lazy"></div><figcaption data-i="dg2">The clinic’s day: visits by status, new booking requests, today’s cash and X-rays about to expire</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/dental-visits.jpg" alt="Patient visits" loading="lazy"></div><figcaption data-i="dg3">A patient’s file: allergy and condition flags, private clinic notes, and every visit with its files and charge</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/dental-files.jpg" alt="X-rays and files" loading="lazy"></div><figcaption data-i="dg4">X-rays and files per visit, each showing the days before it is deleted, and the whole set as one ZIP</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/dental-money.jpg" alt="Patient account" loading="lazy"></div><figcaption data-i="dg5">The patient’s account: invoices, payments and what is still owed</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/dental-reports.jpg" alt="Reports" loading="lazy"></div><figcaption data-i="dg6">Reports: cash in, invoiced, visits, no-show rate, money owed by patients and income day by day</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/dental-settings.jpg" alt="Settings" loading="lazy"></div><figcaption data-i="dg7">Settings the doctor controls: how long files are kept, warnings, working days and hours, visit length, open bookings per patient</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/dental-chart-dark.jpg" alt="Tooth chart dark" loading="lazy"></div><figcaption data-i="dg8">The same chart in dark mode</figcaption></figure>
+        <figure class="shot"><div class="wide"><img src="img/dental-site.jpg" alt="Clinic website" loading="lazy"></div><figcaption data-i="dg9">The clinic’s website: services, the doctor, booking and the app, in Arabic and English</figcaption></figure>
+      </div>
+      <h3 style="margin:22px 0 14px" data-i="dnPh">On the phone</h3>
+      <div class="gallery">
+        <figure class="shot"><div class="frame"><img src="img/dental-p-teeth.jpg" alt="My teeth" loading="lazy"></div><figcaption data-i="dp1">The patient sees his own tooth chart</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/dental-p-book.jpg" alt="Book a visit" loading="lazy"></div><figcaption data-i="dp2">Booking: check-up, follow-up or emergency, a day and a free time</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/dental-p-files.jpg" alt="My files" loading="lazy"></div><figcaption data-i="dp3">His X-rays and files, with a reminder to download them before they go</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/dental-p-teeth-ar.jpg" alt="My teeth Arabic" loading="lazy"></div><figcaption data-i="dp4">The same screens in Arabic and dark mode</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/dental-p-login.jpg" alt="Sign in" loading="lazy"></div><figcaption data-i="dp5">Sign in with a mobile number; accounts are opened by the clinic</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/dental-d-patient.jpg" alt="Patient on phone" loading="lazy"></div><figcaption data-i="dp6">The doctor’s dashboard works on a phone too</figcaption></figure>
+        <figure class="shot"><div class="frame"><img src="img/dental-d-reports.jpg" alt="Reports on phone" loading="lazy"></div><figcaption data-i="dp7">Reports on the doctor’s phone</figcaption></figure>
+      </div>
+      <div class="grow" style="margin-top:16px"><p class="note" data-i="dnNote">Screens use sample patients and sample data only.</p><button class="gbtn" type="button" data-lb="dental"><svg class="ic"><use href="#i-images"/></svg><span data-i="gOpen">Open the gallery</span><span class="cnt">16</span></button></div>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="ch"><span class="si t-primary"><svg class="ic"><use href="#i-list"/></svg></span><h3 data-i="dn1H">What it does</h3></div>
+        <ul class="clean">
+          <li data-i="dn1a">A tooth chart per patient in FDI numbering: healthy, decay, filling, root canal, crown, implant or missing, with a history of every change, shared with the patient in his app.</li>
+          <li data-i="dn1b">Booking from the app or the site by visit type, day and free slot; the clinic confirms and the patient is notified. The day’s list moves from requested to confirmed, arrived, in the chair and done.</li>
+          <li data-i="dn1c">X-rays, photos and documents per visit, a patient account with invoices, payments and balance, and reports of income, visits and no-shows for any period.</li>
+          <li data-i="dn1d">Arabic and English, light and dark, on a phone or a computer, with the clinic’s own public website in front.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="ch"><span class="si t-ok"><svg class="ic"><use href="#i-shield"/></svg></span><h3 data-i="dn2H">Built for a real clinic</h3></div>
+        <ul class="clean">
+          <li data-i="dn2a">Accounts are opened by the clinic, not by anyone online: the patient asks on WhatsApp and gets a temporary password, so medical files stay protected.</li>
+          <li data-i="dn2b">Files are kept for a period the doctor sets (90 days by default), both sides are warned before deletion, and a deleted X-ray can be requested again.</li>
+          <li data-i="dn2c">A limit on open bookings per patient, working days, hours and visit length set by the doctor, so the calendar cannot be flooded.</li>
+          <li data-i="dn2d">Allergies and conditions shown on top of every file, and private clinic notes that the patient never sees.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section id="websites" class="sec">
     <div class="sec-head">
       <span class="si t-orange"><svg class="ic"><use href="#i-globe"/></svg></span>
@@ -931,16 +987,6 @@ html.lb-open{overflow:hidden}
           <li data-i="p5b">Store contracts, category management, product visibility controls and notifications to sellers on every admin action.</li>
         </ul>
       </div>
-      <div class="card" style="--c:#0E7490">
-        <div class="ph"><span class="si t-c"><svg class="ic"><use href="#i-cal"/></svg></span><span class="kind" data-i="p8k">Mobile · healthcare · dental clinic</span></div>
-        <h3 data-i="p8t">Dr. Tarek Dental Clinic</h3>
-        <span class="state ok" data-i="p8s">In use</span>
-        <p data-i="p8p">An app for Dr. Tarek’s dental clinic: patients book and follow their appointments, and the clinic keeps each patient’s visits, treatments and notes in one place instead of a paper notebook.</p>
-        <ul class="clean">
-          <li data-i="p8a">Appointment booking with reminders before each visit.</li>
-          <li data-i="p8b">A record per patient: visits, treatment plan, payments and notes.</li>
-        </ul>
-      </div>
       <div class="card" style="--c:#2563EB">
         <div class="ph"><span class="si t-c"><svg class="ic"><use href="#i-truck"/></svg></span><span class="kind" data-i="p9k">Mobile · services · laundry</span></div>
         <h3 data-i="p9t">Laundry app</h3>
@@ -991,7 +1037,7 @@ html.lb-open{overflow:hidden}
 <!-- the bottom bar (a phone / tablet): the work, WhatsApp, email, light / dark -->
 <nav class="dock" aria-label="Quick actions" data-ia="railLbl">
   <div class="in">
-    <a class="dk" href="#flagship" data-spy="flagship decisions hr costcontrol"><svg class="ic"><use href="#i-grid"/></svg><span data-i="dkWork">Work</span></a>
+    <a class="dk" href="#flagship" data-spy="flagship decisions hr costcontrol dental"><svg class="ic"><use href="#i-grid"/></svg><span data-i="dkWork">Work</span></a>
     <a class="dk" href="#products" data-spy="websites products"><svg class="ic"><use href="#i-pkg"/></svg><span data-i="n3">Products</span></a>
     <button class="dk" type="button" data-fly="flyWa" aria-expanded="false" aria-controls="flyWa"><span class="bub"><svg class="ic f"><use href="#i-wa"/></svg></span><span data-i="ctaWa">WhatsApp</span></button>
     <button class="dk" type="button" data-fly="flyMail" aria-expanded="false" aria-controls="flyMail"><svg class="ic"><use href="#i-mail"/></svg><span data-i="railMail">Email</span></button>
@@ -1040,7 +1086,7 @@ html.lb-open{overflow:hidden}
 (function () {
   var html = document.documentElement;
   var AR = {
-    brand: 'أحمد سيد', n1: 'المشروع الرئيسي', n2: 'القرارات', n3: 'المنتجات', n4: 'تواصل', n5: 'الموارد البشرية', n6: 'التكاليف', n7: 'المواقع',
+    brand: 'أحمد سيد', n1: 'المشروع الرئيسي', n2: 'القرارات', n3: 'المنتجات', n4: 'تواصل', n5: 'الموارد البشرية', n6: 'التكاليف', n7: 'المواقع', n8: 'عيادة الأسنان',
     navLbl: 'الأقسام', railLbl: 'التواصل والعرض', jumpsLbl: 'الأعمال حسب النوع',
     eyebrow: 'بورتفوليو · الإمارات ومصر', clockLoc: 'بتوقيت الإمارات',
     h1: 'أبني أنظمة تُدار بها الشركات.',
@@ -1069,6 +1115,32 @@ html.lb-open{overflow:hidden}
     sc9: 'بوابة المورّد: حساب المورّد الخاص وفاتورته الضريبية',
     sc10: 'الأسطول والمالية: تقرير الديزل على الكمبيوتر بصيغة PDF أو Excel',
     sc11: 'عيادة د. طارق للأسنان: خريطة الأسنان وعلاج كل سن',
+    dnEyebrow: 'رعاية صحية', dnTitle: 'عيادة د. طارق جمال للأسنان: موقع وتطبيق للمرضى ولوحة للعيادة',
+    dnSub: 'المريض يحجز من موبايله ويرى أسنانه وأشعته، والطبيب يدير اليوم والملفات والحسابات من لوحة واحدة.',
+    dnPh: 'على الموبايل', dnNote: 'الشاشات بمرضى وبيانات تجريبية فقط.',
+    dg1: 'خريطة الأسنان في ملف المريض: اضغط على السن لتسجيل تسوس أو حشو أو علاج عصب أو تاج أو زراعة أو خلع، مع حفظ كل تغيير',
+    dg2: 'يوم العيادة: المواعيد حسب الحالة، طلبات الحجز الجديدة، نقدية اليوم، والأشعة التي ستُحذف قريباً',
+    dg3: 'ملف المريض: تنبيهات الحساسية والأمراض، ملاحظات العيادة الخاصة، وكل زيارة بملفاتها وتكلفتها',
+    dg4: 'الأشعة والملفات لكل زيارة، وعلى كل ملف الأيام المتبقية قبل حذفه، وتحميل الكل كملف ZIP',
+    dg5: 'حساب المريض: الفواتير والمدفوعات والمتبقي',
+    dg6: 'التقارير: الدخل النقدي، إجمالي الفواتير، الزيارات، نسبة عدم الحضور، مستحقات المرضى، والدخل يوماً بيوم',
+    dg7: 'إعدادات بيد الطبيب: مدة حفظ الملفات، التنبيهات، أيام وساعات العمل، مدة الموعد، وأقصى حجوزات مفتوحة للمريض',
+    dg8: 'نفس الخريطة في الوضع الداكن',
+    dg9: 'موقع العيادة: الخدمات والطبيب والحجز والتطبيق، بالعربي والإنجليزي',
+    dp1: 'المريض يرى خريطة أسنانه بنفسه', dp2: 'الحجز: كشف أو متابعة أو طوارئ، ويوم وساعة متاحة',
+    dp3: 'أشعته وملفاته، مع تذكير بتنزيلها قبل حذفها', dp4: 'نفس الشاشات بالعربي وفي الوضع الداكن',
+    dp5: 'الدخول برقم الموبايل، والحسابات تفتحها العيادة', dp6: 'لوحة الطبيب تعمل على الموبايل أيضاً', dp7: 'التقارير على موبايل الطبيب',
+    dn1H: 'ماذا يفعل',
+    dn1a: 'خريطة أسنان لكل مريض بترقيم FDI: سليم، تسوس، حشو، علاج عصب، تاج، زراعة أو مخلوع، مع سجل لكل تغيير، ويراها المريض في تطبيقه.',
+    dn1b: 'حجز من التطبيق أو الموقع حسب نوع الزيارة واليوم والموعد المتاح؛ العيادة تؤكد والمريض يصله إشعار. وقائمة اليوم تنتقل من طلب إلى مؤكد إلى وصل إلى في الكشف إلى انتهى.',
+    dn1c: 'أشعة وصور ومستندات لكل زيارة، حساب للمريض بالفواتير والمدفوعات والمتبقي، وتقارير الدخل والزيارات وعدم الحضور لأي فترة.',
+    dn1d: 'عربي وإنجليزي، فاتح وداكن، على الموبايل أو الكمبيوتر، ومعه موقع العيادة العام في الواجهة.',
+    dn2H: 'مبني لعيادة حقيقية',
+    dn2a: 'الحسابات تفتحها العيادة وليس أي شخص على الإنترنت: المريض يطلب على واتساب ويأخذ كلمة سر مؤقتة، فتبقى الملفات الطبية محمية.',
+    dn2b: 'الملفات تُحفظ لمدة يحددها الطبيب (90 يوماً افتراضياً)، والطرفان يُنبَّهان قبل الحذف، والأشعة المحذوفة يمكن طلبها من جديد.',
+    dn2c: 'حد لعدد الحجوزات المفتوحة لكل مريض، وأيام وساعات عمل ومدة موعد يحددها الطبيب، فلا يمتلئ الجدول عشوائياً.',
+    dn2d: 'الحساسية والأمراض تظهر أعلى كل ملف، وملاحظات العيادة الخاصة لا يراها المريض أبداً.',
+    sc12: 'عيادة د. طارق للأسنان: المريض يرى أسنانه في التطبيق', sc13: 'عيادة د. طارق للأسنان: مواعيد اليوم وطلبات الحجز والنقدية',
     caseEyebrow: 'المشروع الرئيسي', caseTitle: 'منصّة إدارة الأسطول والمالية لشركة مقاولات',
     caseSub: 'رأس الخيمة، الإمارات · في الإنتاج منذ سبتمبر 2026 · تُثبَّت على كل جوال من رمز QR واحد',
     tag: 'ثمانية أنظمة · حساب واحد · مصدر واحد للحقيقة',
@@ -1160,10 +1232,6 @@ html.lb-open{overflow:hidden}
     p5p: 'سوق متعدد البائعين: البائعون يفتحون متاجر بعقد، المشرفون يعتمدونها ويوقفونها ويديرونها، والعملاء يتسوّقون عبر المتاجر ويقيّمون المنتجات ويتابعون الطلبات. خرج فوناتنا من دروسه.',
     p5a: 'واجهات البائع والمشرف والعميل في تطبيق واحد، كلٌّ يرى ما يخصّه فقط.',
     p5b: 'عقود المتاجر، إدارة الأقسام، التحكم في ظهور المنتجات، وإشعارات للبائعين عند كل إجراء إداري.',
-    p8k: 'جوال · رعاية صحية · عيادة أسنان', p8t: 'عيادة د. طارق للأسنان', p8s: 'قيد الاستخدام',
-    p8p: 'تطبيق لعيادة د. طارق للأسنان: المرضى يحجزون مواعيدهم ويتابعونها، والعيادة تحفظ زيارات كل مريض وعلاجاته وملاحظاته في مكان واحد بدلاً من الدفتر الورقي.',
-    p8a: 'حجز المواعيد مع تذكير قبل كل زيارة.',
-    p8b: 'ملف لكل مريض: الزيارات وخطة العلاج والمدفوعات والملاحظات.',
     p9k: 'جوال · خدمات · مغسلة', p9t: 'تطبيق المغسلة', p9s: 'قيد الاستخدام',
     p9p: 'تطبيق لمغسلة: العميل يطلب ويختار موعد الاستلام والتوصيل ويتابع طلبه من الاستلام حتى الإرجاع، والمغسلة تدير الطلبات والأسعار والمناديب من لوحة واحدة.',
     p9a: 'حالة الطلب في كل خطوة: مُستلَم، قيد الغسيل، جاهز، في الطريق إليك.',
@@ -1301,7 +1369,7 @@ html.lb-open{overflow:hidden}
   });
 
   /* the section under the middle of the screen lights its pill (and its tab of the bottom bar) */
-  var ids = ['flagship', 'decisions', 'hr', 'costcontrol', 'websites', 'products', 'contact'];
+  var ids = ['flagship', 'decisions', 'hr', 'costcontrol', 'dental', 'websites', 'products', 'contact'];
   var secs = ids.map(function (id) { return document.getElementById(id); });
   var spy = [].slice.call(document.querySelectorAll('[data-spy]'));
   var cur = '#', ticking = false;
