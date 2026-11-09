@@ -389,6 +389,20 @@ ul.clean li::before{content:"";width:18px;height:18px;margin-top:4px;border-radi
 .foot{margin-top:24px;font-size:13px;color:rgb(var(--muted))}
 @media (max-width:640px){.banner{padding:22px 20px}}
 
+/* the showcase: screens from every project, first thing under the banner; a tile opens the gallery */
+.showcase{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:190px;gap:14px}
+.showcase .shot{position:relative;display:block}
+.showcase .shot.big{grid-column:span 2;grid-row:span 2}
+.showcase .wide{height:100%;border-radius:18px}
+.showcase .wide img{height:100%;object-fit:cover;object-position:top}
+.showcase .shot.ph .wide img{object-position:center 12%}
+.showcase .tag{position:absolute;inset-inline-start:10px;bottom:10px;z-index:1;pointer-events:none;max-width:calc(100% - 20px);
+  padding:5px 11px;border-radius:999px;font:700 12px var(--display);color:#fff;background:rgb(11 31 80 / .72);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.showcase figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:900px){.showcase{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:170px}}
+@media (max-width:480px){.showcase{grid-auto-rows:140px;gap:10px}}
+
 /* the gallery: a screenshot opens large; the section's screenshots are browsed with the arrows, a swipe or the strip */
 .zm{position:relative;cursor:zoom-in}
 .zm::after{content:"";position:absolute;top:10px;inset-inline-end:10px;width:32px;height:32px;border-radius:50%;pointer-events:none;
@@ -592,6 +606,32 @@ html.lb-open{overflow:hidden}
           <a class="sg" href="https://github.com/ahmdsydysf" target="_blank" rel="noopener"><svg class="ic f"><use href="#i-gh"/></svg><span>GitHub</span></a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- the showcase: screens from the projects, first under the banner -->
+  <section id="showcase" class="sec" style="padding-top:28px">
+    <div class="sec-head">
+      <span class="si t-violet"><svg class="ic"><use href="#i-images"/></svg></span>
+      <div>
+        <span class="eyebrow" data-i="shEyebrow">Gallery</span>
+        <h2 data-i="shTitle">Screens from my projects</h2>
+        <p class="sub" data-i="shSub">Tap any screen to open it large and browse the rest. Sample data only.</p>
+      </div>
+    </div>
+    <div class="showcase">
+      <figure class="shot big"><div class="wide"><img src="img/hr-dashboard-desktop.jpg" alt="HR dashboard" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT1">HR system</span><figcaption data-i="sc1">HR system: the dashboard with who is on the job, what expires within 30 days and open fines</figcaption></figure>
+      <figure class="shot ph"><div class="wide"><img src="img/diesel-dashboard.jpg" alt="Diesel dashboard" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT2">Fleet &amp; finance</span><figcaption data-i="sc2">Fleet &amp; finance: the diesel dashboard on a driver’s phone</figcaption></figure>
+      <figure class="shot"><div class="wide"><img src="img/cc-package.jpg" alt="Tender package" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT3">Cost control</span><figcaption data-i="sc3">Cost control: a tender package with offers, comparison and award</figcaption></figure>
+      <figure class="shot"><div class="wide"><img src="img/varex-home.webp" alt="Varex homepage" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT4">varex.com.eg</span><figcaption data-i="sc4">varex.com.eg: a live corporate site with its own admin panel</figcaption></figure>
+      <figure class="shot ph"><div class="wide"><img src="img/mulkiya.jpg" alt="Vehicle registrations" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT5">Registrations</span><figcaption data-i="sc5">Registrations: every vehicle coloured by days left</figcaption></figure>
+      <figure class="shot big"><div class="wide"><img src="img/cc-dashboard.jpg" alt="Cost control dashboard" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT3">Cost control</span><figcaption data-i="sc6">Cost control: what needs attention across projects, tenders and vendors</figcaption></figure>
+      <figure class="shot"><div class="wide"><img src="img/bts-home.webp" alt="BTS homepage" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT6">btsconsultant.com</span><figcaption data-i="sc7">btsconsultant.com: a training institute’s site and back office</figcaption></figure>
+      <figure class="shot ph"><div class="wide"><img src="img/hr-employees-phone.jpg" alt="Employees list" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT1">HR system</span><figcaption data-i="sc8">HR system: employees with categories, search, Excel and print</figcaption></figure>
+      <figure class="shot ph"><div class="wide"><img src="img/supplier.jpg" alt="Supplier portal" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT7">Supplier portal</span><figcaption data-i="sc9">Supplier portal: the supplier’s own account and tax invoice</figcaption></figure>
+      <figure class="shot"><div class="wide"><img src="img/diesel-reports-desktop.jpg" alt="Diesel reports on a computer" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT2">Fleet &amp; finance</span><figcaption data-i="sc10">Fleet &amp; finance: the diesel report on a computer, PDF or Excel</figcaption></figure>
+      <!-- Dr. Tarek dental clinic: add the tooth chart here once its screenshot is in img/, e.g.
+      <figure class="shot big"><div class="wide"><img src="img/dental-chart.jpg" alt="Dental chart" loading="lazy"></div><span class="tag" aria-hidden="true" data-i="shT8">Dr. Tarek Dental Clinic</span><figcaption data-i="sc11">Dr. Tarek Dental Clinic: the tooth chart with each tooth’s treatment</figcaption></figure> -->
     </div>
   </section>
 
@@ -1015,6 +1055,20 @@ html.lb-open{overflow:hidden}
     s4h: 'من اليمين لليسار أولاً', s5h: 'تعمل قبل كل إصدار',
     j0: 'كل المنتجات', j1: 'أنظمة تشغيل', j2: 'مواقع', j3: 'تطبيقات جوال', j4: 'أدوات الفرق',
     tbShots: 'الشاشات', tbSys: 'الأنظمة', tbQual: 'الثقة والأوراق',
+    shEyebrow: 'معرض الصور', shTitle: 'لقطات من مشاريعي', shSub: 'اضغط على أي شاشة لتكبيرها وتصفّح الباقي. البيانات تجريبية فقط.',
+    shT1: 'نظام الموارد البشرية', shT2: 'الأسطول والمالية', shT3: 'التحكّم في التكاليف', shT4: 'varex.com.eg', shT5: 'التراخيص',
+    shT6: 'btsconsultant.com', shT7: 'بوابة المورّد', shT8: 'عيادة د. طارق للأسنان',
+    sc1: 'نظام الموارد البشرية: لوحة التحكم بمن هم على رأس العمل وما ينتهي خلال 30 يوماً والمخالفات المفتوحة',
+    sc2: 'الأسطول والمالية: لوحة الديزل على هاتف السائق',
+    sc3: 'التحكّم في التكاليف: حزمة مناقصة بالعروض والمقارنة والترسية',
+    sc4: 'varex.com.eg: موقع شركة يعمل بلوحة تحكم خاصة به',
+    sc5: 'التراخيص: كل مركبة ملوّنة حسب الأيام المتبقية',
+    sc6: 'التحكّم في التكاليف: ما يحتاج انتباهاً عبر المشاريع والمناقصات والموردين',
+    sc7: 'btsconsultant.com: موقع معهد تدريب ونظامه الإداري',
+    sc8: 'نظام الموارد البشرية: الموظفون بالفئات والبحث والتصدير لإكسل والطباعة',
+    sc9: 'بوابة المورّد: حساب المورّد الخاص وفاتورته الضريبية',
+    sc10: 'الأسطول والمالية: تقرير الديزل على الكمبيوتر بصيغة PDF أو Excel',
+    sc11: 'عيادة د. طارق للأسنان: خريطة الأسنان وعلاج كل سن',
     caseEyebrow: 'المشروع الرئيسي', caseTitle: 'منصّة إدارة الأسطول والمالية لشركة مقاولات',
     caseSub: 'رأس الخيمة، الإمارات · في الإنتاج منذ سبتمبر 2026 · تُثبَّت على كل جوال من رمز QR واحد',
     tag: 'ثمانية أنظمة · حساب واحد · مصدر واحد للحقيقة',
